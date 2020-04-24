@@ -1,0 +1,1466 @@
+Registering autoscheduler...
+Generator harris has base_path ./bin/harris_classic_auto_schedule
+Dropout seed = 1561465757
+Node: output
+  Symbolic region required: 
+    output.x.min, output.x.max
+    output.y.min, output.y.max
+  Region computed: 
+    output.x.min, output.x.max
+    output.y.min, output.y.max
+  Stage 0:
+    x output.x.min output.x.max
+    y output.y.min output.y.max
+    Featurization for type UInt32
+     Op histogram:
+      Constant:   2
+      Cast:       0
+      Variable:   4
+      Param:      0
+      Add:        2
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   0
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 0 0
+      Transpose:      0 0 0 0
+      Broadcast:      0 0 0 0
+      Slice:          0 0 0 0
+    Featurization for type Float
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   0
+      Param:      0
+      Add:        0
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   1
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      1 0 0 1
+      Transpose:      1 0 0 1
+      Broadcast:      1 0 0 1
+      Slice:          1 0 0 1
+  pointwise: 0 boundary condition: 0 wrapper: 0 input: 0 output: 1
+Node: harris
+  Symbolic region required: 
+    harris.x.min, harris.x.max
+    harris.y.min, harris.y.max
+  Region computed: 
+    harris.x.min, harris.x.max
+    harris.y.min, harris.y.max
+  Stage 0:
+    x harris.x.min harris.x.max
+    y harris.y.min harris.y.max
+    Featurization for type UInt32
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   6
+      Param:      0
+      Add:        0
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   0
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 0 0
+      Transpose:      0 0 0 0
+      Broadcast:      0 0 0 0
+      Slice:          0 0 0 0
+    Featurization for type Float
+     Op histogram:
+      Constant:   1
+      Cast:       0
+      Variable:   2
+      Param:      0
+      Add:        0
+      Sub:        1
+      Mod:        0
+      Mul:        2
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   2
+      SelfCall:   0
+      ExternCall: 0
+      Let:        1
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      2 0 0 1
+      Transpose:      2 0 0 1
+      Broadcast:      2 0 0 1
+      Slice:          2 0 0 1
+  pointwise: 1 boundary condition: 0 wrapper: 0 input: 0 output: 0
+Node: trace
+  Symbolic region required: 
+    trace.x.min, trace.x.max
+    trace.y.min, trace.y.max
+  Region computed: 
+    trace.x.min, trace.x.max
+    trace.y.min, trace.y.max
+  Stage 0:
+    x trace.x.min trace.x.max
+    y trace.y.min trace.y.max
+    Featurization for type UInt32
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   6
+      Param:      0
+      Add:        0
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   0
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 0 0
+      Transpose:      0 0 0 0
+      Broadcast:      0 0 0 0
+      Slice:          0 0 0 0
+    Featurization for type Float
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   0
+      Param:      0
+      Add:        1
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   2
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      2 0 0 1
+      Transpose:      2 0 0 1
+      Broadcast:      2 0 0 1
+      Slice:          2 0 0 1
+  pointwise: 1 boundary condition: 0 wrapper: 0 input: 0 output: 0
+Node: det
+  Symbolic region required: 
+    det.x.min, det.x.max
+    det.y.min, det.y.max
+  Region computed: 
+    det.x.min, det.x.max
+    det.y.min, det.y.max
+  Stage 0:
+    x det.x.min det.x.max
+    y det.y.min det.y.max
+    Featurization for type UInt32
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   8
+      Param:      0
+      Add:        0
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   0
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 0 0
+      Transpose:      0 0 0 0
+      Broadcast:      0 0 0 0
+      Slice:          0 0 0 0
+    Featurization for type Float
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   2
+      Param:      0
+      Add:        0
+      Sub:        1
+      Mod:        0
+      Mul:        2
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   3
+      SelfCall:   0
+      ExternCall: 0
+      Let:        1
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      3 0 0 1
+      Transpose:      3 0 0 1
+      Broadcast:      3 0 0 1
+      Slice:          3 0 0 1
+  pointwise: 1 boundary condition: 0 wrapper: 0 input: 0 output: 0
+Node: Syy
+  Symbolic region required: 
+    Syy.x.min, Syy.x.max
+    Syy.y.min, Syy.y.max
+  Region computed: 
+    Syy.x.min, Syy.x.max
+    Syy.y.min, Syy.y.max
+  Stage 0:
+    x Syy.x.min Syy.x.max
+    y Syy.y.min Syy.y.max
+    Featurization for type UInt32
+     Op histogram:
+      Constant:   12
+      Cast:       0
+      Variable:   20
+      Param:      0
+      Add:        12
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   0
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 0 0
+      Transpose:      0 0 0 0
+      Broadcast:      0 0 0 0
+      Slice:          0 0 0 0
+    Featurization for type Float
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   0
+      Param:      0
+      Add:        8
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   9
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      9 0 0 1
+      Transpose:      9 0 0 1
+      Broadcast:      9 0 0 1
+      Slice:          9 0 0 1
+  pointwise: 0 boundary condition: 0 wrapper: 0 input: 0 output: 0
+Node: Iyy
+  Symbolic region required: 
+    Iyy.x.min, Iyy.x.max
+    Iyy.y.min, Iyy.y.max
+  Region computed: 
+    Iyy.x.min, Iyy.x.max
+    Iyy.y.min, Iyy.y.max
+  Stage 0:
+    x Iyy.x.min Iyy.x.max
+    y Iyy.y.min Iyy.y.max
+    Featurization for type UInt32
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   4
+      Param:      0
+      Add:        0
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   0
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 0 0
+      Transpose:      0 0 0 0
+      Broadcast:      0 0 0 0
+      Slice:          0 0 0 0
+    Featurization for type Float
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   2
+      Param:      0
+      Add:        0
+      Sub:        0
+      Mod:        0
+      Mul:        1
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   1
+      SelfCall:   0
+      ExternCall: 0
+      Let:        1
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      1 0 0 1
+      Transpose:      1 0 0 1
+      Broadcast:      1 0 0 1
+      Slice:          1 0 0 1
+  pointwise: 1 boundary condition: 0 wrapper: 0 input: 0 output: 0
+Node: Sxy
+  Symbolic region required: 
+    Sxy.x.min, Sxy.x.max
+    Sxy.y.min, Sxy.y.max
+  Region computed: 
+    Sxy.x.min, Sxy.x.max
+    Sxy.y.min, Sxy.y.max
+  Stage 0:
+    x Sxy.x.min Sxy.x.max
+    y Sxy.y.min Sxy.y.max
+    Featurization for type UInt32
+     Op histogram:
+      Constant:   12
+      Cast:       0
+      Variable:   20
+      Param:      0
+      Add:        12
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   0
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 0 0
+      Transpose:      0 0 0 0
+      Broadcast:      0 0 0 0
+      Slice:          0 0 0 0
+    Featurization for type Float
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   0
+      Param:      0
+      Add:        8
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   9
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      9 0 0 1
+      Transpose:      9 0 0 1
+      Broadcast:      9 0 0 1
+      Slice:          9 0 0 1
+  pointwise: 0 boundary condition: 0 wrapper: 0 input: 0 output: 0
+Node: Ixy
+  Symbolic region required: 
+    Ixy.x.min, Ixy.x.max
+    Ixy.y.min, Ixy.y.max
+  Region computed: 
+    Ixy.x.min, Ixy.x.max
+    Ixy.y.min, Ixy.y.max
+  Stage 0:
+    x Ixy.x.min Ixy.x.max
+    y Ixy.y.min Ixy.y.max
+    Featurization for type UInt32
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   6
+      Param:      0
+      Add:        0
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   0
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 0 0
+      Transpose:      0 0 0 0
+      Broadcast:      0 0 0 0
+      Slice:          0 0 0 0
+    Featurization for type Float
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   0
+      Param:      0
+      Add:        0
+      Sub:        0
+      Mod:        0
+      Mul:        1
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   2
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      2 0 0 1
+      Transpose:      2 0 0 1
+      Broadcast:      2 0 0 1
+      Slice:          2 0 0 1
+  pointwise: 1 boundary condition: 0 wrapper: 0 input: 0 output: 0
+Node: Iy
+  Symbolic region required: 
+    Iy.x.min, Iy.x.max
+    Iy.y.min, Iy.y.max
+  Region computed: 
+    Iy.x.min, Iy.x.max
+    Iy.y.min, Iy.y.max
+  Stage 0:
+    x Iy.x.min Iy.x.max
+    y Iy.y.min Iy.y.max
+    Featurization for type UInt32
+     Op histogram:
+      Constant:   10
+      Cast:       0
+      Variable:   14
+      Param:      0
+      Add:        10
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   0
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 0 0
+      Transpose:      0 0 0 0
+      Broadcast:      0 0 0 0
+      Slice:          0 0 0 0
+    Featurization for type Float
+     Op histogram:
+      Constant:   5
+      Cast:       0
+      Variable:   0
+      Param:      0
+      Add:        2
+      Sub:        3
+      Mod:        0
+      Mul:        5
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   6
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      6 0 0 1
+      Transpose:      6 0 0 1
+      Broadcast:      6 0 0 1
+      Slice:          6 0 0 1
+  pointwise: 0 boundary condition: 0 wrapper: 0 input: 0 output: 0
+Node: Sxx
+  Symbolic region required: 
+    Sxx.x.min, Sxx.x.max
+    Sxx.y.min, Sxx.y.max
+  Region computed: 
+    Sxx.x.min, Sxx.x.max
+    Sxx.y.min, Sxx.y.max
+  Stage 0:
+    x Sxx.x.min Sxx.x.max
+    y Sxx.y.min Sxx.y.max
+    Featurization for type UInt32
+     Op histogram:
+      Constant:   12
+      Cast:       0
+      Variable:   20
+      Param:      0
+      Add:        12
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   0
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 0 0
+      Transpose:      0 0 0 0
+      Broadcast:      0 0 0 0
+      Slice:          0 0 0 0
+    Featurization for type Float
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   0
+      Param:      0
+      Add:        8
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   9
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      9 0 0 1
+      Transpose:      9 0 0 1
+      Broadcast:      9 0 0 1
+      Slice:          9 0 0 1
+  pointwise: 0 boundary condition: 0 wrapper: 0 input: 0 output: 0
+Node: Ixx
+  Symbolic region required: 
+    Ixx.x.min, Ixx.x.max
+    Ixx.y.min, Ixx.y.max
+  Region computed: 
+    Ixx.x.min, Ixx.x.max
+    Ixx.y.min, Ixx.y.max
+  Stage 0:
+    x Ixx.x.min Ixx.x.max
+    y Ixx.y.min Ixx.y.max
+    Featurization for type UInt32
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   4
+      Param:      0
+      Add:        0
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   0
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 0 0
+      Transpose:      0 0 0 0
+      Broadcast:      0 0 0 0
+      Slice:          0 0 0 0
+    Featurization for type Float
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   2
+      Param:      0
+      Add:        0
+      Sub:        0
+      Mod:        0
+      Mul:        1
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   1
+      SelfCall:   0
+      ExternCall: 0
+      Let:        1
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      1 0 0 1
+      Transpose:      1 0 0 1
+      Broadcast:      1 0 0 1
+      Slice:          1 0 0 1
+  pointwise: 1 boundary condition: 0 wrapper: 0 input: 0 output: 0
+Node: Ix
+  Symbolic region required: 
+    Ix.x.min, Ix.x.max
+    Ix.y.min, Ix.y.max
+  Region computed: 
+    Ix.x.min, Ix.x.max
+    Ix.y.min, Ix.y.max
+  Stage 0:
+    x Ix.x.min Ix.x.max
+    y Ix.y.min Ix.y.max
+    Featurization for type UInt32
+     Op histogram:
+      Constant:   10
+      Cast:       0
+      Variable:   14
+      Param:      0
+      Add:        10
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   0
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 0 0
+      Transpose:      0 0 0 0
+      Broadcast:      0 0 0 0
+      Slice:          0 0 0 0
+    Featurization for type Float
+     Op histogram:
+      Constant:   5
+      Cast:       0
+      Variable:   0
+      Param:      0
+      Add:        2
+      Sub:        3
+      Mod:        0
+      Mul:        5
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   6
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      6 0 0 1
+      Transpose:      6 0 0 1
+      Broadcast:      6 0 0 1
+      Slice:          6 0 0 1
+  pointwise: 0 boundary condition: 0 wrapper: 0 input: 0 output: 0
+Node: gray
+  Symbolic region required: 
+    gray.x.min, gray.x.max
+    gray.y.min, gray.y.max
+  Region computed: 
+    gray.x.min, gray.x.max
+    gray.y.min, gray.y.max
+  Stage 0:
+    x gray.x.min gray.x.max
+    y gray.y.min gray.y.max
+    Featurization for type UInt32
+     Op histogram:
+      Constant:   3
+      Cast:       0
+      Variable:   8
+      Param:      0
+      Add:        0
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   0
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 0 0
+      Transpose:      0 0 0 0
+      Broadcast:      0 0 0 0
+      Slice:          0 0 0 0
+    Featurization for type Float
+     Op histogram:
+      Constant:   3
+      Cast:       0
+      Variable:   0
+      Param:      0
+      Add:        2
+      Sub:        0
+      Mod:        0
+      Mul:        3
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   3
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 0 1
+      Transpose:      0 0 0 1
+      Broadcast:      0 0 0 1
+      Slice:          3 0 0 1
+  pointwise: 0 boundary condition: 0 wrapper: 0 input: 0 output: 0
+Node: input_im
+  Symbolic region required: 
+    input_im._0.min, input_im._0.max
+    input_im._1.min, input_im._1.max
+    input_im._2.min, input_im._2.max
+  Region computed: 
+    input_im._0.min, input_im._0.max
+    input_im._1.min, input_im._1.max
+    input_im._2.min, input_im._2.max
+  Stage 0:
+    _0 input_im._0.min input_im._0.max
+    _1 input_im._1.min input_im._1.max
+    _2 input_im._2.min input_im._2.max
+    Featurization for type UInt32
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   6
+      Param:      0
+      Add:        0
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  0
+      FuncCall:   0
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 0 0
+      Transpose:      0 0 0 0
+      Broadcast:      0 0 0 0
+      Slice:          0 0 0 0
+    Featurization for type Float
+     Op histogram:
+      Constant:   0
+      Cast:       0
+      Variable:   0
+      Param:      0
+      Add:        0
+      Sub:        0
+      Mod:        0
+      Mul:        0
+      Div:        0
+      Min:        0
+      Max:        0
+      EQ:         0
+      NE:         0
+      LT:         0
+      LE:         0
+      And:        0
+      Or:         0
+      Not:        0
+      Select:     0
+      ImageCall:  1
+      FuncCall:   0
+      SelfCall:   0
+      ExternCall: 0
+      Let:        0
+     Memory access patterns. Columns are calls to other Funcs, self-calls, input image access, and stores
+      Pointwise:      0 0 1 1
+      Transpose:      0 0 1 1
+      Broadcast:      0 0 1 1
+      Slice:          0 0 1 1
+  pointwise: 1 boundary condition: 0 wrapper: 1 input: 1 output: 0
+Edge: harris -> output
+  Footprint: 
+    Min 0: (output.x.min + 2)
+    Max 0: (output.x.max + 2)
+    Min 1: (output.y.min + 2)
+    Max 1: (output.y.max + 2)
+  Load Jacobians:
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: det -> harris
+  Footprint: 
+    Min 0: harris.x.min
+    Max 0: harris.x.max
+    Min 1: harris.y.min
+    Max 1: harris.y.max
+  Load Jacobians:
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: trace -> harris
+  Footprint: 
+    Min 0: harris.x.min
+    Max 0: harris.x.max
+    Min 1: harris.y.min
+    Max 1: harris.y.max
+  Load Jacobians:
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: Sxx -> trace
+  Footprint: 
+    Min 0: trace.x.min
+    Max 0: trace.x.max
+    Min 1: trace.y.min
+    Max 1: trace.y.max
+  Load Jacobians:
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: Syy -> trace
+  Footprint: 
+    Min 0: trace.x.min
+    Max 0: trace.x.max
+    Min 1: trace.y.min
+    Max 1: trace.y.max
+  Load Jacobians:
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: Sxx -> det
+  Footprint: 
+    Min 0: det.x.min
+    Max 0: det.x.max
+    Min 1: det.y.min
+    Max 1: det.y.max
+  Load Jacobians:
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: Sxy -> det
+  Footprint: 
+    Min 0: det.x.min
+    Max 0: det.x.max
+    Min 1: det.y.min
+    Max 1: det.y.max
+  Load Jacobians:
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: Syy -> det
+  Footprint: 
+    Min 0: det.x.min
+    Max 0: det.x.max
+    Min 1: det.y.min
+    Max 1: det.y.max
+  Load Jacobians:
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: Iyy -> Syy
+  Footprint: 
+    Min 0: (Syy.x.min + -1)
+    Max 0: (Syy.x.max + 1)
+    Min 1: (Syy.y.min + -1)
+    Max 1: (Syy.y.max + 1)
+  Load Jacobians:
+  9 x
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: Iy -> Iyy
+  Footprint: 
+    Min 0: Iyy.x.min
+    Max 0: Iyy.x.max
+    Min 1: Iyy.y.min
+    Max 1: Iyy.y.max
+  Load Jacobians:
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: Ixy -> Sxy
+  Footprint: 
+    Min 0: (Sxy.x.min + -1)
+    Max 0: (Sxy.x.max + 1)
+    Min 1: (Sxy.y.min + -1)
+    Max 1: (Sxy.y.max + 1)
+  Load Jacobians:
+  9 x
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: Ix -> Ixy
+  Footprint: 
+    Min 0: Ixy.x.min
+    Max 0: Ixy.x.max
+    Min 1: Ixy.y.min
+    Max 1: Ixy.y.max
+  Load Jacobians:
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: Iy -> Ixy
+  Footprint: 
+    Min 0: Ixy.x.min
+    Max 0: Ixy.x.max
+    Min 1: Ixy.y.min
+    Max 1: Ixy.y.max
+  Load Jacobians:
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: gray -> Iy
+  Footprint: 
+    Min 0: (Iy.x.min + -1)
+    Max 0: (Iy.x.max + 1)
+    Min 1: (Iy.y.min + -1)
+    Max 1: (Iy.y.max + 1)
+  Load Jacobians:
+  6 x
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: Ixx -> Sxx
+  Footprint: 
+    Min 0: (Sxx.x.min + -1)
+    Max 0: (Sxx.x.max + 1)
+    Min 1: (Sxx.y.min + -1)
+    Max 1: (Sxx.y.max + 1)
+  Load Jacobians:
+  9 x
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: Ix -> Ixx
+  Footprint: 
+    Min 0: Ixx.x.min
+    Max 0: Ixx.x.max
+    Min 1: Ixx.y.min
+    Max 1: Ixx.y.max
+  Load Jacobians:
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: gray -> Ix
+  Footprint: 
+    Min 0: (Ix.x.min + -1)
+    Max 0: (Ix.x.max + 1)
+    Min 1: (Ix.y.min + -1)
+    Max 1: (Ix.y.max + 1)
+  Load Jacobians:
+  6 x
+    [ 1   0  ]
+    [ 0   1  ]
+
+Edge: input_im -> gray
+  Footprint: 
+    Min 0: gray.x.min
+    Max 0: gray.x.max
+    Min 1: gray.y.min
+    Max 1: gray.y.max
+    Min 2: 0
+    Max 2: 2
+  Load Jacobians:
+  3 x
+    [ 1   0  ]
+    [ 0   1  ]
+    [ 0   0  ]
+
+
+Pass 0 result:
+State with cost 100000000000000007629769841091887003294964970946560.000000:
+ gpu_none
+realize: output [1530, 2554] with 1 stages
+realize: harris [1530, 2554] with 1 stages
+realize: trace [1530, 2554] with 1 stages
+realize: det [1530, 2554] with 1 stages
+realize: Syy [1530, 2554] with 1 stages
+realize: Sxy [1530, 2554] with 1 stages
+realize: Ixy [1532, 2556] with 1 stages
+realize: Ix [1532, 2556] with 1 stages
+Ix 24 40 (0, 0) t gpu_block
+ Ix 16c 8c (0, 0) t gpu_thread
+  Ix 4c 8c (0, 0) t gpu_serial
+   Ix 1vc 1c (0, 0) *
+    inlined: gray 6
+Ixy 96 80 (0, 0) t gpu_block
+ Ixy 16c 8c (0, 0) t gpu_thread
+  Ixy 1c 4c (0, 0) t gpu_serial
+   Ixy 1vc 1c (0, 0) *
+    inlined: Iy 1
+    inlined: gray 6
+Sxy 96 40 (1, 1) t gpu_block
+ Sxy 16c 32c (1, 1) t gpu_thread
+  Sxy 1c 2c (1, 1) t gpu_serial
+   Sxy 1c 1vc (1, 1) *
+Syy 6 80 (1, 1) t gpu_block
+ Syy 32c 32c (1, 1) t gpu_thread
+  Syy 8c 1c (1, 1) t gpu_serial
+   Syy 1c 1vc (1, 1) *
+    inlined: Iyy 9
+    inlined: Iy 9
+    inlined: gray 54
+det 96 20 (0, 0) t gpu_block
+ det 16c 64c (0, 0) t gpu_thread
+  det 1c 2c (0, 0) t gpu_serial
+   det 1vc 1c (0, 0) *
+    inlined: Sxx 1
+    inlined: Ixx 9
+trace 96 20 (0, 0) t gpu_block
+ trace 16c 64c (0, 0) t gpu_thread
+  trace 1c 2c (0, 0) t gpu_serial
+   trace 1vc 1c (0, 0) *
+    inlined: Sxx 1
+    inlined: Ixx 9
+harris 6 80 (1, 1) t gpu_block
+ harris 64c 16c (1, 1) t gpu_thread
+  harris 4c 2c (1, 1) t gpu_serial
+   harris 1c 1vc (1, 1) *
+output 96 10 (0, 0) t gpu_block
+ output 16c 64c (0, 0) t gpu_thread
+  output 1c 4c (0, 0) t gpu_serial
+   output 1vc 1c (0, 0) *
+
+Pass 1 result:
+State with cost 100000000000000007629769841091887003294964970946560.000000:
+ gpu_none
+realize: output [1530, 2554] with 1 stages
+realize: harris [1530, 2554] with 1 stages
+realize: trace [1530, 2554] with 1 stages
+realize: det [1530, 2554] with 1 stages
+realize: Syy [1530, 2554] with 1 stages
+realize: Sxy [1530, 2554] with 1 stages
+realize: Ixy [1532, 2556] with 1 stages
+realize: Iy [1532, 2556] with 1 stages
+realize: Sxx [1530, 2554] with 1 stages
+realize: Ixx [1532, 2556] with 1 stages
+realize: Ix [1532, 2556] with 1 stages
+realize: gray [1534, 2558] with 1 stages
+gray 6 10 (1, 1) t gpu_block
+ gray 32c 32c (1, 1) t gpu_thread
+  gray 8c 8c (1, 1) t gpu_serial
+   gray 1c 1vc (1, 1) *
+Ix 12 20 (0, 0) t gpu_block
+ Ix 16c 16c (0, 0) t gpu_thread
+  Ix 8c 8c (0, 0) t gpu_serial
+   Ix 1vc 1c (0, 0) *
+Ixx 383 80 (1, 1) t gpu_block
+ Ixx 4c 32c (1, 1) t gpu_thread
+  Ixx 1c 1c (1, 1) t gpu_serial
+   Ixx 1c 1vc (1, 1) *
+Sxx 12 5 (1, 1) t gpu_block
+ Sxx 16c 64c (1, 1) t gpu_thread
+  Sxx 8c 8c (1, 1) t gpu_serial
+   Sxx 1c 1vc (1, 1) *
+Iy 6 40 (0, 0) t gpu_block
+ Iy 32c 8c (0, 0) t gpu_thread
+  Iy 8c 8c (0, 0) t gpu_serial
+   Iy 1vc 1c (0, 0) *
+Ixy 48 160 (1, 1) t gpu_block
+ Ixy 8c 16c (1, 1) t gpu_thread
+  Ixy 4c 1c (1, 1) t gpu_serial
+   Ixy 1c 1vc (1, 1) *
+Sxy 12 20 (0, 0) t gpu_block
+ Sxy 16c 16c (0, 0) t gpu_thread
+  Sxy 8c 8c (0, 0) t gpu_serial
+   Sxy 1vc 1c (0, 0) *
+Syy 24 20 (0, 0) t gpu_block
+ Syy 64c 16c (0, 0) t gpu_thread
+  Syy 1c 8c (0, 0) t gpu_serial
+   Syy 1vc 1c (0, 0) *
+    inlined: Iyy 9
+det 3 160 (1, 1) t gpu_block
+ det 64c 16c (1, 1) t gpu_thread
+  det 8c 1c (1, 1) t gpu_serial
+   det 1c 1vc (1, 1) *
+trace 3 160 (1, 1) t gpu_block
+ trace 64c 16c (1, 1) t gpu_thread
+  trace 8c 1c (1, 1) t gpu_serial
+   trace 1c 1vc (1, 1) *
+harris 96 40 (0, 0) t gpu_block
+ harris 16c 64c (0, 0) t gpu_thread
+  harris 1c 1c (0, 0) t gpu_serial
+   harris 1vc 1c (0, 0) *
+output 24 160 (0, 0) t gpu_block
+ output 64c 16c (0, 0) t gpu_thread
+  output 1c 1c (0, 0) t gpu_serial
+   output 1vc 1c (0, 0) *
+
+Pass 2 result:
+State with cost 100000000000000007629769841091887003294964970946560.000000:
+ gpu_none
+realize: output [1530, 2554] with 1 stages
+realize: harris [1530, 2554] with 1 stages
+realize: trace [1530, 2554] with 1 stages
+realize: det [1530, 2554] with 1 stages
+realize: Syy [1530, 2554] with 1 stages
+realize: Sxy [1530, 2554] with 1 stages
+realize: Ixy [1532, 2556] with 1 stages
+realize: Iy [1532, 2556] with 1 stages
+realize: Sxx [1530, 2554] with 1 stages
+realize: Ixx [1532, 2556] with 1 stages
+realize: Ix [1532, 2556] with 1 stages
+realize: gray [1534, 2558] with 1 stages
+gray 6 10 (1, 1) t gpu_block
+ gray 32c 32c (1, 1) t gpu_thread
+  gray 8c 8c (1, 1) t gpu_serial
+   gray 1c 1vc (1, 1) *
+Ix 12 20 (0, 0) t gpu_block
+ Ix 16c 16c (0, 0) t gpu_thread
+  Ix 8c 8c (0, 0) t gpu_serial
+   Ix 1vc 1c (0, 0) *
+Ixx 6 10 (1, 1) t gpu_block
+ Ixx 32c 32c (1, 1) t gpu_thread
+  Ixx 8c 8c (1, 1) t gpu_serial
+   Ixx 1c 1vc (1, 1) *
+Sxx 12 20 (0, 0) t gpu_block
+ Sxx 16c 16c (0, 0) t gpu_thread
+  Sxx 8c 8c (0, 0) t gpu_serial
+   Sxx 1vc 1c (0, 0) *
+Iy 6 10 (1, 1) t gpu_block
+ Iy 32c 32c (1, 1) t gpu_thread
+  Iy 8c 8c (1, 1) t gpu_serial
+   Iy 1c 1vc (1, 1) *
+Ixy 12 20 (0, 0) t gpu_block
+ Ixy 16c 16c (0, 0) t gpu_thread
+  Ixy 8c 8c (0, 0) t gpu_serial
+   Ixy 1vc 1c (0, 0) *
+Sxy 6 10 (1, 1) t gpu_block
+ Sxy 32c 32c (1, 1) t gpu_thread
+  Sxy 8c 8c (1, 1) t gpu_serial
+   Sxy 1c 1vc (1, 1) *
+Syy 96 5 (0, 0) t gpu_block
+ Syy 16c 64c (0, 0) t gpu_thread
+  Syy 1c 8c (0, 0) t gpu_serial
+   Syy 1vc 1c (0, 0) *
+    inlined: Iyy 9
+det 3 160 (1, 1) t gpu_block
+ det 64c 16c (1, 1) t gpu_thread
+  det 8c 1c (1, 1) t gpu_serial
+   det 1c 1vc (1, 1) *
+trace 96 20 (0, 0) t gpu_block
+ trace 16c 64c (0, 0) t gpu_thread
+  trace 1c 2c (0, 0) t gpu_serial
+   trace 1vc 1c (0, 0) *
+harris 24 80 (0, 0) t gpu_block
+ harris 64c 16c (0, 0) t gpu_thread
+  harris 1c 2c (0, 0) t gpu_serial
+   harris 1vc 1c (0, 0) *
+output 24 160 (0, 0) t gpu_block
+ output 64c 16c (0, 0) t gpu_thread
+  output 1c 1c (0, 0) t gpu_serial
+   output 1vc 1c (0, 0) *
+
+Pass 3 result:
+State with cost 100000000000000007629769841091887003294964970946560.000000:
+ gpu_none
+realize: output [1530, 2554] with 1 stages
+realize: harris [1530, 2554] with 1 stages
+realize: trace [1530, 2554] with 1 stages
+realize: det [1530, 2554] with 1 stages
+realize: Syy [1530, 2554] with 1 stages
+realize: Sxy [1530, 2554] with 1 stages
+realize: Ixy [1532, 2556] with 1 stages
+realize: Iy [1532, 2556] with 1 stages
+realize: Sxx [1530, 2554] with 1 stages
+realize: Ixx [1532, 2556] with 1 stages
+realize: Ix [1532, 2556] with 1 stages
+realize: gray [1534, 2558] with 1 stages
+gray 12 20 (1, 1) t gpu_block
+ gray 16c 32c (1, 1) t gpu_thread
+  gray 8c 4c (1, 1) t gpu_serial
+   gray 1c 1vc (1, 1) *
+Ix 6 10 (1, 1) t gpu_block
+ Ix 32c 32c (1, 1) t gpu_thread
+  Ix 8c 8c (1, 1) t gpu_serial
+   Ix 1c 1vc (1, 1) *
+Ixx 48 80 (1, 1) t gpu_block
+ Ixx 8c 16c (1, 1) t gpu_thread
+  Ixx 4c 2c (1, 1) t gpu_serial
+   Ixx 1c 1vc (1, 1) *
+Sxx 48 80 (0, 0) t gpu_block
+ Sxx 32c 4c (0, 0) t gpu_thread
+  Sxx 1c 8c (0, 0) t gpu_serial
+   Sxx 1vc 1c (0, 0) *
+Iy 48 80 (0, 0) t gpu_block
+ Iy 16c 32c (0, 0) t gpu_thread
+  Iy 2c 1c (0, 0) t gpu_serial
+   Iy 1vc 1c (0, 0) *
+Ixy 48 80 (1, 1) t gpu_block
+ Ixy 32c 32c (1, 1) t gpu_thread
+  Ixy 1c 1c (1, 1) t gpu_serial
+   Ixy 1c 1vc (1, 1) *
+Sxy 48 80 (1, 1) t gpu_block
+ Sxy 16c 32c (1, 1) t gpu_thread
+  Sxy 2c 1c (1, 1) t gpu_serial
+   Sxy 1c 1vc (1, 1) *
+Syy 3 80 (0, 0) t gpu_block
+ Syy 64c 16c (0, 0) t gpu_thread
+  Syy 8c 2c (0, 0) t gpu_serial
+   Syy 1vc 1c (0, 0) *
+    inlined: Iyy 9
+det 96 40 (0, 0) t gpu_block
+ det 16c 32c (0, 0) t gpu_thread
+  det 1c 2c (0, 0) t gpu_serial
+   det 1vc 1c (0, 0) *
+trace 96 20 (0, 0) t gpu_block
+ trace 16c 64c (0, 0) t gpu_thread
+  trace 1c 2c (0, 0) t gpu_serial
+   trace 1vc 1c (0, 0) *
+harris 24 80 (0, 0) t gpu_block
+ harris 64c 16c (0, 0) t gpu_thread
+  harris 1c 2c (0, 0) t gpu_serial
+   harris 1vc 1c (0, 0) *
+output 24 160 (0, 0) t gpu_block
+ output 64c 16c (0, 0) t gpu_thread
+  output 1c 1c (0, 0) t gpu_serial
+   output 1vc 1c (0, 0) *

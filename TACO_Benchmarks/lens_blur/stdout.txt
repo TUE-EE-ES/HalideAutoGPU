@@ -1,0 +1,712 @@
+===========
+group of func diffhas boundary stages
+members :
+repeat_edge$1
+diff
+===========
+inlined cost
+inlined repeat_edge$3
+inlined repeat_edge$4
+inlined repeat_edge$5
+inlined cost
+inlined cost_pyramid_push[0]
+inlined repeat_edge$2
+inlined repeat_edge$3
+inlined repeat_edge$4
+inlined repeat_edge$5
+inlined repeat_edge$6
+inlined repeat_edge$7
+inlined cost
+inlined cost_pyramid_pull[0]
+inlined cost_pyramid_push[0]
+inlined repeat_edge$2
+inlined bokeh_radius
+inlined bokeh_radius_squared
+inlined input_with_alpha
+inlined sample_locations
+inlined cost_pyramid_pull[6]
+inlined repeat_edge$6
+inlined repeat_edge$7
+inlined repeat_edge$8
+inlined upx$1
+is singleton1 output 0
+mem argmin update 0
+is singleton1 output 1
+mem argmin update 1
+is singleton7 output 0
+mem cost_confidence update 0
+mem sum$1 update 0
+mem sum$1 update 1
+mem cost update 0
+mem sum update 0
+mem sum update 1
+mem cost update 0
+is singleton8 output 0
+mem cost_pyramid_pull[2] update 0
+mem repeat_edge$3 update 0
+mem upx$4 update 0
+mem cost_pyramid_pull[3] update 0
+mem repeat_edge$4 update 0
+mem upx$3 update 0
+mem cost_pyramid_pull[4] update 0
+mem repeat_edge$5 update 0
+is singleton1 output 0
+mem diff update 0
+is singleton4 output 0
+mem downy update 0
+mem downx update 0
+mem cost_pyramid_push[0] update 0
+mem cost update 0
+is singleton3 output 0
+mem downy$1 update 0
+mem downx$1 update 0
+mem repeat_edge$2 update 0
+is singleton3 output 0
+mem downy$2 update 0
+mem downx$2 update 0
+mem repeat_edge$3 update 0
+is singleton3 output 0
+mem downy$3 update 0
+mem downx$3 update 0
+mem repeat_edge$4 update 0
+is singleton3 output 0
+mem downy$4 update 0
+mem downx$4 update 0
+mem repeat_edge$5 update 0
+is singleton3 output 0
+mem downy$5 update 0
+mem downx$5 update 0
+mem repeat_edge$6 update 0
+is singleton3 output 0
+mem downy$6 update 0
+mem downx$6 update 0
+mem repeat_edge$7 update 0
+is singleton8 output 0
+mem filtered_cost update 0
+mem cost_pyramid_pull[0] update 0
+mem cost_pyramid_push[0] update 0
+mem cost update 0
+mem upx$6 update 0
+mem cost_pyramid_pull[1] update 0
+mem repeat_edge$2 update 0
+mem upx$5 update 0
+is singleton15 output 0
+Will unroll c
+mem final update 0
+mem output update 0
+Will unroll c
+mem input_with_alpha update 0
+mem output update 1
+Will unroll c
+mem sample_locations update 0
+mem input_with_alpha update 0
+mem sample_weight update 0
+mem sample_locations update 0
+mem bokeh_radius_squared update 0
+mem bokeh_radius update 0
+mem maximum$1 update 0
+mem maximum$1 update 1
+mem maximum update 0
+mem maximum update 1
+mem bokeh_radius update 0
+is singleton1 output 0
+mem repeat_edge update 0
+is singleton1 output 0
+mem repeat_edge$1 update 0
+is singleton8 output 0
+mem upx$2 update 0
+mem cost_pyramid_pull[5] update 0
+mem repeat_edge$6 update 0
+mem upx$1 update 0
+mem cost_pyramid_pull[6] update 0
+mem repeat_edge$7 update 0
+mem upx update 0
+mem repeat_edge$8 update 0
+// Target: x86-64-linux-avx-avx2-cuda-cuda_capability_61-f16c-fma-large_buffers-no_runtime-sse41
+// MachineParams: 14,16777216,4
+
+// Delete this line if not using Generator
+Pipeline pipeline = get_pipeline();
+
+Var _0_i("_0_i");
+Var _0_o("_0_o");
+Var _1_i("_1_i");
+Var _1_o("_1_o");
+Var x_i("x_i");
+Var x_o("x_o");
+Var y_i("y_i");
+Var y_o("y_o");
+Var z_i("z_i");
+Var z_o("z_o");
+
+Func argmin = pipeline.get_func(64);
+Func cost_confidence = pipeline.get_func(11);
+Func cost_pyramid_pull_1_ = pipeline.get_func(59);
+Func cost_pyramid_pull_2_ = pipeline.get_func(56);
+Func cost_pyramid_pull_3_ = pipeline.get_func(53);
+Func cost_pyramid_pull_4_ = pipeline.get_func(50);
+Func cost_pyramid_pull_5_ = pipeline.get_func(47);
+Func diff = pipeline.get_func(7);
+Func downx = pipeline.get_func(13);
+Func downx_1 = pipeline.get_func(17);
+Func downx_2 = pipeline.get_func(21);
+Func downx_3 = pipeline.get_func(25);
+Func downx_4 = pipeline.get_func(29);
+Func downx_5 = pipeline.get_func(33);
+Func downx_6 = pipeline.get_func(37);
+Func downy = pipeline.get_func(14);
+Func downy_1 = pipeline.get_func(18);
+Func downy_2 = pipeline.get_func(22);
+Func downy_3 = pipeline.get_func(26);
+Func downy_4 = pipeline.get_func(30);
+Func downy_5 = pipeline.get_func(34);
+Func downy_6 = pipeline.get_func(38);
+Func filtered_cost = pipeline.get_func(63);
+Func final = pipeline.get_func(75);
+Func maximum = pipeline.get_func(67);
+Func maximum_1 = pipeline.get_func(69);
+Func output = pipeline.get_func(74);
+Func repeat_edge = pipeline.get_func(2);
+Func repeat_edge_1 = pipeline.get_func(6);
+Func sample_weight = pipeline.get_func(73);
+Func sum = pipeline.get_func(9);
+Func sum_1 = pipeline.get_func(10);
+Func upx = pipeline.get_func(42);
+Func upx_2 = pipeline.get_func(48);
+Func upx_3 = pipeline.get_func(51);
+Func upx_4 = pipeline.get_func(54);
+Func upx_5 = pipeline.get_func(57);
+Func upx_6 = pipeline.get_func(60);
+
+{
+    Var x = argmin.args()[0];
+    Var y = argmin.args()[1];
+    argmin
+        .compute_root()
+        .split(x, x_o, x_i, 8)
+        .split(y, y_o, y_i, 8)
+        .reorder(x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o)
+        .compute_root();
+    argmin.update(0)
+        .split(x, x_o, x_i, 16, TailStrategy::RoundUp)
+        .split(y, y_o, y_i, 8, TailStrategy::RoundUp)
+        .reorder(r$1$x, x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = cost_confidence.args()[0];
+    Var y = cost_confidence.args()[1];
+    cost_confidence
+        .compute_root()
+        .split(x, x_o, x_i, 32)
+        .split(y, y_o, y_i, 8)
+        .reorder(x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = cost_pyramid_pull_1_.args()[0];
+    Var y = cost_pyramid_pull_1_.args()[1];
+    Var z = cost_pyramid_pull_1_.args()[2];
+    Var c = cost_pyramid_pull_1_.args()[3];
+    cost_pyramid_pull_1_
+        .compute_at(filtered_cost, x_o)
+        .reorder(c, x, y, z)
+        .gpu_threads(x)
+        .gpu_threads(y)
+        .gpu_threads(z);
+}
+{
+    Var x = cost_pyramid_pull_2_.args()[0];
+    Var y = cost_pyramid_pull_2_.args()[1];
+    Var z = cost_pyramid_pull_2_.args()[2];
+    cost_pyramid_pull_2_
+        .compute_root()
+        .split(x, x_o, x_i, 16)
+        .split(y, y_o, y_i, 16)
+        .split(z, z_o, z_i, 2)
+        .reorder(c, x_i, y_i, z_i, x_o, y_o, z_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_threads(z_i)
+        .gpu_blocks(z_o)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = cost_pyramid_pull_3_.args()[0];
+    Var y = cost_pyramid_pull_3_.args()[1];
+    Var z = cost_pyramid_pull_3_.args()[2];
+    Var c = cost_pyramid_pull_3_.args()[3];
+    cost_pyramid_pull_3_
+        .compute_at(cost_pyramid_pull_2_, x_o)
+        .reorder(c, x, y, z)
+        .gpu_threads(x)
+        .gpu_threads(y)
+        .gpu_threads(z);
+}
+{
+    Var x = cost_pyramid_pull_4_.args()[0];
+    Var y = cost_pyramid_pull_4_.args()[1];
+    Var z = cost_pyramid_pull_4_.args()[2];
+    Var c = cost_pyramid_pull_4_.args()[3];
+    cost_pyramid_pull_4_
+        .compute_at(cost_pyramid_pull_2_, x_o)
+        .reorder(c, x, y, z)
+        .gpu_threads(x)
+        .gpu_threads(y)
+        .gpu_threads(z);
+}
+{
+    Var x = cost_pyramid_pull_5_.args()[0];
+    Var y = cost_pyramid_pull_5_.args()[1];
+    Var z = cost_pyramid_pull_5_.args()[2];
+    Var c = cost_pyramid_pull_5_.args()[3];
+    cost_pyramid_pull_5_
+        .compute_at(upx_2, x_o)
+        .reorder(c, z, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = diff.args()[0];
+    Var y = diff.args()[1];
+    Var z = diff.args()[2];
+    diff
+        .compute_root()
+        .split(x, x_o, x_i, 32)
+        .split(y, y_o, y_i, 8)
+        .split(z, z_o, z_i, 4)
+        .reorder(c, x_i, y_i, z_i, x_o, y_o, z_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_threads(z_i)
+        .gpu_blocks(z_o)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = downx.args()[0];
+    Var y = downx.args()[1];
+    Var _0 = downx.args()[2];
+    Var _1 = downx.args()[3];
+    downx
+        .compute_at(downy, x_o)
+        .reorder(_1, x, y, _0)
+        .gpu_threads(x)
+        .gpu_threads(y)
+        .gpu_threads(_0);
+}
+{
+    Var x = downx_1.args()[0];
+    Var y = downx_1.args()[1];
+    Var _0 = downx_1.args()[2];
+    Var _1 = downx_1.args()[3];
+    downx_1
+        .compute_at(downy_1, x_o)
+        .reorder(_1, x, y, _0)
+        .gpu_threads(x)
+        .gpu_threads(y)
+        .gpu_threads(_0);
+}
+{
+    Var x = downx_2.args()[0];
+    Var y = downx_2.args()[1];
+    Var _0 = downx_2.args()[2];
+    Var _1 = downx_2.args()[3];
+    downx_2
+        .compute_at(downy_2, x_o)
+        .reorder(_1, x, y, _0)
+        .gpu_threads(x)
+        .gpu_threads(y)
+        .gpu_threads(_0);
+}
+{
+    Var x = downx_3.args()[0];
+    Var y = downx_3.args()[1];
+    Var _0 = downx_3.args()[2];
+    Var _1 = downx_3.args()[3];
+    downx_3
+        .compute_at(downy_3, x_o)
+        .reorder(_1, x, y, _0)
+        .gpu_threads(x)
+        .gpu_threads(y)
+        .gpu_threads(_0);
+}
+{
+    Var x = downx_4.args()[0];
+    Var y = downx_4.args()[1];
+    Var _0 = downx_4.args()[2];
+    Var _1 = downx_4.args()[3];
+    downx_4
+        .compute_at(downy_4, x_o)
+        .reorder(_1, x, y, _0)
+        .gpu_threads(x)
+        .gpu_threads(y)
+        .gpu_threads(_0);
+}
+{
+    Var x = downx_5.args()[0];
+    Var y = downx_5.args()[1];
+    Var _0 = downx_5.args()[2];
+    Var _1 = downx_5.args()[3];
+    downx_5
+        .compute_at(downy_5, x)
+        .reorder(_1, x, y, _0)
+        .gpu_threads(y)
+        .gpu_threads(_0);
+}
+{
+    Var x = downx_6.args()[0];
+    Var y = downx_6.args()[1];
+    Var _0 = downx_6.args()[2];
+    Var _1 = downx_6.args()[3];
+    downx_6
+        .compute_at(downy_6, x_o)
+        .reorder(_1, x, y, _0)
+        .gpu_threads(x)
+        .gpu_threads(y)
+        .gpu_threads(_0);
+}
+{
+    Var x = downy.args()[0];
+    Var y = downy.args()[1];
+    Var _0 = downy.args()[2];
+    downy
+        .compute_root()
+        .split(x, x_o, x_i, 16)
+        .split(y, y_o, y_i, 14)
+        .split(_0, _0_o, _0_i, 2)
+        .reorder(_1, x_i, y_i, _0_i, x_o, y_o, _0_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_threads(_0_i)
+        .gpu_blocks(_0_o)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = downy_1.args()[0];
+    Var y = downy_1.args()[1];
+    Var _0 = downy_1.args()[2];
+    downy_1
+        .compute_root()
+        .split(x, x_o, x_i, 8)
+        .split(y, y_o, y_i, 14)
+        .split(_0, _0_o, _0_i, 2)
+        .reorder(_1, x_i, y_i, _0_i, x_o, y_o, _0_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_threads(_0_i)
+        .gpu_blocks(_0_o)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = downy_2.args()[0];
+    Var y = downy_2.args()[1];
+    Var _0 = downy_2.args()[2];
+    downy_2
+        .compute_root()
+        .split(x, x_o, x_i, 8)
+        .split(y, y_o, y_i, 14)
+        .split(_0, _0_o, _0_i, 2)
+        .reorder(_1, x_i, y_i, _0_i, x_o, y_o, _0_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_threads(_0_i)
+        .gpu_blocks(_0_o)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = downy_3.args()[0];
+    Var y = downy_3.args()[1];
+    Var _0 = downy_3.args()[2];
+    downy_3
+        .compute_root()
+        .split(x, x_o, x_i, 8)
+        .split(y, y_o, y_i, 14)
+        .split(_0, _0_o, _0_i, 2)
+        .reorder(_1, x_i, y_i, _0_i, x_o, y_o, _0_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_threads(_0_i)
+        .gpu_blocks(_0_o)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = downy_4.args()[0];
+    Var y = downy_4.args()[1];
+    Var _0 = downy_4.args()[2];
+    downy_4
+        .compute_root()
+        .split(x, x_o, x_i, 8)
+        .split(y, y_o, y_i, 14)
+        .split(_0, _0_o, _0_i, 2)
+        .reorder(_1, x_i, y_i, _0_i, x_o, y_o, _0_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_threads(_0_i)
+        .gpu_blocks(_0_o)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = downy_5.args()[0];
+    Var y = downy_5.args()[1];
+    Var _0 = downy_5.args()[2];
+    downy_5
+        .compute_root()
+        .split(y, y_o, y_i, 2)
+        .split(_0, _0_o, _0_i, 2)
+        .reorder(_1, y_i, _0_i, x, y_o, _0_o)
+        .gpu_threads(y_i)
+        .gpu_threads(_0_i)
+        .gpu_blocks(_0_o)
+        .gpu_blocks(y_o);
+}
+{
+    Var x = downy_6.args()[0];
+    Var y = downy_6.args()[1];
+    Var _0 = downy_6.args()[2];
+    downy_6
+        .compute_root()
+        .split(x, x_o, x_i, 3)
+        .split(y, y_o, y_i, 3)
+        .split(_0, _0_o, _0_i, 4)
+        .reorder(_1, x_i, y_i, _0_i, x_o, y_o, _0_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_threads(_0_i)
+        .gpu_blocks(_0_o)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = filtered_cost.args()[0];
+    Var y = filtered_cost.args()[1];
+    Var z = filtered_cost.args()[2];
+    filtered_cost
+        .compute_root()
+        .split(x, x_o, x_i, 16)
+        .split(y, y_o, y_i, 16)
+        .split(z, z_o, z_i, 2)
+        .reorder(x_i, y_i, z_i, x_o, y_o, z_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_threads(z_i)
+        .gpu_blocks(z_o)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = final.args()[0];
+    Var y = final.args()[1];
+    Var c = final.args()[2];
+    final
+        .compute_root()
+        .split(x, x_o, x_i, 10)
+        .split(y, y_o, y_i, 8)
+        .reorder(c, x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .unroll(c)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = maximum.args()[0];
+    Var y = maximum.args()[1];
+    RVar r$2$x(maximum.update(0).get_schedule().rvars()[0].var);
+    maximum
+        .compute_at(final, x_o)
+        .reorder(x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+    maximum.update(0)
+        .reorder(r$2$x, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = maximum_1.args()[0];
+    Var y = maximum_1.args()[1];
+    RVar r$2$x(maximum_1.update(0).get_schedule().rvars()[0].var);
+    maximum_1
+        .compute_at(final, x_o)
+        .reorder(x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+    maximum_1.update(0)
+        .reorder(r$2$x, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = output.args()[0];
+    Var y = output.args()[1];
+    Var c = output.args()[2];
+    RVar s$x(output.update(0).get_schedule().rvars()[0].var);
+    output
+        .compute_at(final, x_o)
+        .reorder(c, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y)
+        .unroll(c);
+    output.update(0)
+        .reorder(c, s$x, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y)
+        .unroll(c);
+}
+{
+    Var _0 = repeat_edge.args()[0];
+    Var _1 = repeat_edge.args()[1];
+    repeat_edge
+        .compute_root()
+        .split(_0, _0_o, _0_i, 32)
+        .split(_1, _1_o, _1_i, 8)
+        .reorder(_2, _0_i, _1_i, _0_o, _1_o)
+        .gpu_threads(_0_i)
+        .gpu_threads(_1_i)
+        .gpu_blocks(_1_o)
+        .gpu_blocks(_0_o);
+}
+{
+    Var _0 = repeat_edge_1.args()[0];
+    Var _1 = repeat_edge_1.args()[1];
+    repeat_edge_1
+        .compute_root()
+        .split(_0, _0_o, _0_i, 32)
+        .split(_1, _1_o, _1_i, 8)
+        .reorder(_2, _0_i, _1_i, _0_o, _1_o)
+        .gpu_threads(_0_i)
+        .gpu_threads(_1_i)
+        .gpu_blocks(_1_o)
+        .gpu_blocks(_0_o);
+}
+{
+    Var x = sample_weight.args()[0];
+    Var y = sample_weight.args()[1];
+    Var z = sample_weight.args()[2];
+    sample_weight
+        .compute_at(final, x_o)
+        .reorder(z, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = sum.args()[0];
+    Var y = sum.args()[1];
+    RVar r$x(sum.update(0).get_schedule().rvars()[0].var);
+    sum
+        .compute_at(cost_confidence, x_o)
+        .reorder(x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+    sum.update(0)
+        .reorder(r$x, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = sum_1.args()[0];
+    Var y = sum_1.args()[1];
+    RVar r$x(sum_1.update(0).get_schedule().rvars()[0].var);
+    sum_1
+        .compute_at(cost_confidence, x_o)
+        .reorder(x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+    sum_1.update(0)
+        .reorder(r$x, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = upx.args()[0];
+    Var y = upx.args()[1];
+    Var _0 = upx.args()[2];
+    Var _1 = upx.args()[3];
+    upx
+        .compute_at(upx_2, x_o)
+        .reorder(_1, x, y, _0)
+        .gpu_threads(x)
+        .gpu_threads(y)
+        .gpu_threads(_0);
+}
+{
+    Var x = upx_2.args()[0];
+    Var y = upx_2.args()[1];
+    Var _0 = upx_2.args()[2];
+    upx_2
+        .compute_root()
+        .split(x, x_o, x_i, 8)
+        .split(y, y_o, y_i, 8)
+        .split(_0, _0_o, _0_i, 2)
+        .reorder(_1, x_i, y_i, _0_i, x_o, y_o, _0_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_threads(_0_i)
+        .gpu_blocks(_0_o)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = upx_3.args()[0];
+    Var y = upx_3.args()[1];
+    Var _0 = upx_3.args()[2];
+    Var _1 = upx_3.args()[3];
+    upx_3
+        .compute_at(cost_pyramid_pull_2_, x_o)
+        .reorder(_1, _0, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = upx_4.args()[0];
+    Var y = upx_4.args()[1];
+    Var _0 = upx_4.args()[2];
+    Var _1 = upx_4.args()[3];
+    upx_4
+        .compute_at(cost_pyramid_pull_2_, x_o)
+        .reorder(_1, _0, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = upx_5.args()[0];
+    Var y = upx_5.args()[1];
+    Var _0 = upx_5.args()[2];
+    Var _1 = upx_5.args()[3];
+    upx_5
+        .compute_at(filtered_cost, x_o)
+        .reorder(_1, _0, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = upx_6.args()[0];
+    Var y = upx_6.args()[1];
+    Var _0 = upx_6.args()[2];
+    Var _1 = upx_6.args()[3];
+    upx_6
+        .compute_at(filtered_cost, x_o)
+        .reorder(_1, _0, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+
+
+TOTAL INLINES 25

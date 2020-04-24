@@ -1,0 +1,57 @@
+// Target: x86-64-linux-avx-avx2-cuda-cuda_capability_61-f16c-fma-sse41
+// MachineParams: 14,16777216,4
+
+// Delete this line if not using Generator
+Pipeline pipeline = get_pipeline();
+
+Var x_i("x_i");
+Var x_o("x_o");
+Var y_i("y_i");
+Var y_o("y_o");
+
+Func Ix = pipeline.get_func(2);
+Func Iy = pipeline.get_func(5);
+Func gray = pipeline.get_func(1);
+Func output = pipeline.get_func(13);
+
+{
+    Var x = Ix.args()[0];
+    Var y = Ix.args()[1];
+    Ix
+        .compute_at(output, x_o)
+        .reorder(x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = Iy.args()[0];
+    Var y = Iy.args()[1];
+    Iy
+        .compute_at(output, x_o)
+        .reorder(x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = gray.args()[0];
+    Var y = gray.args()[1];
+    gray
+        .compute_at(output, x_o)
+        .reorder(x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = output.args()[0];
+    Var y = output.args()[1];
+    output
+        .compute_root()
+        .split(x, x_o, x_i, 16)
+        .split(y, y_o, y_i, 12)
+        .reorder(x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+

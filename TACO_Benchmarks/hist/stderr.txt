@@ -1,0 +1,799 @@
+Generator hist has base_path ./bin/hist_auto_schedule
+
+================
+Pipeline graph:
+================
+Cb: {output}
+Cr: {output}
+Y: {Cb, Cr, equalize, hist_rows.update(0)}
+cdf: {cdf.update(0)}
+cdf.update(0): {equalize}
+equalize: {output}
+hist: {hist.update(0)}
+hist.update(0): {cdf, cdf.update(0)}
+hist_rows: {hist_rows.update(0)}
+hist_rows.update(0): {hist.update(0)}
+================
+
+================
+Pipeline bounds:
+================
+Cb -> {[0, 1535], [0, 2559]}
+Cr -> {[0, 1535], [0, 2559]}
+Y -> {[0, 1535], [0, 2559]}
+cdf -> {[0, 255]}
+equalize -> {[0, 1535], [0, 2559]}
+hist -> {[0, 255]}
+hist_rows -> {[0, 255], [0, 2559]}
+input -> {[0, 1535], [0, 2559], [0, 2]}
+output -> {[0, 1535], [0, 2559], [0, 2]}
+===============
+User error triggered at ../autoscheduler/AutoSchedule.cpp:4312
+Warning at ../../distrib/tools/GenGen.cpp:4:
+Insufficient parallelism for cdf
+User error triggered at ../autoscheduler/AutoSchedule.cpp:4312
+Warning at ../../distrib/tools/GenGen.cpp:4:
+Insufficient parallelism for cdf.update(0)
+User error triggered at ../autoscheduler/AutoSchedule.cpp:4312
+Warning at ../../distrib/tools/GenGen.cpp:4:
+Insufficient parallelism for hist
+Creating initial loop nests...
+Injecting realization of { output }
+Inlining equalize
+Injecting realization of { cdf }
+Injecting realization of { hist }
+Injecting realization of { hist_rows }
+Inlining Cr
+Inlining Cb
+Inlining Y
+Skipping injecting memoization...
+Injecting tracing...
+Adding checks for parameters
+Computing bounds of each function's value
+Adding checks for images
+Performing computation bounds inference...
+Removing extern loops...
+Performing sliding window optimization...
+Simplifying correlated differences...
+Performing allocation bounds inference...
+Removing code that depends on undef values...
+Uniquifying variable names...
+Simplifying...
+Performing storage folding optimization...
+Injecting debug_to_file calls...
+Injecting prefetches...
+Dynamically skipping stages...
+Forking asynchronous producers...
+Destructuring tuple-valued realizations...
+Canonicalizing GPU var names...
+Performing storage flattening...
+Unpacking buffer arguments...
+Skipping rewriting memoized allocations...
+Selecting a GPU API for GPU loops...
+Injecting host <-> dev buffer copies...
+Selecting a GPU API for extern stages...
+Simplifying...
+Reduce prefetch dimension...
+Simplifying correlated differences...
+Unrolling...
+Vectorizing...
+Injecting per-block gpu synchronization...
+Detecting vector interleavings...
+Partitioning loops to simplify boundary conditions...
+Trimming loops to the region over which they do something...
+Injecting early frees...
+Simplifying correlated differences...
+Bounding small allocations...
+Injecting warp shuffles...
+Simplifying...
+Lowering unsafe promises...
+Lowering after final simplification:
+assert((reinterpret(uint64, output.buffer) != (uint64)0), halide_error_buffer_argument_is_null("output"))
+assert((reinterpret(uint64, input.buffer) != (uint64)0), halide_error_buffer_argument_is_null("input"))
+let input = _halide_buffer_get_host(input.buffer)
+let input.min.0 = _halide_buffer_get_min(input.buffer, 0)
+let input.extent.0 = _halide_buffer_get_extent(input.buffer, 0)
+let input.stride.0 = _halide_buffer_get_stride(input.buffer, 0)
+let input.min.1 = _halide_buffer_get_min(input.buffer, 1)
+let input.extent.1 = _halide_buffer_get_extent(input.buffer, 1)
+let input.stride.1 = _halide_buffer_get_stride(input.buffer, 1)
+let input.min.2 = _halide_buffer_get_min(input.buffer, 2)
+let input.stride.2 = _halide_buffer_get_stride(input.buffer, 2)
+let output = _halide_buffer_get_host(output.buffer)
+let output.min.0 = _halide_buffer_get_min(output.buffer, 0)
+let output.extent.0 = _halide_buffer_get_extent(output.buffer, 0)
+let output.stride.0 = _halide_buffer_get_stride(output.buffer, 0)
+let output.min.1 = _halide_buffer_get_min(output.buffer, 1)
+let output.extent.1 = _halide_buffer_get_extent(output.buffer, 1)
+let output.stride.1 = _halide_buffer_get_stride(output.buffer, 1)
+let output.min.2 = _halide_buffer_get_min(output.buffer, 2)
+let output.extent.2 = _halide_buffer_get_extent(output.buffer, 2)
+let output.stride.2 = _halide_buffer_get_stride(output.buffer, 2)
+let input.extent.0.required.s = (max((output.extent.0 + output.min.0), 1536) - min((min(output.extent.0, 32) + output.min.0), 32))
+let input.extent.1.required.s = (max((output.extent.1 + output.min.1), 2560) - min((min(output.extent.1, 8) + output.min.1), 8))
+let input.stride.2.required = ((input.extent.0.required.s + 32)*(input.extent.1.required.s + 8))
+let output.extent.0.required.s = (min((((output.extent.0 + -1)/32)*32), (output.extent.0 + -32)) - min(output.extent.0, 32))
+let output.extent.1.required.s = (min((((output.extent.1 + -1)/8)*8), (output.extent.1 + -8)) - min(output.extent.1, 8))
+let output.stride.2.required = ((output.extent.0.required.s + 64)*(output.extent.1.required.s + 16))
+if (_halide_buffer_is_bounds_query(input.buffer)) {
+  _halide_buffer_init(input.buffer, _halide_buffer_get_shape(input.buffer), reinterpret((void *), (uint64)0), (uint64)0, reinterpret((halide_device_interface_t *), (uint64)0), 1, 8, 3, make_struct((halide_dimension_t *), (min((min(output.extent.0, 32) + output.min.0), 32) + -32), (input.extent.0.required.s + 32), 1, 0, (min((min(output.extent.1, 8) + output.min.1), 8) + -8), (input.extent.1.required.s + 8), (input.extent.0.required.s + 32), 0, 0, 3, input.stride.2.required, 0), (uint64)0)
+}
+if (_halide_buffer_is_bounds_query(output.buffer)) {
+  _halide_buffer_init(output.buffer, _halide_buffer_get_shape(output.buffer), reinterpret((void *), (uint64)0), (uint64)0, reinterpret((halide_device_interface_t *), (uint64)0), 1, 8, 3, make_struct((halide_dimension_t *), ((min(output.extent.0, 32) + output.min.0) + -32), (output.extent.0.required.s + 64), 1, 0, ((min(output.extent.1, 8) + output.min.1) + -8), (output.extent.1.required.s + 16), (output.extent.0.required.s + 64), 0, output.min.2, output.extent.2, output.stride.2.required, 0), (uint64)0)
+}
+if (!(_halide_buffer_is_bounds_query(input.buffer) || _halide_buffer_is_bounds_query(output.buffer))) {
+  assert((input.stride.0 == 1), 0)
+  assert((output.stride.0 == 1), 0)
+  allocate hist_rows[int32 * 256 * 2560] if (uint1)0
+  let hist_rows.buffer = _halide_buffer_init(alloca(size_of_halide_buffer_t()), make_struct((halide_dimension_t *), 0, 256, 1, 0, 0, 2560, 256, 0), reinterpret((void *), (uint64)0), (uint64)0, reinterpret((halide_device_interface_t *), (uint64)0), 0, 32, 2, make_struct((halide_dimension_t *), 0, 256, 1, 0, 0, 2560, 256, 0), (uint64)0)
+  register_destructor("halide_device_free_as_destructor", hist_rows.buffer)
+  produce hist_rows {
+    let halide_device_malloc_result$2 = halide_device_malloc(hist_rows.buffer, halide_cuda_device_interface())
+    assert((halide_device_malloc_result$2 == 0), halide_device_malloc_result$2)
+    gpu_block<CUDA> (hist_rows.s0.y.y_o.__block_id_y, 0, 320) {
+      gpu_block<CUDA> (hist_rows.s0.x.x_o.__block_id_x, 0, 16) {
+        gpu_thread<CUDA> (.__thread_id_y, 0, 8) {
+          gpu_thread<CUDA> (.__thread_id_x, 0, 16) {
+            hist_rows[((((((hist_rows.s0.y.y_o.__block_id_y*8) + .__thread_id_y)*16) + hist_rows.s0.x.x_o.__block_id_x)*16) + .__thread_id_x)] = 0
+          }
+        }
+      }
+    }
+    _halide_buffer_set_device_dirty(hist_rows.buffer, (uint1)1)
+    let halide_copy_to_device_result = halide_copy_to_device(input.buffer, halide_cuda_device_interface())
+    assert((halide_copy_to_device_result == 0), halide_copy_to_device_result)
+    let t14528 = (input.min.1*input.stride.1)
+    let t14525 = (((2 - input.min.2)*input.stride.2) - t14528)
+    let t14526 = (((1 - input.min.2)*input.stride.2) - t14528)
+    let t14527 = ((input.min.2*input.stride.2) + t14528)
+    gpu_block<CUDA> (hist_rows.s1.y.y_o.__block_id_x, 0, 160) {
+      gpu_thread<CUDA> (.__thread_id_x, 0, 16) {
+        let t14532 = (t14526 - input.min.0)
+        let t14530 = (t14525 - input.min.0)
+        let t14529 = ((hist_rows.s1.y.y_o.__block_id_x*16) + .__thread_id_x)
+        let t14531 = (input.min.0 + t14527)
+        for (hist_rows.s1.rx$x, 0, 1536) {
+          hist_rows[((t14529*256) + int32(max(min(((float32(input[(((input.stride.1*t14529) + t14530) + hist_rows.s1.rx$x)])*0.114000f) + ((float32(input[(((input.stride.1*t14529) - t14531) + hist_rows.s1.rx$x)])*0.299000f) + (float32(input[(((input.stride.1*t14529) + t14532) + hist_rows.s1.rx$x)])*0.587000f))), 255.000000f), 0.000000f)))] = (hist_rows[((t14529*256) + int32(max(min(((float32(input[(((input.stride.1*t14529) + t14530) + hist_rows.s1.rx$x)])*0.114000f) + ((float32(input[(((input.stride.1*t14529) - t14531) + hist_rows.s1.rx$x)])*0.299000f) + (float32(input[(((input.stride.1*t14529) + t14532) + hist_rows.s1.rx$x)])*0.587000f))), 255.000000f), 0.000000f)))] + 1)
+        }
+      }
+    }
+  }
+  allocate hist[int32 * 256] if (uint1)0
+  let hist.buffer = _halide_buffer_init(alloca(size_of_halide_buffer_t()), make_struct((halide_dimension_t *), 0, 256, 1, 0), reinterpret((void *), (uint64)0), (uint64)0, reinterpret((halide_device_interface_t *), (uint64)0), 0, 32, 1, make_struct((halide_dimension_t *), 0, 256, 1, 0), (uint64)0)
+  register_destructor("halide_device_free_as_destructor", hist.buffer)
+  produce hist {
+    let halide_device_malloc_result$1 = halide_device_malloc(hist.buffer, halide_cuda_device_interface())
+    assert((halide_device_malloc_result$1 == 0), halide_device_malloc_result$1)
+    gpu_block<CUDA> (hist.s0.x.x_o.__block_id_x, 0, 16) {
+      gpu_thread<CUDA> (.__thread_id_x, 0, 16) {
+        hist[((hist.s0.x.x_o.__block_id_x*16) + .__thread_id_x)] = 0
+      }
+    }
+    _halide_buffer_set_device_dirty(hist.buffer, (uint1)1)
+    consume hist_rows {
+      gpu_block<CUDA> (hist.s1.__outermost.__outermost.__outermost.v51.__block_id_w, 0, 1) {
+        gpu_block<CUDA> (hist.s1.__outermost.__outermost.v50.__block_id_z, 0, 1) {
+          gpu_block<CUDA> (hist.s1.__outermost.v49.__block_id_y, 0, 1) {
+            gpu_block<CUDA> (hist.s1.x.__block_id_x, 0, 256) {
+              gpu_thread<CUDA> (.__thread_id_x, 0, 1) {
+                for (hist.s1.ry$x, 0, 2560) {
+                  hist[hist.s1.x.__block_id_x] = (hist[hist.s1.x.__block_id_x] + hist_rows[((hist.s1.ry$x*256) + hist.s1.x.__block_id_x)])
+                }
+              }
+            }
+          }
+        }
+      }
+      let halide_device_free_result$2 = halide_device_free(hist_rows.buffer)
+      assert((halide_device_free_result$2 == 0), halide_device_free_result$2)
+      free hist_rows
+    }
+  }
+  allocate cdf[int32 * 256] if (uint1)0
+  let cdf.buffer = _halide_buffer_init(alloca(size_of_halide_buffer_t()), make_struct((halide_dimension_t *), 0, 256, 1, 0), reinterpret((void *), (uint64)0), (uint64)0, reinterpret((halide_device_interface_t *), (uint64)0), 0, 32, 1, make_struct((halide_dimension_t *), 0, 256, 1, 0), (uint64)0)
+  register_destructor("halide_device_free_as_destructor", cdf.buffer)
+  produce cdf {
+    consume hist {
+      let halide_device_malloc_result = halide_device_malloc(cdf.buffer, halide_cuda_device_interface())
+      assert((halide_device_malloc_result == 0), halide_device_malloc_result)
+      gpu_block<CUDA> (cdf.s0.x.x_o.__block_id_x, 0, 16) {
+        gpu_thread<CUDA> (.__thread_id_x, 0, 16) {
+          cdf[((cdf.s0.x.x_o.__block_id_x*16) + .__thread_id_x)] = hist[0]
+        }
+      }
+      _halide_buffer_set_device_dirty(cdf.buffer, (uint1)1)
+    }
+    consume hist {
+      gpu_block<CUDA> (cdf.s1.__outermost.__outermost.__outermost.v45.__block_id_z, 0, 1) {
+        gpu_block<CUDA> (cdf.s1.__outermost.__outermost.v44.__block_id_y, 0, 1) {
+          gpu_block<CUDA> (cdf.s1.__outermost.v43.__block_id_x, 0, 1) {
+            gpu_thread<CUDA> (.__thread_id_x, 0, 1) {
+              for (cdf.s1.b$x, 1, 255) {
+                cdf[cdf.s1.b$x] = (cdf[(cdf.s1.b$x + -1)] + hist[cdf.s1.b$x])
+              }
+            }
+          }
+        }
+      }
+      let halide_device_free_result$1 = halide_device_free(hist.buffer)
+      assert((halide_device_free_result$1 == 0), halide_device_free_result$1)
+      free hist
+    }
+  }
+  produce output {
+    consume cdf {
+      let halide_copy_to_device_result$1 = halide_copy_to_device(output.buffer, halide_cuda_device_interface())
+      assert((halide_copy_to_device_result$1 == 0), halide_copy_to_device_result$1)
+      let t14495 = (255.000000f/float32((input.extent.0*input.extent.1)))
+      let t14496.s = ((output.min.0 - (output.min.2*output.stride.2)) - (output.min.1*output.stride.1))
+      let t14541 = (input.min.2*input.stride.2)
+      let t14542 = (input.min.1*input.stride.1)
+      let t14533 = ((output.extent.1 + 7)/8)
+      let t14534 = ((output.extent.0 + 31)/32)
+      let t14538 = ((((input.stride.2*2) + output.min.0) - t14541) - t14542)
+      let t14537 = (((input.stride.2 + output.min.0) - t14541) - t14542)
+      let t14539 = ((output.min.0 - t14541) - t14542)
+      let t14540 = (t14496.s - output.min.0)
+      let t14535 = (output.extent.1 + -8)
+      let t14536 = (output.extent.0 + -32)
+      gpu_block<CUDA> (output.s0.y.y_o.__block_id_y, 0, t14533) {
+        gpu_block<CUDA> (output.s0.x.x_o.__block_id_x, 0, t14534) {
+          gpu_thread<CUDA> (.__thread_id_y, 0, 8) {
+            gpu_thread<CUDA> (.__thread_id_x, 0, 32) {
+              let output.s0.y.y_i.base.s = min((output.s0.y.y_o.__block_id_y*8), t14535)
+              let output.s0.x.x_i.base.s = min((output.s0.x.x_o.__block_id_x*32), t14536)
+              let t14501.s = ((((output.min.1 + output.s0.y.y_i.base.s) + .__thread_id_y)*output.stride.1) + (output.s0.x.x_i.base.s + t14540))
+              let t14543 = (((output.min.1 + output.s0.y.y_i.base.s) + .__thread_id_y)*input.stride.1)
+              let t14545 = ((t14539 - input.min.0) + output.s0.x.x_i.base.s)
+              let t14544 = ((t14538 - input.min.0) + output.s0.x.x_i.base.s)
+              let t14546 = ((t14537 - input.min.0) + output.s0.x.x_i.base.s)
+              let t14547 = (.__thread_id_x + t14501.s)
+              for (output.s0.c, output.min.2, output.extent.2) {
+                output[((output.s0.c*output.stride.2) + t14547)] = (let t14519.s = input[((t14543 + t14544) + .__thread_id_x)] in (let t14520.s = input[((t14543 + t14545) + .__thread_id_x)] in (let t14521 = ((float32(t14519.s)*0.114000f) + ((float32(t14520.s)*0.299000f) + (float32(input[((t14543 + t14546) + .__thread_id_x)])*0.587000f))) in (let t14522.s = (t14495*float32(cdf[int32(uint8(max(min(t14521, 255.000000f), 0.000000f)))])) in select((output.s0.c == 0), uint8(max(min((max(min(t14522.s, 255.000000f), 0.000000f) + ((float32(t14520.s) - t14521)*0.998200f)), 255.000000f), 0.000000f)), select((output.s0.c == 1), uint8(max(min(((max(min(t14522.s, 255.000000f), 0.000000f) - ((float32(t14519.s) - t14521)*0.193452f)) - ((float32(t14520.s) - t14521)*0.506943f)), 255.000000f), 0.000000f)), uint8(max(min((max(min(t14522.s, 255.000000f), 0.000000f) + ((float32(t14519.s) - t14521)*0.995460f)), 255.000000f), 0.000000f))))))))
+              }
+            }
+          }
+        }
+      }
+      _halide_buffer_set_device_dirty(output.buffer, (uint1)1)
+      let halide_device_free_result = halide_device_free(cdf.buffer)
+      assert((halide_device_free_result == 0), halide_device_free_result)
+      free cdf
+    }
+  }
+}
+
+
+Skipping Hexagon offload...
+Constructing CUDA device codegen
+Target triple of initial module: x86_64--linux-gnu
+Generating llvm bitcode...
+Generating llvm bitcode prolog for function hist_auto_schedule...
+Generating llvm bitcode for function hist_auto_schedule...
+Generating llvm bitcode for kernel...
+Generating llvm bitcode for kernel...
+Generating llvm bitcode for kernel...
+Generating llvm bitcode for kernel...
+Generating llvm bitcode for kernel...
+Generating llvm bitcode for kernel...
+Generating llvm bitcode for kernel...
+PTX kernel:
+//
+// Generated by LLVM NVPTX Back-End
+//
+
+.version 5.0
+.target sm_61
+.address_size 64
+
+	// .globl	kernel_hist_rows_s0_y_y_o___block_id_y // -- Begin function kernel_hist_rows_s0_y_y_o___block_id_y
+                                        // @kernel_hist_rows_s0_y_y_o___block_id_y
+.visible .entry kernel_hist_rows_s0_y_y_o___block_id_y(
+	.param .u64 kernel_hist_rows_s0_y_y_o___block_id_y_param_0
+)
+{
+	.reg .b32 	%r<12>;
+	.reg .b64 	%rd<5>;
+
+// %bb.0:                               // %entry
+	ld.param.u64 	%rd1, [kernel_hist_rows_s0_y_y_o___block_id_y_param_0];
+	cvta.to.global.u64 	%rd2, %rd1;
+	mov.u32 	%r1, %ctaid.y;
+	mov.u32 	%r2, %ctaid.x;
+	mov.u32 	%r3, %tid.y;
+	mov.u32 	%r4, %tid.x;
+	shl.b32 	%r5, %r1, 3;
+	add.s32 	%r6, %r3, %r5;
+	shl.b32 	%r7, %r6, 4;
+	add.s32 	%r8, %r7, %r2;
+	shl.b32 	%r9, %r8, 4;
+	add.s32 	%r10, %r9, %r4;
+	mul.wide.s32 	%rd3, %r10, 4;
+	add.s64 	%rd4, %rd2, %rd3;
+	mov.u32 	%r11, 0;
+	st.global.u32 	[%rd4], %r11;
+	ret;
+}
+                                        // -- End function
+	// .globl	kernel_hist_rows_s1_y_y_o___block_id_x // -- Begin function kernel_hist_rows_s1_y_y_o___block_id_x
+.visible .entry kernel_hist_rows_s1_y_y_o___block_id_x(
+	.param .u32 kernel_hist_rows_s1_y_y_o___block_id_x_param_0,
+	.param .u32 kernel_hist_rows_s1_y_y_o___block_id_x_param_1,
+	.param .u32 kernel_hist_rows_s1_y_y_o___block_id_x_param_2,
+	.param .u32 kernel_hist_rows_s1_y_y_o___block_id_x_param_3,
+	.param .u32 kernel_hist_rows_s1_y_y_o___block_id_x_param_4,
+	.param .u64 kernel_hist_rows_s1_y_y_o___block_id_x_param_5,
+	.param .u64 kernel_hist_rows_s1_y_y_o___block_id_x_param_6
+)                                       // @kernel_hist_rows_s1_y_y_o___block_id_x
+{
+	.reg .pred 	%p<2>;
+	.reg .b16 	%rs<13>;
+	.reg .f32 	%f<17>;
+	.reg .b32 	%r<36>;
+	.reg .b64 	%rd<21>;
+
+// %bb.0:                               // %entry
+	ld.param.u32 	%r8, [kernel_hist_rows_s1_y_y_o___block_id_x_param_0];
+	ld.param.u64 	%rd3, [kernel_hist_rows_s1_y_y_o___block_id_x_param_6];
+	cvta.to.global.u64 	%rd1, %rd3;
+	ld.param.u32 	%r9, [kernel_hist_rows_s1_y_y_o___block_id_x_param_1];
+	ld.param.u64 	%rd4, [kernel_hist_rows_s1_y_y_o___block_id_x_param_5];
+	cvta.to.global.u64 	%rd2, %rd4;
+	ld.param.u32 	%r10, [kernel_hist_rows_s1_y_y_o___block_id_x_param_2];
+	ld.param.u32 	%r11, [kernel_hist_rows_s1_y_y_o___block_id_x_param_3];
+	mov.u32 	%r12, %ctaid.x;
+	ld.param.u32 	%r13, [kernel_hist_rows_s1_y_y_o___block_id_x_param_4];
+	mov.u32 	%r14, %tid.x;
+	shl.b32 	%r15, %r12, 4;
+	add.s32 	%r16, %r15, %r14;
+	shl.b32 	%r1, %r16, 8;
+	mul.lo.s32 	%r17, %r16, %r9;
+	add.s32 	%r18, %r11, %r17;
+	sub.s32 	%r2, %r18, %r8;
+	sub.s32 	%r19, %r17, %r13;
+	sub.s32 	%r3, %r19, %r8;
+	add.s32 	%r20, %r10, %r17;
+	sub.s32 	%r4, %r20, %r8;
+	mov.u32 	%r35, 0;
+LBB1_1:                                 // %"for hist_rows.s1.rx$x"
+                                        // =>This Inner Loop Header: Depth=1
+	add.s32 	%r21, %r4, %r35;
+	cvt.s64.s32 	%rd5, %r21;
+	add.s64 	%rd6, %rd1, %rd5;
+	ld.global.nc.u8 	%rs1, [%rd6];
+	cvt.u16.u8 	%rs2, %rs1;
+	cvt.rn.f32.u16 	%f1, %rs2;
+	add.s32 	%r22, %r3, %r35;
+	cvt.s64.s32 	%rd7, %r22;
+	add.s64 	%rd8, %rd1, %rd7;
+	ld.global.nc.u8 	%rs3, [%rd8];
+	cvt.u16.u8 	%rs4, %rs3;
+	cvt.rn.f32.u16 	%f2, %rs4;
+	add.s32 	%r23, %r2, %r35;
+	cvt.s64.s32 	%rd9, %r23;
+	add.s64 	%rd10, %rd1, %rd9;
+	ld.global.nc.u8 	%rs5, [%rd10];
+	cvt.u16.u8 	%rs6, %rs5;
+	cvt.rn.f32.u16 	%f3, %rs6;
+	mul.ftz.f32 	%f4, %f3, 0f3F1645A2;
+	fma.rn.ftz.f32 	%f5, %f2, 0f3E991687, %f4;
+	fma.rn.ftz.f32 	%f6, %f1, 0f3DE978D5, %f5;
+	min.ftz.f32 	%f7, %f6, 0f437F0000;
+	max.ftz.f32 	%f8, %f7, 0f00000000;
+	cvt.rzi.ftz.s32.f32 	%r24, %f8;
+	add.s32 	%r25, %r1, %r24;
+	mul.wide.s32 	%rd11, %r25, 4;
+	add.s64 	%rd12, %rd2, %rd11;
+	ld.global.u32 	%r26, [%rd12];
+	add.s32 	%r27, %r26, 1;
+	st.global.u32 	[%rd12], %r27;
+	add.s32 	%r28, %r21, 1;
+	cvt.s64.s32 	%rd13, %r28;
+	add.s64 	%rd14, %rd1, %rd13;
+	ld.global.nc.u8 	%rs7, [%rd14];
+	cvt.u16.u8 	%rs8, %rs7;
+	cvt.rn.f32.u16 	%f9, %rs8;
+	add.s32 	%r29, %r22, 1;
+	cvt.s64.s32 	%rd15, %r29;
+	add.s64 	%rd16, %rd1, %rd15;
+	ld.global.nc.u8 	%rs9, [%rd16];
+	cvt.u16.u8 	%rs10, %rs9;
+	cvt.rn.f32.u16 	%f10, %rs10;
+	add.s32 	%r30, %r23, 1;
+	cvt.s64.s32 	%rd17, %r30;
+	add.s64 	%rd18, %rd1, %rd17;
+	ld.global.nc.u8 	%rs11, [%rd18];
+	cvt.u16.u8 	%rs12, %rs11;
+	cvt.rn.f32.u16 	%f11, %rs12;
+	mul.ftz.f32 	%f12, %f11, 0f3F1645A2;
+	fma.rn.ftz.f32 	%f13, %f10, 0f3E991687, %f12;
+	fma.rn.ftz.f32 	%f14, %f9, 0f3DE978D5, %f13;
+	min.ftz.f32 	%f15, %f14, 0f437F0000;
+	max.ftz.f32 	%f16, %f15, 0f00000000;
+	cvt.rzi.ftz.s32.f32 	%r31, %f16;
+	add.s32 	%r32, %r1, %r31;
+	mul.wide.s32 	%rd19, %r32, 4;
+	add.s64 	%rd20, %rd2, %rd19;
+	ld.global.u32 	%r33, [%rd20];
+	add.s32 	%r34, %r33, 1;
+	st.global.u32 	[%rd20], %r34;
+	add.s32 	%r35, %r35, 2;
+	setp.ne.s32 	%p1, %r35, 1536;
+	@%p1 bra 	LBB1_1;
+// %bb.2:                               // %"end for hist_rows.s1.rx$x"
+	ret;
+}
+                                        // -- End function
+	// .globl	kernel_hist_s0_x_x_o___block_id_x // -- Begin function kernel_hist_s0_x_x_o___block_id_x
+.visible .entry kernel_hist_s0_x_x_o___block_id_x(
+	.param .u64 kernel_hist_s0_x_x_o___block_id_x_param_0
+)                                       // @kernel_hist_s0_x_x_o___block_id_x
+{
+	.reg .b32 	%r<6>;
+	.reg .b64 	%rd<5>;
+
+// %bb.0:                               // %entry
+	ld.param.u64 	%rd1, [kernel_hist_s0_x_x_o___block_id_x_param_0];
+	cvta.to.global.u64 	%rd2, %rd1;
+	mov.u32 	%r1, %ctaid.x;
+	mov.u32 	%r2, %tid.x;
+	shl.b32 	%r3, %r1, 4;
+	add.s32 	%r4, %r3, %r2;
+	mul.wide.u32 	%rd3, %r4, 4;
+	add.s64 	%rd4, %rd2, %rd3;
+	mov.u32 	%r5, 0;
+	st.global.u32 	[%rd4], %r5;
+	ret;
+}
+                                        // -- End function
+	// .globl	kernel_hist_s1___outermost___outermost___outermost_v51___block_id_w // -- Begin function kernel_hist_s1___outermost___outermost___outermost_v51___block_id_w
+.visible .entry kernel_hist_s1___outermost___outermost___outermost_v51___block_id_w(
+	.param .u64 kernel_hist_s1___outermost___outermost___outermost_v51___block_id_w_param_0,
+	.param .u64 kernel_hist_s1___outermost___outermost___outermost_v51___block_id_w_param_1
+)                                       // @kernel_hist_s1___outermost___outermost___outermost_v51___block_id_w
+{
+	.reg .pred 	%p<2>;
+	.reg .b32 	%r<26>;
+	.reg .b64 	%rd<13>;
+
+// %bb.0:                               // %entry
+	ld.param.u64 	%rd6, [kernel_hist_s1___outermost___outermost___outermost_v51___block_id_w_param_0];
+	ld.param.u64 	%rd7, [kernel_hist_s1___outermost___outermost___outermost_v51___block_id_w_param_1];
+	cvta.to.global.u64 	%rd8, %rd7;
+	cvta.to.global.u64 	%rd9, %rd6;
+	mov.u32 	%r4, %ctaid.x;
+	mul.wide.u32 	%rd10, %r4, 4;
+	add.s64 	%rd1, %rd9, %rd10;
+	ld.global.u32 	%r25, [%rd1];
+	add.s64 	%rd2, %rd8, %rd10;
+	mov.u64 	%rd12, 9216;
+LBB3_1:                                 // %"for hist.s1.ry$x"
+                                        // =>This Inner Loop Header: Depth=1
+	add.s64 	%rd11, %rd2, %rd12;
+	ld.global.nc.u32 	%r5, [%rd11+-9216];
+	add.s32 	%r6, %r5, %r25;
+	ld.global.nc.u32 	%r7, [%rd11+-8192];
+	add.s32 	%r8, %r7, %r6;
+	ld.global.nc.u32 	%r9, [%rd11+-7168];
+	add.s32 	%r10, %r9, %r8;
+	ld.global.nc.u32 	%r11, [%rd11+-6144];
+	add.s32 	%r12, %r11, %r10;
+	ld.global.nc.u32 	%r13, [%rd11+-5120];
+	add.s32 	%r14, %r13, %r12;
+	ld.global.nc.u32 	%r15, [%rd11+-4096];
+	add.s32 	%r16, %r15, %r14;
+	ld.global.nc.u32 	%r17, [%rd11+-3072];
+	add.s32 	%r18, %r17, %r16;
+	ld.global.nc.u32 	%r19, [%rd11+-2048];
+	add.s32 	%r20, %r19, %r18;
+	ld.global.nc.u32 	%r21, [%rd11+-1024];
+	add.s32 	%r22, %r21, %r20;
+	ld.global.nc.u32 	%r23, [%rd11];
+	add.s32 	%r25, %r23, %r22;
+	add.s64 	%rd12, %rd12, 10240;
+	cvt.u32.u64 	%r24, %rd12;
+	setp.ne.s32 	%p1, %r24, 2630656;
+	@%p1 bra 	LBB3_1;
+// %bb.2:                               // %"end for hist.s1.ry$x"
+	st.global.u32 	[%rd1], %r25;
+	ret;
+}
+                                        // -- End function
+	// .globl	kernel_cdf_s0_x_x_o___block_id_x // -- Begin function kernel_cdf_s0_x_x_o___block_id_x
+.visible .entry kernel_cdf_s0_x_x_o___block_id_x(
+	.param .u64 kernel_cdf_s0_x_x_o___block_id_x_param_0,
+	.param .u64 kernel_cdf_s0_x_x_o___block_id_x_param_1
+)                                       // @kernel_cdf_s0_x_x_o___block_id_x
+{
+	.reg .b32 	%r<6>;
+	.reg .b64 	%rd<7>;
+
+// %bb.0:                               // %entry
+	ld.param.u64 	%rd1, [kernel_cdf_s0_x_x_o___block_id_x_param_0];
+	ld.param.u64 	%rd2, [kernel_cdf_s0_x_x_o___block_id_x_param_1];
+	cvta.to.global.u64 	%rd3, %rd2;
+	cvta.to.global.u64 	%rd4, %rd1;
+	mov.u32 	%r1, %ctaid.x;
+	mov.u32 	%r2, %tid.x;
+	ld.global.nc.u32 	%r3, [%rd3];
+	shl.b32 	%r4, %r1, 4;
+	add.s32 	%r5, %r4, %r2;
+	mul.wide.u32 	%rd5, %r5, 4;
+	add.s64 	%rd6, %rd4, %rd5;
+	st.global.u32 	[%rd6], %r3;
+	ret;
+}
+                                        // -- End function
+	// .globl	kernel_cdf_s1___outermost___outermost___outermost_v45___block_id_z // -- Begin function kernel_cdf_s1___outermost___outermost___outermost_v45___block_id_z
+.visible .entry kernel_cdf_s1___outermost___outermost___outermost_v45___block_id_z(
+	.param .u64 kernel_cdf_s1___outermost___outermost___outermost_v45___block_id_z_param_0,
+	.param .u64 kernel_cdf_s1___outermost___outermost___outermost_v45___block_id_z_param_1
+)                                       // @kernel_cdf_s1___outermost___outermost___outermost_v45___block_id_z
+{
+	.reg .pred 	%p<2>;
+	.reg .b32 	%r<15>;
+	.reg .b64 	%rd<13>;
+
+// %bb.0:                               // %entry
+	ld.param.u64 	%rd6, [kernel_cdf_s1___outermost___outermost___outermost_v45___block_id_z_param_0];
+	ld.param.u64 	%rd7, [kernel_cdf_s1___outermost___outermost___outermost_v45___block_id_z_param_1];
+	cvta.to.global.u64 	%rd8, %rd7;
+	cvta.to.global.u64 	%rd9, %rd6;
+	ld.global.u32 	%r14, [%rd9];
+	add.s64 	%rd1, %rd9, 20;
+	add.s64 	%rd2, %rd8, 12;
+	mov.u64 	%rd12, 0;
+LBB5_1:                                 // %"for cdf.s1.b$x"
+                                        // =>This Inner Loop Header: Depth=1
+	add.s64 	%rd10, %rd2, %rd12;
+	ld.global.nc.u32 	%r4, [%rd10+-8];
+	add.s32 	%r5, %r4, %r14;
+	add.s64 	%rd11, %rd1, %rd12;
+	st.global.u32 	[%rd11+-16], %r5;
+	ld.global.nc.u32 	%r6, [%rd10+-4];
+	add.s32 	%r7, %r6, %r5;
+	st.global.u32 	[%rd11+-12], %r7;
+	ld.global.nc.u32 	%r8, [%rd10];
+	add.s32 	%r9, %r8, %r7;
+	st.global.u32 	[%rd11+-8], %r9;
+	ld.global.nc.u32 	%r10, [%rd10+4];
+	add.s32 	%r11, %r10, %r9;
+	st.global.u32 	[%rd11+-4], %r11;
+	ld.global.nc.u32 	%r12, [%rd10+8];
+	add.s32 	%r14, %r12, %r11;
+	st.global.u32 	[%rd11], %r14;
+	add.s64 	%rd12, %rd12, 20;
+	cvt.u32.u64 	%r13, %rd12;
+	setp.ne.s32 	%p1, %r13, 1020;
+	@%p1 bra 	LBB5_1;
+// %bb.2:                               // %"end for cdf.s1.b$x"
+	ret;
+}
+                                        // -- End function
+	// .globl	kernel_output_s0_y_y_o___block_id_y // -- Begin function kernel_output_s0_y_y_o___block_id_y
+.visible .entry kernel_output_s0_y_y_o___block_id_y(
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_0,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_1,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_2,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_3,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_4,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_5,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_6,
+	.param .f32 kernel_output_s0_y_y_o___block_id_y_param_7,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_8,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_9,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_10,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_11,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_12,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_13,
+	.param .u64 kernel_output_s0_y_y_o___block_id_y_param_14,
+	.param .u64 kernel_output_s0_y_y_o___block_id_y_param_15,
+	.param .u64 kernel_output_s0_y_y_o___block_id_y_param_16
+)                                       // @kernel_output_s0_y_y_o___block_id_y
+{
+	.reg .pred 	%p<15>;
+	.reg .b16 	%rs<13>;
+	.reg .f32 	%f<36>;
+	.reg .b32 	%r<98>;
+	.reg .b64 	%rd<25>;
+
+// %bb.0:                               // %entry
+	ld.param.u32 	%r43, [kernel_output_s0_y_y_o___block_id_y_param_12];
+	setp.lt.s32 	%p1, %r43, 1;
+	@%p1 bra 	LBB6_7;
+// %bb.1:                               // %"for output.s0.c.preheader"
+	ld.param.u32 	%r44, [kernel_output_s0_y_y_o___block_id_y_param_13];
+	ld.param.u32 	%r42, [kernel_output_s0_y_y_o___block_id_y_param_10];
+	ld.param.u32 	%r41, [kernel_output_s0_y_y_o___block_id_y_param_9];
+	ld.param.u32 	%r40, [kernel_output_s0_y_y_o___block_id_y_param_8];
+	ld.param.f32 	%f4, [kernel_output_s0_y_y_o___block_id_y_param_7];
+	ld.param.u32 	%r39, [kernel_output_s0_y_y_o___block_id_y_param_5];
+	ld.param.u32 	%r38, [kernel_output_s0_y_y_o___block_id_y_param_4];
+	ld.param.u32 	%r37, [kernel_output_s0_y_y_o___block_id_y_param_3];
+	ld.param.u32 	%r36, [kernel_output_s0_y_y_o___block_id_y_param_2];
+	ld.param.u32 	%r35, [kernel_output_s0_y_y_o___block_id_y_param_1];
+	ld.param.u32 	%r45, [kernel_output_s0_y_y_o___block_id_y_param_0];
+	ld.param.u64 	%rd4, [kernel_output_s0_y_y_o___block_id_y_param_16];
+	cvta.to.global.u64 	%rd1, %rd4;
+	ld.param.u64 	%rd5, [kernel_output_s0_y_y_o___block_id_y_param_15];
+	cvta.to.global.u64 	%rd2, %rd5;
+	ld.param.u64 	%rd6, [kernel_output_s0_y_y_o___block_id_y_param_14];
+	cvta.to.global.u64 	%rd3, %rd6;
+	mov.u32 	%r46, %ctaid.y;
+	mov.u32 	%r47, %ctaid.x;
+	mov.u32 	%r48, %tid.y;
+	ld.param.u32 	%r49, [kernel_output_s0_y_y_o___block_id_y_param_6];
+	shl.b32 	%r50, %r46, 3;
+	min.s32 	%r51, %r50, %r49;
+	shl.b32 	%r1, %r47, 5;
+	ld.param.u32 	%r52, [kernel_output_s0_y_y_o___block_id_y_param_11];
+	add.s32 	%r53, %r48, %r52;
+	add.s32 	%r2, %r53, %r51;
+	mul.lo.s32 	%r3, %r2, %r45;
+	min.s32 	%r5, %r1, %r39;
+	mov.u32 	%r6, %tid.x;
+	mul.lo.s32 	%r7, %r2, %r41;
+	add.s32 	%r54, %r5, %r6;
+	add.s32 	%r55, %r54, %r37;
+	sub.s32 	%r56, %r55, %r44;
+	add.s32 	%r57, %r56, %r3;
+	cvt.s64.s32 	%rd7, %r57;
+	add.s64 	%rd8, %rd2, %rd7;
+	ld.global.nc.u8 	%rs1, [%rd8];
+	cvt.u16.u8 	%rs2, %rs1;
+	add.s32 	%r58, %r54, %r36;
+	sub.s32 	%r59, %r58, %r44;
+	add.s32 	%r60, %r59, %r3;
+	cvt.s64.s32 	%rd9, %r60;
+	add.s64 	%rd10, %rd2, %rd9;
+	ld.global.nc.u8 	%rs3, [%rd10];
+	cvt.u16.u8 	%rs4, %rs3;
+	cvt.rn.f32.u16 	%f5, %rs2;
+	cvt.rn.f32.u16 	%f6, %rs4;
+	add.s32 	%r61, %r54, %r38;
+	sub.s32 	%r62, %r61, %r44;
+	add.s32 	%r63, %r62, %r3;
+	cvt.s64.s32 	%rd11, %r63;
+	add.s64 	%rd12, %rd2, %rd11;
+	ld.global.nc.u8 	%rs5, [%rd12];
+	cvt.u16.u8 	%rs6, %rs5;
+	cvt.rn.f32.u16 	%f7, %rs6;
+	mul.ftz.f32 	%f8, %f7, 0f3F1645A2;
+	fma.rn.ftz.f32 	%f9, %f6, 0f3E991687, %f8;
+	fma.rn.ftz.f32 	%f10, %f5, 0f3DE978D5, %f9;
+	min.ftz.f32 	%f11, %f10, 0f437F0000;
+	max.ftz.f32 	%f12, %f11, 0f00000000;
+	cvt.rzi.ftz.u16.f32 	%rs7, %f12;
+	cvt.u32.u16 	%r64, %rs7;
+	mul.wide.u32 	%rd13, %r64, 4;
+	add.s64 	%rd14, %rd3, %rd13;
+	ld.global.nc.u32 	%r65, [%rd14];
+	cvt.rn.f32.s32 	%f13, %r65;
+	mul.ftz.f32 	%f14, %f13, %f4;
+	min.ftz.f32 	%f15, %f14, 0f437F0000;
+	max.ftz.f32 	%f16, %f15, 0f00000000;
+	sub.ftz.f32 	%f17, %f6, %f10;
+	fma.rn.ftz.f32 	%f18, %f17, 0f3F7F8A09, %f16;
+	min.ftz.f32 	%f19, %f18, 0f437F0000;
+	max.ftz.f32 	%f1, %f19, 0f00000000;
+	sub.ftz.f32 	%f20, %f5, %f10;
+	fma.rn.ftz.f32 	%f21, %f20, 0fBE461848, %f16;
+	fma.rn.ftz.f32 	%f22, %f17, 0fBF01C705, %f21;
+	min.ftz.f32 	%f23, %f22, 0f437F0000;
+	max.ftz.f32 	%f2, %f23, 0f00000000;
+	fma.rn.ftz.f32 	%f24, %f20, 0f3F7ED678, %f16;
+	min.ftz.f32 	%f25, %f24, 0f437F0000;
+	max.ftz.f32 	%f3, %f25, 0f00000000;
+	add.s32 	%r8, %r43, -1;
+	and.b32  	%r9, %r43, 3;
+	setp.eq.s32 	%p2, %r9, 0;
+	mov.u32 	%r92, %r42;
+	@%p2 bra 	LBB6_4;
+// %bb.2:                               // %"for output.s0.c.prol.preheader"
+	add.s32 	%r66, %r6, %r35;
+	mad.lo.s32 	%r67, %r42, %r40, %r66;
+	add.s32 	%r68, %r67, %r7;
+	add.s32 	%r69, %r68, -1;
+	not.b32 	%r70, %r39;
+	not.b32 	%r71, %r1;
+	max.s32 	%r72, %r70, %r71;
+	sub.s32 	%r90, %r69, %r72;
+	neg.s32 	%r89, %r9;
+	mov.u32 	%r92, %r42;
+LBB6_3:                                 // %"for output.s0.c.prol"
+                                        // =>This Inner Loop Header: Depth=1
+	.pragma "nounroll";
+	setp.eq.s32 	%p3, %r92, 0;
+	setp.eq.s32 	%p4, %r92, 1;
+	selp.f32 	%f26, %f2, %f3, %p4;
+	selp.f32 	%f27, %f1, %f26, %p3;
+	cvt.rzi.ftz.u16.f32 	%rs8, %f27;
+	cvt.s64.s32 	%rd15, %r90;
+	add.s64 	%rd16, %rd1, %rd15;
+	st.global.u8 	[%rd16], %rs8;
+	add.s32 	%r92, %r92, 1;
+	add.s32 	%r90, %r90, %r40;
+	add.s32 	%r89, %r89, 1;
+	setp.ne.s32 	%p5, %r89, 0;
+	@%p5 bra 	LBB6_3;
+LBB6_4:                                 // %"for output.s0.c.prol.loopexit"
+	setp.lt.u32 	%p6, %r8, 3;
+	@%p6 bra 	LBB6_7;
+// %bb.5:                               // %"for output.s0.c.preheader.new"
+	add.s32 	%r4, %r43, %r42;
+	add.s32 	%r19, %r5, 1;
+	add.s32 	%r73, %r6, %r35;
+	add.s32 	%r74, %r73, %r7;
+	add.s32 	%r75, %r92, 1;
+	mad.lo.s32 	%r76, %r40, %r75, %r74;
+	add.s32 	%r96, %r76, -1;
+	shl.b32 	%r21, %r40, 2;
+	add.s32 	%r77, %r92, 2;
+	mad.lo.s32 	%r78, %r40, %r77, %r74;
+	add.s32 	%r95, %r78, -1;
+	add.s32 	%r79, %r92, 3;
+	mad.lo.s32 	%r80, %r40, %r79, %r74;
+	add.s32 	%r94, %r80, -1;
+	mad.lo.s32 	%r81, %r92, %r40, %r73;
+	add.s32 	%r82, %r81, %r7;
+	add.s32 	%r93, %r82, -1;
+LBB6_6:                                 // %"for output.s0.c"
+                                        // =>This Inner Loop Header: Depth=1
+	setp.eq.s32 	%p7, %r92, 0;
+	setp.eq.s32 	%p8, %r92, 1;
+	selp.f32 	%f28, %f2, %f3, %p8;
+	selp.f32 	%f29, %f1, %f28, %p7;
+	cvt.rzi.ftz.u16.f32 	%rs9, %f29;
+	add.s32 	%r83, %r19, %r93;
+	cvt.s64.s32 	%rd17, %r83;
+	add.s64 	%rd18, %rd1, %rd17;
+	st.global.u8 	[%rd18], %rs9;
+	setp.eq.s32 	%p9, %r92, -1;
+	selp.f32 	%f30, %f2, %f3, %p7;
+	selp.f32 	%f31, %f1, %f30, %p9;
+	cvt.rzi.ftz.u16.f32 	%rs10, %f31;
+	add.s32 	%r84, %r19, %r96;
+	cvt.s64.s32 	%rd19, %r84;
+	add.s64 	%rd20, %rd1, %rd19;
+	st.global.u8 	[%rd20], %rs10;
+	add.s32 	%r85, %r92, 2;
+	setp.eq.s32 	%p10, %r85, 0;
+	setp.eq.s32 	%p11, %r85, 1;
+	selp.f32 	%f32, %f2, %f3, %p11;
+	selp.f32 	%f33, %f1, %f32, %p10;
+	cvt.rzi.ftz.u16.f32 	%rs11, %f33;
+	add.s32 	%r86, %r19, %r95;
+	cvt.s64.s32 	%rd21, %r86;
+	add.s64 	%rd22, %rd1, %rd21;
+	st.global.u8 	[%rd22], %rs11;
+	add.s32 	%r87, %r92, 3;
+	setp.eq.s32 	%p12, %r87, 0;
+	setp.eq.s32 	%p13, %r87, 1;
+	selp.f32 	%f34, %f2, %f3, %p13;
+	selp.f32 	%f35, %f1, %f34, %p12;
+	cvt.rzi.ftz.u16.f32 	%rs12, %f35;
+	add.s32 	%r88, %r19, %r94;
+	cvt.s64.s32 	%rd23, %r88;
+	add.s64 	%rd24, %rd1, %rd23;
+	st.global.u8 	[%rd24], %rs12;
+	add.s32 	%r96, %r96, %r21;
+	add.s32 	%r95, %r95, %r21;
+	add.s32 	%r94, %r94, %r21;
+	add.s32 	%r93, %r93, %r21;
+	add.s32 	%r92, %r92, 4;
+	setp.ne.s32 	%p14, %r92, %r4;
+	@%p14 bra 	LBB6_6;
+LBB6_7:                                 // %"end for output.s0.c"
+	ret;
+}
+                                        // -- End function
+
+
+add_temp_object_file: /tmp/gUMnRI/hist_auto_schedule.a.o
+Module.compile(): temporary object_name /tmp/gUMnRI/hist_auto_schedule.a.o
+emit_file.Compiling to native code...
+Module.compile(): static_library_name ./bin/hist_auto_schedule.a
+file_unlink: /tmp/gUMnRI/hist_auto_schedule.a.o
+dir_rmdir: /tmp/gUMnRI
+Module.compile(): c_header_name ./bin/hist_auto_schedule.h
+Module.compile(): registration_name ./bin/hist_auto_schedule.registration.cpp

@@ -1,0 +1,95 @@
+g name cdf
+g name cdf
+g name hist
+g name hist
+g name hist_rows
+g name hist_rows
+inlined Y
+g name output
+GROUP OF output
+SH MEM 0.000000
+ ACT THR 1024.000000f
+ OCC 0.500000f
+inlined Cb
+inlined Cr
+inlined Y
+inlined equalize
+// Target: x86-64-linux-avx-avx2-cuda-cuda_capability_61-f16c-fma-no_asserts-sse41
+// MachineParams: 32,16777216,4
+
+// Delete this line if not using Generator
+Pipeline pipeline = get_pipeline();
+
+Var x_i("x_i");
+Var x_o("x_o");
+Var y_i("y_i");
+Var y_o("y_o");
+
+Func cdf = pipeline.get_func(6);
+Func hist = pipeline.get_func(5);
+Func hist_rows = pipeline.get_func(4);
+Func output = pipeline.get_func(8);
+
+{
+    Var x = cdf.args()[0];
+    cdf
+        .compute_root()
+        .split(x, x_o, x_i, 16)
+        .reorder(x_i, x_o)
+        .gpu_threads(x_i)
+        .gpu_blocks(x_o)
+        .compute_root()
+        .gpu_single_thread();
+    cdf.update(0)
+        .gpu_single_thread();
+}
+{
+    Var x = hist.args()[0];
+    hist
+        .compute_root()
+        .split(x, x_o, x_i, 16)
+        .reorder(x_i, x_o)
+        .gpu_threads(x_i)
+        .gpu_blocks(x_o)
+        .compute_root()
+        .gpu_single_thread();
+    hist.update(0)
+        .gpu_single_thread()
+        .gpu_blocks(x)
+        .gpu_single_thread();
+}
+{
+    Var x = hist_rows.args()[0];
+    Var y = hist_rows.args()[1];
+    hist_rows
+        .compute_root()
+        .split(x, x_o, x_i, 16)
+        .split(y, y_o, y_i, 8)
+        .reorder(x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o)
+        .compute_root();
+    hist_rows.update(0)
+        .split(y, y_o, y_i, 16, TailStrategy::RoundUp)
+        .reorder(rx$x, y_i, y_o)
+        .gpu_threads(y_i)
+        .gpu_blocks(y_o);
+}
+{
+    Var x = output.args()[0];
+    Var y = output.args()[1];
+    output
+        .compute_root()
+        .split(x, x_o, x_i, 32)
+        .split(y, y_o, y_i, 8)
+        .reorder(c, x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+
+
+TOTAL INLINES 5

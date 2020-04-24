@@ -1,0 +1,1763 @@
+Generator max_filter has base_path ./bin/max_filter_auto_schedule
+
+================
+Pipeline graph:
+================
+maximum: {maximum.update(0)}
+maximum.update(0): {output}
+repeat_edge: {vert_log}
+slice_for_radius: {vert}
+sum: {sum.update(0)}
+sum.update(0): {maximum.update(0)}
+vert: {maximum.update(0)}
+vert_log: {vert_log.update(0)}
+vert_log.update(0): {vert}
+================
+
+================
+Pipeline bounds:
+================
+input -> {[0, 1535], [0, 2559], [0, 2]}
+maximum -> {[0, 1535], [0, 2559], [0, 2]}
+output -> {[0, 1535], [0, 2559], [0, 2]}
+repeat_edge -> {[-26, 1561], [-51, 2586], [0, 2]}
+slice_for_radius -> {[0, 27]}
+sum -> {[-26, 26]}
+vert -> {[-26, 1561], [0, 2559], [0, 2], [0, 27]}
+vert_log -> {[-26, 1561], [-51, 2586], [0, 2], [0, 6]}
+===============
+User error triggered at ../autoscheduler/AutoSchedule.cpp:4312
+Warning at ../../distrib/tools/GenGen.cpp:4:
+Insufficient parallelism for slice_for_radius
+User error triggered at ../autoscheduler/AutoSchedule.cpp:4312
+Warning at ../../distrib/tools/GenGen.cpp:4:
+Insufficient parallelism for sum
+Creating initial loop nests...
+Injecting realization of { output }
+Injecting realization of { maximum }
+Injecting realization of { vert_log }
+Inlining repeat_edge
+Injecting realization of { sum }
+Injecting realization of { slice_for_radius }
+Skipping injecting memoization...
+Injecting tracing...
+Adding checks for parameters
+Computing bounds of each function's value
+Adding checks for images
+Performing computation bounds inference...
+Removing extern loops...
+Performing sliding window optimization...
+Simplifying correlated differences...
+Performing allocation bounds inference...
+Removing code that depends on undef values...
+Uniquifying variable names...
+Simplifying...
+Performing storage folding optimization...
+Injecting debug_to_file calls...
+Injecting prefetches...
+Dynamically skipping stages...
+Forking asynchronous producers...
+Destructuring tuple-valued realizations...
+Canonicalizing GPU var names...
+Performing storage flattening...
+Unpacking buffer arguments...
+Skipping rewriting memoized allocations...
+Selecting a GPU API for GPU loops...
+Injecting host <-> dev buffer copies...
+Selecting a GPU API for extern stages...
+Simplifying...
+Reduce prefetch dimension...
+Simplifying correlated differences...
+Unrolling...
+Vectorizing...
+Injecting per-block gpu synchronization...
+Detecting vector interleavings...
+Partitioning loops to simplify boundary conditions...
+Trimming loops to the region over which they do something...
+Injecting early frees...
+Simplifying correlated differences...
+Bounding small allocations...
+Injecting warp shuffles...
+Simplifying...
+Lowering unsafe promises...
+Lowering after final simplification:
+assert((reinterpret(uint64, output.buffer) != (uint64)0), halide_error_buffer_argument_is_null("output"))
+assert((reinterpret(uint64, input.buffer) != (uint64)0), halide_error_buffer_argument_is_null("input"))
+let input = _halide_buffer_get_host(input.buffer)
+let input.min.0 = _halide_buffer_get_min(input.buffer, 0)
+let input.extent.0 = _halide_buffer_get_extent(input.buffer, 0)
+let input.stride.0 = _halide_buffer_get_stride(input.buffer, 0)
+let input.min.1 = _halide_buffer_get_min(input.buffer, 1)
+let input.extent.1 = _halide_buffer_get_extent(input.buffer, 1)
+let input.stride.1 = _halide_buffer_get_stride(input.buffer, 1)
+let input.min.2 = _halide_buffer_get_min(input.buffer, 2)
+let input.extent.2 = _halide_buffer_get_extent(input.buffer, 2)
+let input.stride.2 = _halide_buffer_get_stride(input.buffer, 2)
+let output = _halide_buffer_get_host(output.buffer)
+let output.min.0 = _halide_buffer_get_min(output.buffer, 0)
+let output.extent.0 = _halide_buffer_get_extent(output.buffer, 0)
+let output.stride.0 = _halide_buffer_get_stride(output.buffer, 0)
+let output.min.1 = _halide_buffer_get_min(output.buffer, 1)
+let output.extent.1 = _halide_buffer_get_extent(output.buffer, 1)
+let output.stride.1 = _halide_buffer_get_stride(output.buffer, 1)
+let output.min.2 = _halide_buffer_get_min(output.buffer, 2)
+let output.stride.2 = _halide_buffer_get_stride(output.buffer, 2)
+let vert_log.s0.y.max.s = max((input.extent.1 + 25), (output.extent.1 + output.min.1))
+let input.extent.0.required.s = (max((min((min((((output.extent.0 + 51)/16)*16), (output.extent.0 + 36)) + output.min.0), ((input.extent.0 + input.min.0) + 10)) + -11), input.min.0) - max((min(((min(output.extent.0, -36) + output.min.0) + 11), (input.extent.0 + input.min.0)) + -1), input.min.0))
+let input.min.0.required = max((min(((min(output.extent.0, -36) + output.min.0) + 11), (input.extent.0 + input.min.0)) + -1), input.min.0)
+let input.extent.1.required.s = (max((min(min((min(output.min.1, 25) + ((((vert_log.s0.y.max.s - min(output.min.1, 25)) + 77)/8)*8)), (vert_log.s0.y.max.s + 70)), ((input.extent.1 + input.min.1) + 43)) + -44), input.min.1) - max((min(min(min((vert_log.s0.y.max.s + 70), output.min.1), ((input.extent.1 + input.min.1) + 50)), 25) + -51), input.min.1))
+let input.min.1.required = max((min(min(min((vert_log.s0.y.max.s + 70), output.min.1), ((input.extent.1 + input.min.1) + 50)), 25) + -51), input.min.1)
+let input.extent.2.required = (max(min((input.extent.2 + input.min.2), 3), (input.min.2 + 1)) - max((min((input.extent.2 + input.min.2), 1) + -1), input.min.2))
+let input.min.2.required = max((min((input.extent.2 + input.min.2), 1) + -1), input.min.2)
+let input.stride.2.required = ((input.extent.0.required.s + 1)*(input.extent.1.required.s + 1))
+let output.extent.0.required.s = (min((((output.extent.0 + -1)/32)*32), (output.extent.0 + -32)) - min(output.extent.0, 32))
+let output.extent.1.required.s = (min((((output.extent.1 + -1)/32)*32), (output.extent.1 + -32)) - min(output.extent.1, 32))
+let output.stride.2.required = ((output.extent.0.required.s + 64)*(output.extent.1.required.s + 64))
+if (_halide_buffer_is_bounds_query(input.buffer)) {
+  _halide_buffer_init(input.buffer, _halide_buffer_get_shape(input.buffer), reinterpret((void *), (uint64)0), (uint64)0, reinterpret((halide_device_interface_t *), (uint64)0), 2, 32, 3, make_struct((halide_dimension_t *), input.min.0.required, (input.extent.0.required.s + 1), 1, 0, input.min.1.required, (input.extent.1.required.s + 1), (input.extent.0.required.s + 1), 0, input.min.2.required, input.extent.2.required, input.stride.2.required, 0), (uint64)0)
+}
+if (_halide_buffer_is_bounds_query(output.buffer)) {
+  _halide_buffer_init(output.buffer, _halide_buffer_get_shape(output.buffer), reinterpret((void *), (uint64)0), (uint64)0, reinterpret((halide_device_interface_t *), (uint64)0), 2, 32, 3, make_struct((halide_dimension_t *), ((min(output.extent.0, 32) + output.min.0) + -32), (output.extent.0.required.s + 64), 1, 0, ((min(output.extent.1, 32) + output.min.1) + -32), (output.extent.1.required.s + 64), (output.extent.0.required.s + 64), 0, 0, 3, output.stride.2.required, 0), (uint64)0)
+}
+if (!(_halide_buffer_is_bounds_query(input.buffer) || _halide_buffer_is_bounds_query(output.buffer))) {
+  assert((input.stride.0 == 1), 0)
+  assert((output.stride.0 == 1), 0)
+  allocate slice_for_radius[int32 * 28] if (uint1)0
+  let slice_for_radius.buffer = _halide_buffer_init(alloca(size_of_halide_buffer_t()), make_struct((halide_dimension_t *), 0, 28, 1, 0), reinterpret((void *), (uint64)0), (uint64)0, reinterpret((halide_device_interface_t *), (uint64)0), 0, 32, 1, make_struct((halide_dimension_t *), 0, 28, 1, 0), (uint64)0)
+  register_destructor("halide_device_free_as_destructor", slice_for_radius.buffer)
+  produce slice_for_radius {
+    let halide_device_malloc_result$2 = halide_device_malloc(slice_for_radius.buffer, halide_cuda_device_interface())
+    assert((halide_device_malloc_result$2 == 0), halide_device_malloc_result$2)
+    gpu_block<CUDA> (slice_for_radius.s0.t.t_o.__block_id_x, 0, 14) {
+      gpu_thread<CUDA> (.__thread_id_x, 0, 2) {
+        slice_for_radius[((slice_for_radius.s0.t.t_o.__block_id_x*2) + .__thread_id_x)] = int32(floor_f32((log_f32(float32(((((slice_for_radius.s0.t.t_o.__block_id_x*2) + .__thread_id_x)*2) + 1)))*1.442695f)))
+      }
+    }
+    _halide_buffer_set_device_dirty(slice_for_radius.buffer, (uint1)1)
+  }
+  allocate sum[int32 * 53] if (uint1)0
+  let sum.buffer = _halide_buffer_init(alloca(size_of_halide_buffer_t()), make_struct((halide_dimension_t *), -26, 53, 1, 0), reinterpret((void *), (uint64)0), (uint64)0, reinterpret((halide_device_interface_t *), (uint64)0), 0, 32, 1, make_struct((halide_dimension_t *), -26, 53, 1, 0), (uint64)0)
+  register_destructor("halide_device_free_as_destructor", sum.buffer)
+  produce sum {
+    let halide_device_malloc_result$1 = halide_device_malloc(sum.buffer, halide_cuda_device_interface())
+    assert((halide_device_malloc_result$1 == 0), halide_device_malloc_result$1)
+    gpu_block<CUDA> (sum.s0.x.x_o.__block_id_x, 0, 27) {
+      gpu_thread<CUDA> (.__thread_id_x, 0, 2) {
+        if ((sum.s0.x.x_o.__block_id_x < 26)) {
+          sum[((sum.s0.x.x_o.__block_id_x*2) + .__thread_id_x)] = 0
+        } else {
+          sum[(.__thread_id_x + 51)] = 0
+        }
+      }
+    }
+    _halide_buffer_set_device_dirty(sum.buffer, (uint1)1)
+    gpu_block<CUDA> (sum.s1.__outermost.__outermost.__outermost.v77.__block_id_w, 0, 1) {
+      gpu_block<CUDA> (sum.s1.__outermost.__outermost.v76.__block_id_z, 0, 1) {
+        gpu_block<CUDA> (sum.s1.__outermost.v75.__block_id_y, 0, 1) {
+          gpu_block<CUDA> (sum.s1.x.__block_id_x, 0, 53) {
+            gpu_thread<CUDA> (.__thread_id_x, 0, 1) {
+              let t2200 = ((sum.s1.x.__block_id_x + -26)*(sum.s1.x.__block_id_x + -26))
+              for (sum.s1.dy$x, 0, 27) {
+                sum[sum.s1.x.__block_id_x] = (sum[sum.s1.x.__block_id_x] + select((float32(((sum.s1.dy$x*sum.s1.dy$x) + t2200)) < 689.062500f), 1, 0))
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  let vert_log.y.min_realized.s = min((min(min((vert_log.s0.y.max.s + 70), output.min.1), 25) + 32), (min(output.extent.1, 32) + output.min.1))
+  let vert_log.y.extent_realized.s.s = max(min((min(output.min.1, 25) + ((((vert_log.s0.y.max.s - min(output.min.1, 25)) + 77)/8)*8)), (vert_log.s0.y.max.s + 70)), (max(max(max((output.extent.1 + output.min.1), (input.extent.1 + 52)), ((output.extent.1 + output.min.1) + 27)), input.extent.1) + 43))
+  let vert_log.x.min_realized.s = min((min(output.extent.0, -36) + 68), output.extent.0)
+  let vert_log.x.extent_realized.s.s = max(min((((output.extent.0 + 51)/16)*16), (output.extent.0 + 36)), (max((((output.extent.0 + 51)/32)*32), (output.extent.0 + 20)) + 16))
+  let vert_log.stride.2 = (((vert_log.x.extent_realized.s.s - vert_log.x.min_realized.s) + 48)*((vert_log.y.extent_realized.s.s - vert_log.y.min_realized.s) + 40))
+  allocate vert_log[float32 * ((vert_log.x.extent_realized.s.s - vert_log.x.min_realized.s) + 48) * ((vert_log.y.extent_realized.s.s - vert_log.y.min_realized.s) + 40) * 3 * 7] if (uint1)0
+  let vert_log.buffer = _halide_buffer_init(alloca(size_of_halide_buffer_t()), make_struct((halide_dimension_t *), ((output.min.0 + vert_log.x.min_realized.s) + -58), ((vert_log.x.extent_realized.s.s - vert_log.x.min_realized.s) + 48), 1, 0, (vert_log.y.min_realized.s + -83), ((vert_log.y.extent_realized.s.s - vert_log.y.min_realized.s) + 40), ((vert_log.x.extent_realized.s.s - vert_log.x.min_realized.s) + 48), 0, 0, 3, vert_log.stride.2, 0, 0, 7, (vert_log.stride.2*3), 0), reinterpret((void *), (uint64)0), (uint64)0, reinterpret((halide_device_interface_t *), (uint64)0), 2, 32, 4, make_struct((halide_dimension_t *), ((output.min.0 + vert_log.x.min_realized.s) + -58), ((vert_log.x.extent_realized.s.s - vert_log.x.min_realized.s) + 48), 1, 0, (vert_log.y.min_realized.s + -83), ((vert_log.y.extent_realized.s.s - vert_log.y.min_realized.s) + 40), ((vert_log.x.extent_realized.s.s - vert_log.x.min_realized.s) + 48), 0, 0, 3, vert_log.stride.2, 0, 0, 7, (vert_log.stride.2*3), 0), (uint64)0)
+  register_destructor("halide_device_free_as_destructor", vert_log.buffer)
+  let vert_log.s0.y.y_o.loop_extent.s = (vert_log.s0.y.max.s - min(output.min.1, 25))
+  produce vert_log {
+    let halide_device_malloc_result = halide_device_malloc(vert_log.buffer, halide_cuda_device_interface())
+    assert((halide_device_malloc_result == 0), halide_device_malloc_result)
+    let halide_copy_to_device_result = halide_copy_to_device(input.buffer, halide_cuda_device_interface())
+    assert((halide_copy_to_device_result == 0), halide_copy_to_device_result)
+    let vert_log.s0.y.y_o.__block_id_y.prologue = min(max((((input.min.1 - min(output.min.1, 25)) + 58)/8), 0), ((vert_log.s0.y.y_o.loop_extent.s + 85)/8))
+    let vert_log.s0.y.y_o.__block_id_y.epilogue = max(min(max((((input.min.1 - min(output.min.1, 25)) + 58)/8), 0), ((vert_log.s0.y.y_o.loop_extent.s + 85)/8)), ((min(min(((input.extent.1 + input.min.1) - min(output.min.1, 25)), ((min((vert_log.s0.y.max.s + 20), (input.extent.1 + input.min.1)) - min(output.min.1, 25)) + 7)), (vert_log.s0.y.y_o.loop_extent.s + 34)) + 51)/8))
+    let t2129 = min(max((((input.min.0 - output.min.0) + 41)/16), 0), ((output.extent.0 + 67)/16))
+    let t2130 = max(min(max((((input.min.0 - output.min.0) + 41)/16), 0), ((output.extent.0 + 67)/16)), ((min(min(((input.extent.0 + input.min.0) - output.min.0), (min(((input.extent.0 + input.min.0) - output.min.0), (output.extent.0 + 11)) + 15)), (output.extent.0 + 41)) + 26)/16))
+    let t2218.s = (((max(min((3 - input.min.2), input.extent.2), 1) + -1)*input.stride.2) - (input.min.1*input.stride.1))
+    let t2217.s = (((max(min((2 - input.min.2), input.extent.2), 1) + -1)*input.stride.2) - (input.min.1*input.stride.1))
+    let t2215.s = (((max(min((1 - input.min.2), input.extent.2), 1) + -1)*input.stride.2) - (input.min.1*input.stride.1))
+    let t2213.s = ((((max((min((input.extent.2 + input.min.2), 3) + -1), input.min.2)*input.stride.2) + output.min.0) - (input.min.2*input.stride.2)) - (input.min.1*input.stride.1))
+    let t2211.s = ((((max((min((input.extent.2 + input.min.2), 2) + -1), input.min.2)*input.stride.2) + output.min.0) - (input.min.2*input.stride.2)) - (input.min.1*input.stride.1))
+    let t2207.s = ((((max((min((input.extent.2 + input.min.2), 1) + -1), input.min.2)*input.stride.2) + output.min.0) - (input.min.2*input.stride.2)) - (input.min.1*input.stride.1))
+    let t2353 = min(output.min.1, 25)
+    let t2351 = ((vert_log.s0.y.y_o.loop_extent.s + 85)/8)
+    let t2352 = ((output.extent.0 + 67)/16)
+    let t2365 = (t2218.s - input.min.0)
+    let t2366 = (t2217.s - input.min.0)
+    let t2367 = (t2215.s - input.min.0)
+    let t2358 = (t2213.s - input.min.0)
+    let t2359 = (t2211.s - input.min.0)
+    let t2360 = (t2207.s - input.min.0)
+    let t2356 = (32 - vert_log.y.min_realized.s)
+    let t2361 = (32 - vert_log.x.min_realized.s)
+    let t2363 = (((vert_log.stride.2*2) - vert_log.x.min_realized.s) + 32)
+    let t2357 = ((vert_log.x.extent_realized.s.s - vert_log.x.min_realized.s) + 48)
+    let t2362 = ((vert_log.stride.2 - vert_log.x.min_realized.s) + 32)
+    let t2368 = ((input.extent.1 + input.min.1) + 50)
+    let t2364 = ((input.extent.0 + input.min.0) + 25)
+    let t2354 = (vert_log.s0.y.max.s + 70)
+    let t2355 = (output.extent.0 + 36)
+    gpu_block<CUDA> (vert_log.s0.y.y_o.__block_id_y, 0, t2351) {
+      gpu_block<CUDA> (vert_log.s0.x.x_o.__block_id_x, 0, t2352) {
+        gpu_thread<CUDA> (.__thread_id_y, 0, 8) {
+          gpu_thread<CUDA> (.__thread_id_x, 0, 16) {
+            if (((vert_log.s0.y.y_o.__block_id_y.prologue <= vert_log.s0.y.y_o.__block_id_y) && (vert_log.s0.y.y_o.__block_id_y < vert_log.s0.y.y_o.__block_id_y.epilogue))) {
+              let vert_log.s0.y.y_i.base.s = min(((vert_log.s0.y.y_o.__block_id_y*8) + t2353), t2354)
+              if (((t2129 <= vert_log.s0.x.x_o.__block_id_x) && (vert_log.s0.x.x_o.__block_id_x < t2130))) {
+                let vert_log.s0.x.x_i.base.s = min((vert_log.s0.x.x_o.__block_id_x*16), t2355)
+                let t2230 = (((t2356 + vert_log.s0.y.y_i.base.s) + .__thread_id_y)*t2357)
+                let t2227.s = ((((.__thread_id_y + vert_log.s0.y.y_i.base.s) + -51)*input.stride.1) + (t2358 + vert_log.s0.x.x_i.base.s))
+                let t2225.s = ((((.__thread_id_y + vert_log.s0.y.y_i.base.s) + -51)*input.stride.1) + (t2359 + vert_log.s0.x.x_i.base.s))
+                let t2223.s = ((((.__thread_id_y + vert_log.s0.y.y_i.base.s) + -51)*input.stride.1) + (t2360 + vert_log.s0.x.x_i.base.s))
+                let t2374 = (((t2363 + vert_log.s0.x.x_i.base.s) + t2230) + .__thread_id_x)
+                let t2372 = (((t2362 + vert_log.s0.x.x_i.base.s) + t2230) + .__thread_id_x)
+                let t2370 = (((t2361 + vert_log.s0.x.x_i.base.s) + t2230) + .__thread_id_x)
+                let t2373 = ((.__thread_id_x + t2227.s) + -26)
+                let t2371 = ((.__thread_id_x + t2225.s) + -26)
+                let t2369 = ((.__thread_id_x + t2223.s) + -26)
+                for (vert_log.s0.t, 0, 7) {
+                  vert_log[(((vert_log.s0.t*vert_log.stride.2)*3) + t2370)] = input[t2369]
+                  vert_log[(((vert_log.s0.t*vert_log.stride.2)*3) + t2372)] = input[t2371]
+                  vert_log[(((vert_log.s0.t*vert_log.stride.2)*3) + t2374)] = input[t2373]
+                }
+              } else {
+                let vert_log.s0.x.x_i.base.s = min((vert_log.s0.x.x_o.__block_id_x*16), t2355)
+                let t2237 = (((t2356 + vert_log.s0.y.y_i.base.s) + .__thread_id_y)*t2357)
+                let t2238 = max((min(((output.min.0 + vert_log.s0.x.x_i.base.s) + .__thread_id_x), t2364) + -26), input.min.0)
+                let t2235.s = ((((.__thread_id_y + vert_log.s0.y.y_i.base.s) + -51)*input.stride.1) + t2365)
+                let t2233.s = ((((.__thread_id_y + vert_log.s0.y.y_i.base.s) + -51)*input.stride.1) + t2366)
+                let t2231.s = ((((.__thread_id_y + vert_log.s0.y.y_i.base.s) + -51)*input.stride.1) + t2367)
+                let t2380 = (((t2363 + vert_log.s0.x.x_i.base.s) + t2237) + .__thread_id_x)
+                let t2378 = (((t2362 + vert_log.s0.x.x_i.base.s) + t2237) + .__thread_id_x)
+                let t2376 = (((t2361 + vert_log.s0.x.x_i.base.s) + t2237) + .__thread_id_x)
+                let t2379 = (t2235.s + t2238)
+                let t2377 = (t2233.s + t2238)
+                let t2375 = (t2231.s + t2238)
+                for (vert_log.s0.t, 0, 7) {
+                  vert_log[(((vert_log.s0.t*vert_log.stride.2)*3) + t2376)] = input[t2375]
+                  vert_log[(((vert_log.s0.t*vert_log.stride.2)*3) + t2378)] = input[t2377]
+                  vert_log[(((vert_log.s0.t*vert_log.stride.2)*3) + t2380)] = input[t2379]
+                }
+              }
+            } else {
+              let vert_log.s0.y.y_i.base.s = min(((vert_log.s0.y.y_o.__block_id_y*8) + t2353), t2354)
+              let vert_log.s0.x.x_i.base.s = min((vert_log.s0.x.x_o.__block_id_x*16), t2355)
+              let t2246 = (((t2356 + vert_log.s0.y.y_i.base.s) + .__thread_id_y)*t2357)
+              let t2247 = max((min(((output.min.0 + vert_log.s0.x.x_i.base.s) + .__thread_id_x), t2364) + -26), input.min.0)
+              let t2248.s = max((min((.__thread_id_y + vert_log.s0.y.y_i.base.s), t2368) + -51), input.min.1)
+              let t2244.s = ((input.stride.1*t2248.s) + t2365)
+              let t2242.s = ((input.stride.1*t2248.s) + t2366)
+              let t2240.s = ((input.stride.1*t2248.s) + t2367)
+              let t2386 = (((t2363 + vert_log.s0.x.x_i.base.s) + t2246) + .__thread_id_x)
+              let t2384 = (((t2362 + vert_log.s0.x.x_i.base.s) + t2246) + .__thread_id_x)
+              let t2382 = (((t2361 + vert_log.s0.x.x_i.base.s) + t2246) + .__thread_id_x)
+              let t2385 = (t2244.s + t2247)
+              let t2383 = (t2242.s + t2247)
+              let t2381 = (t2240.s + t2247)
+              for (vert_log.s0.t, 0, 7) {
+                vert_log[(((vert_log.s0.t*vert_log.stride.2)*3) + t2382)] = input[t2381]
+                vert_log[(((vert_log.s0.t*vert_log.stride.2)*3) + t2384)] = input[t2383]
+                vert_log[(((vert_log.s0.t*vert_log.stride.2)*3) + t2386)] = input[t2385]
+              }
+            }
+          }
+        }
+      }
+    }
+    _halide_buffer_set_device_dirty(vert_log.buffer, (uint1)1)
+    let t2251.s = ((0 - vert_log.x.min_realized.s) - (vert_log.stride.2*3))
+    let t2392 = (vert_log.x.extent_realized.s.s - vert_log.x.min_realized.s)
+    let t2387 = ((output.extent.0 + 83)/32)
+    let t2390 = (83 - vert_log.y.min_realized.s)
+    let t2388 = (input.extent.1 + 26)
+    gpu_block<CUDA> (vert_log.s1.c.__block_id_y, 0, 3) {
+      gpu_block<CUDA> (vert_log.s1.x.x_o.__block_id_x, 0, t2387) {
+        gpu_thread<CUDA> (.__thread_id_x, 0, 32) {
+          let t2259.s = ((vert_log.s1.x.x_o.__block_id_x*32) + ((vert_log.s1.c.__block_id_y*vert_log.stride.2) - vert_log.x.min_realized.s))
+          let t2257.s = ((vert_log.s1.x.x_o.__block_id_x*32) + ((vert_log.s1.c.__block_id_y*vert_log.stride.2) + t2251.s))
+          let t2395 = (t2392 + 48)
+          let t2393 = (.__thread_id_x + t2259.s)
+          let t2394 = (.__thread_id_x + t2257.s)
+          for (vert_log.s1.r$y, 1, 5) {
+            let t2263.s = shift_left(1, (vert_log.s1.r$y + -1))
+            let t2264.s = (((vert_log.s1.r$y*vert_log.stride.2)*3) + t2393)
+            let t2262.s = (((vert_log.s1.r$y*vert_log.stride.2)*3) + t2394)
+            let t2397 = (max(min(t2263.s, 52), 0) + t2390)
+            let t2398 = (t2264.s + 32)
+            let t2396 = (t2262.s + 32)
+            for (vert_log.s1.r$x, -26, t2388) {
+              vert_log[(((t2390 + vert_log.s1.r$x)*t2395) + t2398)] = max(vert_log[(((t2390 + vert_log.s1.r$x)*t2395) + t2396)], vert_log[(((t2397 + vert_log.s1.r$x)*t2395) + t2396)])
+            }
+          }
+        }
+      }
+    }
+  }
+  produce output {
+    consume vert_log {
+      consume sum {
+        consume slice_for_radius {
+          let halide_copy_to_device_result$1 = halide_copy_to_device(output.buffer, halide_cuda_device_interface())
+          assert((halide_copy_to_device_result$1 == 0), halide_copy_to_device_result$1)
+          let t2278.s = ((((output.stride.2*2) + output.min.0) - (output.min.2*output.stride.2)) - (output.min.1*output.stride.1))
+          let t2277.s = (((output.min.0 + output.stride.2) - (output.min.2*output.stride.2)) - (output.min.1*output.stride.1))
+          let t2276.s = ((output.min.0 - (output.min.2*output.stride.2)) - (output.min.1*output.stride.1))
+          let t2412 = (vert_log.stride.2*2)
+          let t2399 = ((output.extent.1 + 31)/32)
+          let t2400 = ((output.extent.0 + 31)/32)
+          let t2403 = ((t2412 + vert_log.x.extent_realized.s.s) - vert_log.x.min_realized.s)
+          let t2405 = (vert_log.x.extent_realized.s.s - vert_log.x.min_realized.s)
+          let t2411 = (t2278.s - output.min.0)
+          let t2410 = (t2277.s - output.min.0)
+          let t2409 = (t2276.s - output.min.0)
+          let t2408 = ((t2412 - vert_log.x.min_realized.s) + 58)
+          let t2407 = ((vert_log.stride.2 - vert_log.x.min_realized.s) + 58)
+          let t2404 = ((output.min.1 - vert_log.y.min_realized.s) + 83)
+          let t2401 = (output.extent.1 + -32)
+          let t2402 = (output.extent.0 + -32)
+          gpu_block<CUDA> (output.s0.y.y_o.__block_id_y, 0, t2399) {
+            gpu_block<CUDA> (output.s0.x.x_o.__block_id_x, 0, t2400) {
+              allocate __shared[uint8 * 12288] in GPUShared
+              gpu_thread<CUDA> (.__thread_id_y, 0, 32) {
+                gpu_thread<CUDA> (.__thread_id_x, 0, 32) {
+                  let output.s0.y.y_i.base.s = min((output.s0.y.y_o.__block_id_y*32), t2401)
+                  let output.s0.x.x_i.base.s = min((output.s0.x.x_o.__block_id_x*32), t2402)
+                  produce maximum {
+                    __shared[((.__thread_id_y*32) + .__thread_id_x)] = -inff
+                    __shared[(((.__thread_id_y*32) + .__thread_id_x) + 1024)] = -inff
+                    __shared[(((.__thread_id_y*32) + .__thread_id_x) + 2048)] = -inff
+                    gpu_thread_barrier()
+                    let t2424 = (t2405 - vert_log.x.min_realized.s)
+                    let t2425 = ((.__thread_id_y*32) + .__thread_id_x)
+                    let t2415 = (((output.s0.x.x_i.base.s - vert_log.x.min_realized.s) + .__thread_id_x) + 58)
+                    let t2417 = (((output.s0.x.x_i.base.s + t2424) + .__thread_id_x) + 106)
+                    let t2423 = ((((t2403 - vert_log.x.min_realized.s) + output.s0.x.x_i.base.s) + .__thread_id_x) + 106)
+                    let t2420 = ((((t2424 + vert_log.stride.2) + output.s0.x.x_i.base.s) + .__thread_id_x) + 106)
+                    let t2413 = ((output.s0.y.y_i.base.s + t2404) + .__thread_id_y)
+                    let t2422 = ((output.s0.x.x_i.base.s + t2408) + .__thread_id_x)
+                    let t2419 = ((output.s0.x.x_i.base.s + t2407) + .__thread_id_x)
+                    let t2416 = (t2405 + 48)
+                    for (maximum.s1.dx$x, -26, 53) {
+                      __shared[t2425] = (let t2336.s = sum[(maximum.s1.dx$x + 26)] in (let t2339.s = slice_for_radius[max(min(t2336.s, 27), 0)] in max(__shared[t2425], max(vert_log[((((max(min(t2339.s, 6), 0)*vert_log.stride.2)*3) + (((t2413 - max(min(t2336.s, 27), 0))*t2416) + t2415)) + maximum.s1.dx$x)], vert_log[((((max(min(t2339.s, 6), 0)*vert_log.stride.2)*3) + ((((max(min(t2336.s, 27), 0) + t2413) - max(min(shift_left(1, max(min(t2339.s, 6), 0)), 52), 0))*t2416) + t2417)) + maximum.s1.dx$x)]))))
+                      __shared[(t2425 + 1024)] = (let t2341.s = sum[(maximum.s1.dx$x + 26)] in (let t2344.s = slice_for_radius[max(min(t2341.s, 27), 0)] in max(__shared[(t2425 + 1024)], max(vert_log[((((max(min(t2344.s, 6), 0)*vert_log.stride.2)*3) + (((t2413 - max(min(t2341.s, 27), 0))*t2416) + t2419)) + maximum.s1.dx$x)], vert_log[((((max(min(t2344.s, 6), 0)*vert_log.stride.2)*3) + ((((max(min(t2341.s, 27), 0) + t2413) - max(min(shift_left(1, max(min(t2344.s, 6), 0)), 52), 0))*t2416) + t2420)) + maximum.s1.dx$x)]))))
+                      __shared[(t2425 + 2048)] = (let t2346.s = sum[(maximum.s1.dx$x + 26)] in (let t2349.s = slice_for_radius[max(min(t2346.s, 27), 0)] in max(__shared[(t2425 + 2048)], max(vert_log[((((max(min(t2349.s, 6), 0)*vert_log.stride.2)*3) + (((t2413 - max(min(t2346.s, 27), 0))*t2416) + t2422)) + maximum.s1.dx$x)], vert_log[((((max(min(t2349.s, 6), 0)*vert_log.stride.2)*3) + ((((max(min(t2346.s, 27), 0) + t2413) - max(min(shift_left(1, max(min(t2349.s, 6), 0)), 52), 0))*t2416) + t2423)) + maximum.s1.dx$x)]))))
+                    }
+                  }
+                  gpu_thread_barrier()
+                  consume maximum {
+                    output[(((((output.min.1 + output.s0.y.y_i.base.s) + .__thread_id_y)*output.stride.1) + (output.s0.x.x_i.base.s + t2409)) + .__thread_id_x)] = __shared[((.__thread_id_y*32) + .__thread_id_x)]
+                    output[(((((output.min.1 + output.s0.y.y_i.base.s) + .__thread_id_y)*output.stride.1) + (output.s0.x.x_i.base.s + t2410)) + .__thread_id_x)] = __shared[(((.__thread_id_y*32) + .__thread_id_x) + 1024)]
+                    output[(((((output.min.1 + output.s0.y.y_i.base.s) + .__thread_id_y)*output.stride.1) + (output.s0.x.x_i.base.s + t2411)) + .__thread_id_x)] = __shared[(((.__thread_id_y*32) + .__thread_id_x) + 2048)]
+                  }
+                }
+              }
+              free __shared
+            }
+          }
+          _halide_buffer_set_device_dirty(output.buffer, (uint1)1)
+          let halide_device_free_result$2 = halide_device_free(slice_for_radius.buffer)
+          assert((halide_device_free_result$2 == 0), halide_device_free_result$2)
+          free slice_for_radius
+          let halide_device_free_result$1 = halide_device_free(sum.buffer)
+          assert((halide_device_free_result$1 == 0), halide_device_free_result$1)
+          free sum
+          let halide_device_free_result = halide_device_free(vert_log.buffer)
+          assert((halide_device_free_result == 0), halide_device_free_result)
+          free vert_log
+        }
+      }
+    }
+  }
+}
+
+
+Skipping Hexagon offload...
+Constructing CUDA device codegen
+Target triple of initial module: x86_64--linux-gnu
+Generating llvm bitcode...
+Generating llvm bitcode prolog for function max_filter_auto_schedule...
+Generating llvm bitcode for function max_filter_auto_schedule...
+Generating llvm bitcode for kernel...
+Generating llvm bitcode for kernel...
+Generating llvm bitcode for kernel...
+Generating llvm bitcode for kernel...
+Generating llvm bitcode for kernel...
+Generating llvm bitcode for kernel...
+PTX kernel:
+//
+// Generated by LLVM NVPTX Back-End
+//
+
+.version 5.0
+.target sm_61
+.address_size 64
+
+	// .globl	kernel_slice_for_radius_s0_t_t_o___block_id_x // -- Begin function kernel_slice_for_radius_s0_t_t_o___block_id_x
+                                        // @kernel_slice_for_radius_s0_t_t_o___block_id_x
+.visible .entry kernel_slice_for_radius_s0_t_t_o___block_id_x(
+	.param .u64 kernel_slice_for_radius_s0_t_t_o___block_id_x_param_0
+)
+{
+	.reg .f32 	%f<20>;
+	.reg .b32 	%r<17>;
+	.reg .b64 	%rd<5>;
+
+// %bb.0:                               // %entry
+	ld.param.u64 	%rd1, [kernel_slice_for_radius_s0_t_t_o___block_id_x_param_0];
+	cvta.to.global.u64 	%rd2, %rd1;
+	mov.u32 	%r1, %ctaid.x;
+	mov.u32 	%r2, %tid.x;
+	shl.b32 	%r3, %r1, 1;
+	add.s32 	%r4, %r3, %r2;
+	shl.b32 	%r5, %r4, 1;
+	or.b32  	%r6, %r5, 1;
+	cvt.rn.f32.s32 	%f1, %r6;
+	mov.b32 	%r7, %f1;
+	and.b32  	%r8, %r7, -2139095041;
+	shr.s32 	%r9, %r8, 22;
+	mov.u32 	%r10, 127;
+	sub.s32 	%r11, %r10, %r9;
+	shl.b32 	%r12, %r11, 23;
+	or.b32  	%r13, %r12, %r8;
+	mov.b32 	%f2, %r13;
+	add.ftz.f32 	%f3, %f2, 0fBF800000;
+	neg.ftz.f32 	%f4, %f3;
+	fma.rn.ftz.f32 	%f5, %f2, %f3, %f4;
+	fma.rn.ftz.f32 	%f6, %f5, 0f3D5162F5, 0f3E19502F;
+	fma.rn.ftz.f32 	%f7, %f5, %f6, 0f3E4C9A1F;
+	fma.rn.ftz.f32 	%f8, %f5, %f7, 0f3EAAAACD;
+	fma.rn.ftz.f32 	%f9, %f5, %f8, 0f3F800000;
+	neg.ftz.f32 	%f10, %f9;
+	fma.rn.ftz.f32 	%f11, %f2, %f9, %f10;
+	fma.rn.ftz.f32 	%f12, %f5, 0fBDF18A20, 0fBE2CAABC;
+	fma.rn.ftz.f32 	%f13, %f5, %f12, 0fBE7FE8F6;
+	fma.rn.ftz.f32 	%f14, %f5, %f13, 0fBF000012;
+	fma.rn.ftz.f32 	%f15, %f5, %f14, %f11;
+	shr.s32 	%r14, %r7, 23;
+	sub.s32 	%r15, %r14, %r11;
+	cvt.rn.f32.s32 	%f16, %r15;
+	fma.rn.ftz.f32 	%f17, %f16, 0f3F317218, %f15;
+	mul.ftz.f32 	%f18, %f17, 0f3FB8AA3B;
+	cvt.rmi.ftz.f32.f32 	%f19, %f18;
+	cvt.rzi.ftz.s32.f32 	%r16, %f19;
+	mul.wide.u32 	%rd3, %r4, 4;
+	add.s64 	%rd4, %rd2, %rd3;
+	st.global.u32 	[%rd4], %r16;
+	ret;
+}
+                                        // -- End function
+	// .globl	kernel_sum_s0_x_x_o___block_id_x // -- Begin function kernel_sum_s0_x_x_o___block_id_x
+.visible .entry kernel_sum_s0_x_x_o___block_id_x(
+	.param .u64 kernel_sum_s0_x_x_o___block_id_x_param_0
+)                                       // @kernel_sum_s0_x_x_o___block_id_x
+{
+	.reg .pred 	%p<2>;
+	.reg .b32 	%r<7>;
+	.reg .b64 	%rd<5>;
+
+// %bb.0:                               // %entry
+	ld.param.u64 	%rd1, [kernel_sum_s0_x_x_o___block_id_x_param_0];
+	cvta.to.global.u64 	%rd2, %rd1;
+	mov.u32 	%r1, %ctaid.x;
+	mov.u32 	%r2, %tid.x;
+	setp.lt.u32 	%p1, %r1, 26;
+	shl.b32 	%r3, %r1, 1;
+	selp.b32 	%r4, %r3, 51, %p1;
+	add.s32 	%r5, %r2, %r4;
+	mul.wide.u32 	%rd3, %r5, 4;
+	add.s64 	%rd4, %rd2, %rd3;
+	mov.u32 	%r6, 0;
+	st.global.u32 	[%rd4], %r6;
+	ret;
+}
+                                        // -- End function
+	// .globl	kernel_sum_s1___outermost___outermost___outermost_v77___block_id_w // -- Begin function kernel_sum_s1___outermost___outermost___outermost_v77___block_id_w
+.visible .entry kernel_sum_s1___outermost___outermost___outermost_v77___block_id_w(
+	.param .u64 kernel_sum_s1___outermost___outermost___outermost_v77___block_id_w_param_0
+)                                       // @kernel_sum_s1___outermost___outermost___outermost_v77___block_id_w
+{
+	.reg .pred 	%p<28>;
+	.reg .b32 	%r<85>;
+	.reg .b64 	%rd<5>;
+
+// %bb.0:                               // %entry
+	ld.param.u64 	%rd1, [kernel_sum_s1___outermost___outermost___outermost_v77___block_id_w_param_0];
+	cvta.to.global.u64 	%rd2, %rd1;
+	mov.u32 	%r1, %ctaid.x;
+	add.s32 	%r2, %r1, -26;
+	mul.lo.s32 	%r3, %r2, %r2;
+	mul.wide.u32 	%rd3, %r1, 4;
+	add.s64 	%rd4, %rd2, %rd3;
+	ld.global.u32 	%r4, [%rd4];
+	setp.lt.u32 	%p1, %r3, 690;
+	selp.u32 	%r5, 1, 0, %p1;
+	add.s32 	%r6, %r4, %r5;
+	add.s32 	%r7, %r3, 1;
+	setp.lt.u32 	%p2, %r7, 690;
+	selp.u32 	%r8, 1, 0, %p2;
+	add.s32 	%r9, %r6, %r8;
+	add.s32 	%r10, %r3, 4;
+	setp.lt.u32 	%p3, %r10, 690;
+	selp.u32 	%r11, 1, 0, %p3;
+	add.s32 	%r12, %r9, %r11;
+	add.s32 	%r13, %r3, 9;
+	setp.lt.u32 	%p4, %r13, 690;
+	selp.u32 	%r14, 1, 0, %p4;
+	add.s32 	%r15, %r12, %r14;
+	add.s32 	%r16, %r3, 16;
+	setp.lt.u32 	%p5, %r16, 690;
+	selp.u32 	%r17, 1, 0, %p5;
+	add.s32 	%r18, %r15, %r17;
+	add.s32 	%r19, %r3, 25;
+	setp.lt.u32 	%p6, %r19, 690;
+	selp.u32 	%r20, 1, 0, %p6;
+	add.s32 	%r21, %r18, %r20;
+	add.s32 	%r22, %r3, 36;
+	setp.lt.u32 	%p7, %r22, 690;
+	selp.u32 	%r23, 1, 0, %p7;
+	add.s32 	%r24, %r21, %r23;
+	add.s32 	%r25, %r3, 49;
+	setp.lt.u32 	%p8, %r25, 690;
+	selp.u32 	%r26, 1, 0, %p8;
+	add.s32 	%r27, %r24, %r26;
+	add.s32 	%r28, %r3, 64;
+	setp.lt.u32 	%p9, %r28, 690;
+	selp.u32 	%r29, 1, 0, %p9;
+	add.s32 	%r30, %r27, %r29;
+	add.s32 	%r31, %r3, 81;
+	setp.lt.u32 	%p10, %r31, 690;
+	selp.u32 	%r32, 1, 0, %p10;
+	add.s32 	%r33, %r30, %r32;
+	add.s32 	%r34, %r3, 100;
+	setp.lt.u32 	%p11, %r34, 690;
+	selp.u32 	%r35, 1, 0, %p11;
+	add.s32 	%r36, %r33, %r35;
+	add.s32 	%r37, %r3, 121;
+	setp.lt.u32 	%p12, %r37, 690;
+	selp.u32 	%r38, 1, 0, %p12;
+	add.s32 	%r39, %r36, %r38;
+	add.s32 	%r40, %r3, 144;
+	setp.lt.u32 	%p13, %r40, 690;
+	selp.u32 	%r41, 1, 0, %p13;
+	add.s32 	%r42, %r39, %r41;
+	add.s32 	%r43, %r3, 169;
+	setp.lt.u32 	%p14, %r43, 690;
+	selp.u32 	%r44, 1, 0, %p14;
+	add.s32 	%r45, %r42, %r44;
+	add.s32 	%r46, %r3, 196;
+	setp.lt.u32 	%p15, %r46, 690;
+	selp.u32 	%r47, 1, 0, %p15;
+	add.s32 	%r48, %r45, %r47;
+	add.s32 	%r49, %r3, 225;
+	setp.lt.u32 	%p16, %r49, 690;
+	selp.u32 	%r50, 1, 0, %p16;
+	add.s32 	%r51, %r48, %r50;
+	add.s32 	%r52, %r3, 256;
+	setp.lt.u32 	%p17, %r52, 690;
+	selp.u32 	%r53, 1, 0, %p17;
+	add.s32 	%r54, %r51, %r53;
+	add.s32 	%r55, %r3, 289;
+	setp.lt.u32 	%p18, %r55, 690;
+	selp.u32 	%r56, 1, 0, %p18;
+	add.s32 	%r57, %r54, %r56;
+	add.s32 	%r58, %r3, 324;
+	setp.lt.u32 	%p19, %r58, 690;
+	selp.u32 	%r59, 1, 0, %p19;
+	add.s32 	%r60, %r57, %r59;
+	add.s32 	%r61, %r3, 361;
+	setp.lt.u32 	%p20, %r61, 690;
+	selp.u32 	%r62, 1, 0, %p20;
+	add.s32 	%r63, %r60, %r62;
+	add.s32 	%r64, %r3, 400;
+	setp.lt.u32 	%p21, %r64, 690;
+	selp.u32 	%r65, 1, 0, %p21;
+	add.s32 	%r66, %r63, %r65;
+	add.s32 	%r67, %r3, 441;
+	setp.lt.u32 	%p22, %r67, 690;
+	selp.u32 	%r68, 1, 0, %p22;
+	add.s32 	%r69, %r66, %r68;
+	add.s32 	%r70, %r3, 484;
+	setp.lt.u32 	%p23, %r70, 690;
+	selp.u32 	%r71, 1, 0, %p23;
+	add.s32 	%r72, %r69, %r71;
+	add.s32 	%r73, %r3, 529;
+	setp.lt.u32 	%p24, %r73, 690;
+	selp.u32 	%r74, 1, 0, %p24;
+	add.s32 	%r75, %r72, %r74;
+	add.s32 	%r76, %r3, 576;
+	setp.lt.u32 	%p25, %r76, 690;
+	selp.u32 	%r77, 1, 0, %p25;
+	add.s32 	%r78, %r75, %r77;
+	add.s32 	%r79, %r3, 625;
+	setp.lt.u32 	%p26, %r79, 690;
+	selp.u32 	%r80, 1, 0, %p26;
+	add.s32 	%r81, %r78, %r80;
+	add.s32 	%r82, %r3, 676;
+	setp.lt.u32 	%p27, %r82, 690;
+	selp.u32 	%r83, 1, 0, %p27;
+	add.s32 	%r84, %r81, %r83;
+	st.global.u32 	[%rd4], %r84;
+	ret;
+}
+                                        // -- End function
+	// .globl	kernel_vert_log_s0_y_y_o___block_id_y // -- Begin function kernel_vert_log_s0_y_y_o___block_id_y
+.visible .entry kernel_vert_log_s0_y_y_o___block_id_y(
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_0,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_1,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_2,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_3,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_4,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_5,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_6,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_7,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_8,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_9,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_10,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_11,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_12,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_13,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_14,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_15,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_16,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_17,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_18,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_19,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_20,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_21,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_22,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_23,
+	.param .u32 kernel_vert_log_s0_y_y_o___block_id_y_param_24,
+	.param .u64 kernel_vert_log_s0_y_y_o___block_id_y_param_25,
+	.param .u64 kernel_vert_log_s0_y_y_o___block_id_y_param_26
+)                                       // @kernel_vert_log_s0_y_y_o___block_id_y
+{
+	.reg .pred 	%p<7>;
+	.reg .b32 	%r<163>;
+	.reg .b64 	%rd<150>;
+
+// %bb.0:                               // %entry
+	ld.param.u32 	%r36, [kernel_vert_log_s0_y_y_o___block_id_y_param_24];
+	ld.param.u32 	%r35, [kernel_vert_log_s0_y_y_o___block_id_y_param_23];
+	ld.param.u32 	%r34, [kernel_vert_log_s0_y_y_o___block_id_y_param_22];
+	ld.param.u32 	%r31, [kernel_vert_log_s0_y_y_o___block_id_y_param_17];
+	ld.param.u32 	%r30, [kernel_vert_log_s0_y_y_o___block_id_y_param_16];
+	ld.param.u32 	%r29, [kernel_vert_log_s0_y_y_o___block_id_y_param_15];
+	ld.param.u32 	%r25, [kernel_vert_log_s0_y_y_o___block_id_y_param_11];
+	ld.param.u32 	%r24, [kernel_vert_log_s0_y_y_o___block_id_y_param_10];
+	ld.param.u32 	%r23, [kernel_vert_log_s0_y_y_o___block_id_y_param_9];
+	ld.param.u32 	%r22, [kernel_vert_log_s0_y_y_o___block_id_y_param_8];
+	ld.param.u32 	%r21, [kernel_vert_log_s0_y_y_o___block_id_y_param_7];
+	ld.param.u32 	%r20, [kernel_vert_log_s0_y_y_o___block_id_y_param_6];
+	ld.param.u32 	%r19, [kernel_vert_log_s0_y_y_o___block_id_y_param_5];
+	ld.param.u32 	%r17, [kernel_vert_log_s0_y_y_o___block_id_y_param_1];
+	ld.param.u64 	%rd7, [kernel_vert_log_s0_y_y_o___block_id_y_param_26];
+	cvta.to.global.u64 	%rd149, %rd7;
+	ld.param.u64 	%rd8, [kernel_vert_log_s0_y_y_o___block_id_y_param_25];
+	cvta.to.global.u64 	%rd2, %rd8;
+	ld.param.u32 	%r37, [kernel_vert_log_s0_y_y_o___block_id_y_param_2];
+	ld.param.u32 	%r38, [kernel_vert_log_s0_y_y_o___block_id_y_param_3];
+	mov.u32 	%r39, %ctaid.y;
+	mov.u32 	%r1, %ctaid.x;
+	mov.u32 	%r2, %tid.y;
+	mov.u32 	%r3, %tid.x;
+	setp.lt.s32 	%p1, %r39, %r37;
+	setp.ge.s32 	%p2, %r39, %r38;
+	shl.b32 	%r40, %r39, 3;
+	ld.param.u32 	%r41, [kernel_vert_log_s0_y_y_o___block_id_y_param_19];
+	add.s32 	%r42, %r40, %r41;
+	ld.param.u32 	%r43, [kernel_vert_log_s0_y_y_o___block_id_y_param_18];
+	min.s32 	%r4, %r42, %r43;
+	or.pred  	%p3, %p1, %p2;
+	@%p3 bra 	LBB3_3;
+// %bb.1:                               // %true_bb
+	ld.param.u32 	%r33, [kernel_vert_log_s0_y_y_o___block_id_y_param_21];
+	ld.param.u32 	%r32, [kernel_vert_log_s0_y_y_o___block_id_y_param_20];
+	setp.ge.s32 	%p4, %r1, %r33;
+	setp.lt.s32 	%p5, %r1, %r32;
+	and.pred  	%p6, %p4, %p5;
+	shl.b32 	%r87, %r1, 4;
+	min.s32 	%r5, %r87, %r31;
+	add.s32 	%r6, %r4, %r2;
+	add.s32 	%r88, %r6, %r30;
+	mul.lo.s32 	%r7, %r88, %r29;
+	@%p6 bra 	LBB3_2;
+	bra.uni 	LBB3_5;
+LBB3_2:                                 // %true_bb1
+	ld.param.u32 	%r28, [kernel_vert_log_s0_y_y_o___block_id_y_param_14];
+	ld.param.u32 	%r27, [kernel_vert_log_s0_y_y_o___block_id_y_param_13];
+	ld.param.u32 	%r26, [kernel_vert_log_s0_y_y_o___block_id_y_param_12];
+	add.s32 	%r125, %r6, -51;
+	mul.lo.s32 	%r126, %r125, %r35;
+	add.s32 	%r127, %r5, %r3;
+	add.s32 	%r128, %r127, -26;
+	add.s32 	%r129, %r128, %r28;
+	add.s32 	%r130, %r129, %r126;
+	add.s32 	%r131, %r128, %r27;
+	add.s32 	%r132, %r131, %r126;
+	add.s32 	%r133, %r128, %r26;
+	add.s32 	%r134, %r133, %r126;
+	mul.wide.s32 	%rd101, %r134, 4;
+	add.s64 	%rd102, %rd2, %rd101;
+	ld.global.nc.u32 	%r135, [%rd102];
+	mul.lo.s32 	%r136, %r17, 3;
+	add.s32 	%r137, %r127, %r25;
+	add.s32 	%r138, %r137, %r7;
+	mul.wide.s32 	%rd103, %r132, 4;
+	add.s64 	%rd104, %rd2, %rd103;
+	ld.global.nc.u32 	%r139, [%rd104];
+	add.s32 	%r140, %r127, %r24;
+	add.s32 	%r141, %r140, %r7;
+	mul.wide.s32 	%rd105, %r130, 4;
+	add.s64 	%rd106, %rd2, %rd105;
+	ld.global.nc.u32 	%r162, [%rd106];
+	add.s32 	%r142, %r127, %r23;
+	add.s32 	%r143, %r142, %r7;
+	mul.wide.s32 	%rd107, %r138, 4;
+	add.s64 	%rd108, %rd149, %rd107;
+	st.global.u32 	[%rd108], %r135;
+	mul.wide.s32 	%rd109, %r141, 4;
+	add.s64 	%rd110, %rd149, %rd109;
+	st.global.u32 	[%rd110], %r139;
+	mul.wide.s32 	%rd111, %r143, 4;
+	add.s64 	%rd112, %rd149, %rd111;
+	st.global.u32 	[%rd112], %r162;
+	add.s32 	%r144, %r138, %r136;
+	mul.wide.s32 	%rd113, %r144, 4;
+	add.s64 	%rd114, %rd149, %rd113;
+	st.global.u32 	[%rd114], %r135;
+	add.s32 	%r145, %r141, %r136;
+	mul.wide.s32 	%rd115, %r145, 4;
+	add.s64 	%rd116, %rd149, %rd115;
+	st.global.u32 	[%rd116], %r139;
+	add.s32 	%r146, %r143, %r136;
+	mul.wide.s32 	%rd117, %r146, 4;
+	add.s64 	%rd118, %rd149, %rd117;
+	st.global.u32 	[%rd118], %r162;
+	add.s32 	%r147, %r144, %r136;
+	mul.wide.s32 	%rd119, %r147, 4;
+	add.s64 	%rd120, %rd149, %rd119;
+	st.global.u32 	[%rd120], %r135;
+	add.s32 	%r148, %r145, %r136;
+	mul.wide.s32 	%rd121, %r148, 4;
+	add.s64 	%rd122, %rd149, %rd121;
+	st.global.u32 	[%rd122], %r139;
+	add.s32 	%r149, %r146, %r136;
+	mul.wide.s32 	%rd123, %r149, 4;
+	add.s64 	%rd124, %rd149, %rd123;
+	st.global.u32 	[%rd124], %r162;
+	add.s32 	%r150, %r147, %r136;
+	mul.wide.s32 	%rd125, %r150, 4;
+	add.s64 	%rd126, %rd149, %rd125;
+	st.global.u32 	[%rd126], %r135;
+	add.s32 	%r151, %r148, %r136;
+	mul.wide.s32 	%rd127, %r151, 4;
+	add.s64 	%rd128, %rd149, %rd127;
+	st.global.u32 	[%rd128], %r139;
+	add.s32 	%r152, %r149, %r136;
+	mul.wide.s32 	%rd129, %r152, 4;
+	add.s64 	%rd130, %rd149, %rd129;
+	st.global.u32 	[%rd130], %r162;
+	add.s32 	%r153, %r150, %r136;
+	mul.wide.s32 	%rd131, %r153, 4;
+	add.s64 	%rd132, %rd149, %rd131;
+	st.global.u32 	[%rd132], %r135;
+	add.s32 	%r154, %r151, %r136;
+	mul.wide.s32 	%rd133, %r154, 4;
+	add.s64 	%rd134, %rd149, %rd133;
+	st.global.u32 	[%rd134], %r139;
+	add.s32 	%r155, %r152, %r136;
+	mul.wide.s32 	%rd135, %r155, 4;
+	add.s64 	%rd136, %rd149, %rd135;
+	st.global.u32 	[%rd136], %r162;
+	add.s32 	%r156, %r153, %r136;
+	mul.wide.s32 	%rd137, %r156, 4;
+	add.s64 	%rd138, %rd149, %rd137;
+	st.global.u32 	[%rd138], %r135;
+	add.s32 	%r157, %r154, %r136;
+	mul.wide.s32 	%rd139, %r157, 4;
+	add.s64 	%rd140, %rd149, %rd139;
+	st.global.u32 	[%rd140], %r139;
+	add.s32 	%r158, %r155, %r136;
+	mul.wide.s32 	%rd141, %r158, 4;
+	add.s64 	%rd142, %rd149, %rd141;
+	st.global.u32 	[%rd142], %r162;
+	add.s32 	%r159, %r156, %r136;
+	mul.wide.s32 	%rd143, %r159, 4;
+	add.s64 	%rd144, %rd149, %rd143;
+	st.global.u32 	[%rd144], %r135;
+	add.s32 	%r160, %r157, %r136;
+	mul.wide.s32 	%rd145, %r160, 4;
+	add.s64 	%rd146, %rd149, %rd145;
+	st.global.u32 	[%rd146], %r139;
+	add.s32 	%r161, %r158, %r136;
+	mul.wide.s32 	%rd147, %r161, 4;
+	add.s64 	%rd148, %rd149, %rd147;
+	st.global.u32 	[%rd148], %r162;
+	ret;
+LBB3_3:                                 // %false_bb
+	ld.param.u32 	%r18, [kernel_vert_log_s0_y_y_o___block_id_y_param_4];
+	ld.param.u32 	%r16, [kernel_vert_log_s0_y_y_o___block_id_y_param_0];
+	shl.b32 	%r44, %r1, 4;
+	min.s32 	%r45, %r44, %r31;
+	add.s32 	%r46, %r4, %r2;
+	add.s32 	%r47, %r46, %r30;
+	mul.lo.s32 	%r48, %r47, %r29;
+	add.s32 	%r49, %r45, %r3;
+	add.s32 	%r50, %r49, %r34;
+	min.s32 	%r51, %r50, %r22;
+	add.s32 	%r52, %r51, -26;
+	max.s32 	%r53, %r52, %r36;
+	min.s32 	%r54, %r46, %r18;
+	add.s32 	%r55, %r54, -51;
+	max.s32 	%r56, %r55, %r16;
+	mad.lo.s32 	%r57, %r56, %r35, %r53;
+	add.s32 	%r58, %r57, %r21;
+	add.s32 	%r59, %r57, %r20;
+	add.s32 	%r60, %r57, %r19;
+	mul.wide.s32 	%rd9, %r60, 4;
+	add.s64 	%rd10, %rd2, %rd9;
+	ld.global.nc.u32 	%r61, [%rd10];
+	mul.lo.s32 	%r62, %r17, 3;
+	add.s32 	%r63, %r49, %r25;
+	add.s32 	%r64, %r63, %r48;
+	mul.wide.s32 	%rd11, %r59, 4;
+	add.s64 	%rd12, %rd2, %rd11;
+	ld.global.nc.u32 	%r65, [%rd12];
+	add.s32 	%r66, %r49, %r24;
+	add.s32 	%r67, %r66, %r48;
+	mul.wide.s32 	%rd13, %r58, 4;
+	add.s64 	%rd14, %rd2, %rd13;
+	ld.global.nc.u32 	%r162, [%rd14];
+	add.s32 	%r68, %r49, %r23;
+	add.s32 	%r69, %r68, %r48;
+	mul.wide.s32 	%rd15, %r64, 4;
+	add.s64 	%rd16, %rd149, %rd15;
+	st.global.u32 	[%rd16], %r61;
+	mul.wide.s32 	%rd17, %r67, 4;
+	add.s64 	%rd18, %rd149, %rd17;
+	st.global.u32 	[%rd18], %r65;
+	mul.wide.s32 	%rd19, %r69, 4;
+	add.s64 	%rd20, %rd149, %rd19;
+	st.global.u32 	[%rd20], %r162;
+	add.s32 	%r70, %r64, %r62;
+	mul.wide.s32 	%rd21, %r70, 4;
+	add.s64 	%rd22, %rd149, %rd21;
+	st.global.u32 	[%rd22], %r61;
+	add.s32 	%r71, %r67, %r62;
+	mul.wide.s32 	%rd23, %r71, 4;
+	add.s64 	%rd24, %rd149, %rd23;
+	st.global.u32 	[%rd24], %r65;
+	add.s32 	%r72, %r69, %r62;
+	mul.wide.s32 	%rd25, %r72, 4;
+	add.s64 	%rd26, %rd149, %rd25;
+	st.global.u32 	[%rd26], %r162;
+	add.s32 	%r73, %r70, %r62;
+	mul.wide.s32 	%rd27, %r73, 4;
+	add.s64 	%rd28, %rd149, %rd27;
+	st.global.u32 	[%rd28], %r61;
+	add.s32 	%r74, %r71, %r62;
+	mul.wide.s32 	%rd29, %r74, 4;
+	add.s64 	%rd30, %rd149, %rd29;
+	st.global.u32 	[%rd30], %r65;
+	add.s32 	%r75, %r72, %r62;
+	mul.wide.s32 	%rd31, %r75, 4;
+	add.s64 	%rd32, %rd149, %rd31;
+	st.global.u32 	[%rd32], %r162;
+	add.s32 	%r76, %r73, %r62;
+	mul.wide.s32 	%rd33, %r76, 4;
+	add.s64 	%rd34, %rd149, %rd33;
+	st.global.u32 	[%rd34], %r61;
+	add.s32 	%r77, %r74, %r62;
+	mul.wide.s32 	%rd35, %r77, 4;
+	add.s64 	%rd36, %rd149, %rd35;
+	st.global.u32 	[%rd36], %r65;
+	add.s32 	%r78, %r75, %r62;
+	mul.wide.s32 	%rd37, %r78, 4;
+	add.s64 	%rd38, %rd149, %rd37;
+	st.global.u32 	[%rd38], %r162;
+	add.s32 	%r79, %r76, %r62;
+	mul.wide.s32 	%rd39, %r79, 4;
+	add.s64 	%rd40, %rd149, %rd39;
+	st.global.u32 	[%rd40], %r61;
+	add.s32 	%r80, %r77, %r62;
+	mul.wide.s32 	%rd41, %r80, 4;
+	add.s64 	%rd42, %rd149, %rd41;
+	st.global.u32 	[%rd42], %r65;
+	add.s32 	%r81, %r78, %r62;
+	mul.wide.s32 	%rd43, %r81, 4;
+	add.s64 	%rd44, %rd149, %rd43;
+	st.global.u32 	[%rd44], %r162;
+	add.s32 	%r82, %r79, %r62;
+	mul.wide.s32 	%rd45, %r82, 4;
+	add.s64 	%rd46, %rd149, %rd45;
+	st.global.u32 	[%rd46], %r61;
+	add.s32 	%r83, %r80, %r62;
+	mul.wide.s32 	%rd47, %r83, 4;
+	add.s64 	%rd48, %rd149, %rd47;
+	st.global.u32 	[%rd48], %r65;
+	add.s32 	%r84, %r81, %r62;
+	mul.wide.s32 	%rd49, %r84, 4;
+	add.s64 	%rd50, %rd149, %rd49;
+	st.global.u32 	[%rd50], %r162;
+	add.s32 	%r85, %r82, %r62;
+	mul.wide.s32 	%rd51, %r85, 4;
+	add.s64 	%rd52, %rd149, %rd51;
+	st.global.u32 	[%rd52], %r61;
+	add.s32 	%r86, %r83, %r62;
+	mul.wide.s32 	%rd53, %r86, 4;
+	add.s64 	%rd54, %rd149, %rd53;
+	st.global.u32 	[%rd54], %r65;
+	add.s32 	%r161, %r84, %r62;
+	mul.wide.s32 	%rd147, %r161, 4;
+	add.s64 	%rd148, %rd149, %rd147;
+	st.global.u32 	[%rd148], %r162;
+	ret;
+LBB3_5:                                 // %false_bb2
+	add.s32 	%r89, %r5, %r3;
+	add.s32 	%r90, %r89, %r34;
+	min.s32 	%r91, %r90, %r22;
+	add.s32 	%r92, %r91, -26;
+	max.s32 	%r93, %r92, %r36;
+	add.s32 	%r94, %r6, -51;
+	mad.lo.s32 	%r95, %r94, %r35, %r93;
+	add.s32 	%r96, %r95, %r21;
+	add.s32 	%r97, %r95, %r20;
+	add.s32 	%r98, %r95, %r19;
+	mul.wide.s32 	%rd55, %r98, 4;
+	add.s64 	%rd56, %rd2, %rd55;
+	ld.global.nc.u32 	%r99, [%rd56];
+	mul.lo.s32 	%r100, %r17, 3;
+	add.s32 	%r101, %r89, %r25;
+	add.s32 	%r102, %r101, %r7;
+	mul.wide.s32 	%rd57, %r97, 4;
+	add.s64 	%rd58, %rd2, %rd57;
+	ld.global.nc.u32 	%r103, [%rd58];
+	add.s32 	%r104, %r89, %r24;
+	add.s32 	%r105, %r104, %r7;
+	mul.wide.s32 	%rd59, %r96, 4;
+	add.s64 	%rd60, %rd2, %rd59;
+	ld.global.nc.u32 	%r162, [%rd60];
+	add.s32 	%r106, %r89, %r23;
+	add.s32 	%r107, %r106, %r7;
+	mul.wide.s32 	%rd61, %r102, 4;
+	add.s64 	%rd62, %rd149, %rd61;
+	st.global.u32 	[%rd62], %r99;
+	mul.wide.s32 	%rd63, %r105, 4;
+	add.s64 	%rd64, %rd149, %rd63;
+	st.global.u32 	[%rd64], %r103;
+	mul.wide.s32 	%rd65, %r107, 4;
+	add.s64 	%rd66, %rd149, %rd65;
+	st.global.u32 	[%rd66], %r162;
+	add.s32 	%r108, %r102, %r100;
+	mul.wide.s32 	%rd67, %r108, 4;
+	add.s64 	%rd68, %rd149, %rd67;
+	st.global.u32 	[%rd68], %r99;
+	add.s32 	%r109, %r105, %r100;
+	mul.wide.s32 	%rd69, %r109, 4;
+	add.s64 	%rd70, %rd149, %rd69;
+	st.global.u32 	[%rd70], %r103;
+	add.s32 	%r110, %r107, %r100;
+	mul.wide.s32 	%rd71, %r110, 4;
+	add.s64 	%rd72, %rd149, %rd71;
+	st.global.u32 	[%rd72], %r162;
+	add.s32 	%r111, %r108, %r100;
+	mul.wide.s32 	%rd73, %r111, 4;
+	add.s64 	%rd74, %rd149, %rd73;
+	st.global.u32 	[%rd74], %r99;
+	add.s32 	%r112, %r109, %r100;
+	mul.wide.s32 	%rd75, %r112, 4;
+	add.s64 	%rd76, %rd149, %rd75;
+	st.global.u32 	[%rd76], %r103;
+	add.s32 	%r113, %r110, %r100;
+	mul.wide.s32 	%rd77, %r113, 4;
+	add.s64 	%rd78, %rd149, %rd77;
+	st.global.u32 	[%rd78], %r162;
+	add.s32 	%r114, %r111, %r100;
+	mul.wide.s32 	%rd79, %r114, 4;
+	add.s64 	%rd80, %rd149, %rd79;
+	st.global.u32 	[%rd80], %r99;
+	add.s32 	%r115, %r112, %r100;
+	mul.wide.s32 	%rd81, %r115, 4;
+	add.s64 	%rd82, %rd149, %rd81;
+	st.global.u32 	[%rd82], %r103;
+	add.s32 	%r116, %r113, %r100;
+	mul.wide.s32 	%rd83, %r116, 4;
+	add.s64 	%rd84, %rd149, %rd83;
+	st.global.u32 	[%rd84], %r162;
+	add.s32 	%r117, %r114, %r100;
+	mul.wide.s32 	%rd85, %r117, 4;
+	add.s64 	%rd86, %rd149, %rd85;
+	st.global.u32 	[%rd86], %r99;
+	add.s32 	%r118, %r115, %r100;
+	mul.wide.s32 	%rd87, %r118, 4;
+	add.s64 	%rd88, %rd149, %rd87;
+	st.global.u32 	[%rd88], %r103;
+	add.s32 	%r119, %r116, %r100;
+	mul.wide.s32 	%rd89, %r119, 4;
+	add.s64 	%rd90, %rd149, %rd89;
+	st.global.u32 	[%rd90], %r162;
+	add.s32 	%r120, %r117, %r100;
+	mul.wide.s32 	%rd91, %r120, 4;
+	add.s64 	%rd92, %rd149, %rd91;
+	st.global.u32 	[%rd92], %r99;
+	add.s32 	%r121, %r118, %r100;
+	mul.wide.s32 	%rd93, %r121, 4;
+	add.s64 	%rd94, %rd149, %rd93;
+	st.global.u32 	[%rd94], %r103;
+	add.s32 	%r122, %r119, %r100;
+	mul.wide.s32 	%rd95, %r122, 4;
+	add.s64 	%rd96, %rd149, %rd95;
+	st.global.u32 	[%rd96], %r162;
+	add.s32 	%r123, %r120, %r100;
+	mul.wide.s32 	%rd97, %r123, 4;
+	add.s64 	%rd98, %rd149, %rd97;
+	st.global.u32 	[%rd98], %r99;
+	add.s32 	%r124, %r121, %r100;
+	mul.wide.s32 	%rd99, %r124, 4;
+	add.s64 	%rd100, %rd149, %rd99;
+	st.global.u32 	[%rd100], %r103;
+	add.s32 	%r161, %r122, %r100;
+	mul.wide.s32 	%rd147, %r161, 4;
+	add.s64 	%rd148, %rd149, %rd147;
+	st.global.u32 	[%rd148], %r162;
+	ret;
+}
+                                        // -- End function
+	// .globl	kernel_vert_log_s1_c___block_id_y // -- Begin function kernel_vert_log_s1_c___block_id_y
+.visible .entry kernel_vert_log_s1_c___block_id_y(
+	.param .u32 kernel_vert_log_s1_c___block_id_y_param_0,
+	.param .u32 kernel_vert_log_s1_c___block_id_y_param_1,
+	.param .u32 kernel_vert_log_s1_c___block_id_y_param_2,
+	.param .u32 kernel_vert_log_s1_c___block_id_y_param_3,
+	.param .u32 kernel_vert_log_s1_c___block_id_y_param_4,
+	.param .u32 kernel_vert_log_s1_c___block_id_y_param_5,
+	.param .u64 kernel_vert_log_s1_c___block_id_y_param_6
+)                                       // @kernel_vert_log_s1_c___block_id_y
+{
+	.reg .pred 	%p<17>;
+	.reg .f32 	%f<46>;
+	.reg .b32 	%r<356>;
+	.reg .b64 	%rd<93>;
+
+// %bb.0:                               // %entry
+	ld.param.u32 	%r140, [kernel_vert_log_s1_c___block_id_y_param_1];
+	setp.lt.s32 	%p1, %r140, 1;
+	@%p1 bra 	LBB4_13;
+// %bb.1:                               // %entry.split.us
+	ld.param.u32 	%r144, [kernel_vert_log_s1_c___block_id_y_param_5];
+	ld.param.u32 	%r143, [kernel_vert_log_s1_c___block_id_y_param_4];
+	ld.param.u32 	%r142, [kernel_vert_log_s1_c___block_id_y_param_3];
+	ld.param.u32 	%r141, [kernel_vert_log_s1_c___block_id_y_param_2];
+	ld.param.u32 	%r139, [kernel_vert_log_s1_c___block_id_y_param_0];
+	ld.param.u64 	%rd2, [kernel_vert_log_s1_c___block_id_y_param_6];
+	cvta.to.global.u64 	%rd1, %rd2;
+	mov.u32 	%r1, %ctaid.y;
+	mov.u32 	%r145, %ctaid.x;
+	mov.u32 	%r2, %tid.x;
+	shl.b32 	%r3, %r145, 5;
+	mul.lo.s32 	%r146, %r1, %r143;
+	add.s32 	%r4, %r142, 48;
+	mul.lo.s32 	%r5, %r143, 3;
+	add.s32 	%r147, %r2, %r3;
+	add.s32 	%r148, %r147, 32;
+	add.s32 	%r149, %r148, %r139;
+	add.s32 	%r6, %r149, %r146;
+	sub.s32 	%r150, %r148, %r144;
+	add.s32 	%r7, %r150, %r146;
+	and.b32  	%r10, %r140, 1;
+	setp.eq.s32 	%p2, %r140, 1;
+	@%p2 bra 	LBB4_2;
+	bra.uni 	LBB4_3;
+LBB4_2:
+	mov.u32 	%r323, -26;
+	add.s32 	%r8, %r6, %r5;
+	add.s32 	%r9, %r7, %r5;
+	setp.eq.s32 	%p4, %r10, 0;
+	@%p4 bra 	LBB4_8;
+	bra.uni 	LBB4_7;
+LBB4_3:                                 // %entry.split.us.new
+	sub.s32 	%r11, %r140, %r10;
+	add.s32 	%r153, %r1, 3;
+	mul.lo.s32 	%r154, %r143, %r153;
+	add.s32 	%r155, %r2, %r154;
+	add.s32 	%r156, %r141, -25;
+	mul.lo.s32 	%r157, %r156, %r4;
+	add.s32 	%r158, %r155, %r157;
+	add.s32 	%r159, %r158, 32;
+	sub.s32 	%r322, %r159, %r144;
+	shl.b32 	%r160, %r142, 1;
+	add.s32 	%r13, %r160, 96;
+	add.s32 	%r161, %r2, %r142;
+	add.s32 	%r162, %r161, %r139;
+	add.s32 	%r163, %r162, %r154;
+	add.s32 	%r164, %r163, %r157;
+	add.s32 	%r321, %r164, 80;
+	add.s32 	%r165, %r2, %r139;
+	add.s32 	%r166, %r165, %r154;
+	add.s32 	%r167, %r166, %r157;
+	add.s32 	%r320, %r167, 32;
+	add.s32 	%r168, %r141, -26;
+	mul.lo.s32 	%r169, %r168, %r4;
+	add.s32 	%r170, %r155, %r169;
+	add.s32 	%r171, %r170, 32;
+	sub.s32 	%r318, %r171, %r144;
+	add.s32 	%r172, %r163, %r169;
+	add.s32 	%r317, %r172, 80;
+	add.s32 	%r173, %r166, %r169;
+	add.s32 	%r316, %r173, 32;
+	mov.u32 	%r319, 0;
+LBB4_4:                                 // %"for vert_log.s1.r$x.us"
+                                        // =>This Inner Loop Header: Depth=1
+	add.s32 	%r174, %r3, %r316;
+	mul.wide.s32 	%rd3, %r174, 4;
+	add.s64 	%rd4, %rd1, %rd3;
+	ld.global.f32 	%f1, [%rd4];
+	add.s32 	%r175, %r3, %r317;
+	mul.wide.s32 	%rd5, %r175, 4;
+	add.s64 	%rd6, %rd1, %rd5;
+	ld.global.f32 	%f2, [%rd6];
+	max.ftz.f32 	%f3, %f1, %f2;
+	add.s32 	%r176, %r3, %r318;
+	mul.wide.s32 	%rd7, %r176, 4;
+	add.s64 	%rd8, %rd1, %rd7;
+	st.global.f32 	[%rd8], %f3;
+	add.s32 	%r177, %r3, %r320;
+	mul.wide.s32 	%rd9, %r177, 4;
+	add.s64 	%rd10, %rd1, %rd9;
+	ld.global.f32 	%f4, [%rd10];
+	add.s32 	%r178, %r3, %r321;
+	mul.wide.s32 	%rd11, %r178, 4;
+	add.s64 	%rd12, %rd1, %rd11;
+	ld.global.f32 	%f5, [%rd12];
+	max.ftz.f32 	%f6, %f4, %f5;
+	add.s32 	%r179, %r3, %r322;
+	mul.wide.s32 	%rd13, %r179, 4;
+	add.s64 	%rd14, %rd1, %rd13;
+	st.global.f32 	[%rd14], %f6;
+	add.s32 	%r322, %r322, %r13;
+	add.s32 	%r321, %r321, %r13;
+	add.s32 	%r320, %r320, %r13;
+	add.s32 	%r319, %r319, 2;
+	add.s32 	%r318, %r318, %r13;
+	add.s32 	%r317, %r317, %r13;
+	add.s32 	%r316, %r316, %r13;
+	setp.ne.s32 	%p3, %r11, %r319;
+	@%p3 bra 	LBB4_4;
+// %bb.5:                               // %"end for vert_log.s1.r$x.loopexit.us.unr-lcssa.loopexit"
+	add.s32 	%r323, %r11, -26;
+	add.s32 	%r8, %r6, %r5;
+	add.s32 	%r9, %r7, %r5;
+	setp.eq.s32 	%p4, %r10, 0;
+	@%p4 bra 	LBB4_8;
+LBB4_7:                                 // %"for vert_log.s1.r$x.us.epil"
+	add.s32 	%r180, %r323, %r141;
+	mul.lo.s32 	%r181, %r180, %r4;
+	add.s32 	%r182, %r181, %r8;
+	mul.wide.s32 	%rd15, %r182, 4;
+	add.s64 	%rd16, %rd1, %rd15;
+	ld.global.f32 	%f7, [%rd16];
+	add.s32 	%r183, %r182, %r4;
+	mul.wide.s32 	%rd17, %r183, 4;
+	add.s64 	%rd18, %rd1, %rd17;
+	ld.global.f32 	%f8, [%rd18];
+	max.ftz.f32 	%f9, %f7, %f8;
+	add.s32 	%r184, %r9, %r181;
+	mul.wide.s32 	%rd19, %r184, 4;
+	add.s64 	%rd20, %rd1, %rd19;
+	st.global.f32 	[%rd20], %f9;
+LBB4_8:                                 // %"end for vert_log.s1.r$x.loopexit.us"
+	@%p2 bra 	LBB4_9;
+	bra.uni 	LBB4_14;
+LBB4_9:
+	mov.u32 	%r332, -26;
+	add.s32 	%r35, %r8, %r5;
+	add.s32 	%r36, %r9, %r5;
+	@%p4 bra 	LBB4_19;
+	bra.uni 	LBB4_18;
+LBB4_14:                                // %"end for vert_log.s1.r$x.loopexit.us.new"
+	sub.s32 	%r37, %r140, %r10;
+	add.s32 	%r187, %r1, 6;
+	mul.lo.s32 	%r188, %r143, %r187;
+	add.s32 	%r189, %r2, %r188;
+	add.s32 	%r190, %r141, -25;
+	mul.lo.s32 	%r191, %r190, %r4;
+	add.s32 	%r192, %r189, %r191;
+	add.s32 	%r193, %r192, 32;
+	sub.s32 	%r331, %r193, %r144;
+	shl.b32 	%r194, %r142, 1;
+	add.s32 	%r39, %r194, 96;
+	add.s32 	%r195, %r2, %r139;
+	add.s32 	%r196, %r195, %r188;
+	add.s32 	%r197, %r196, %r191;
+	add.s32 	%r198, %r197, %r194;
+	add.s32 	%r330, %r198, 128;
+	add.s32 	%r329, %r197, 32;
+	add.s32 	%r199, %r141, -26;
+	mul.lo.s32 	%r200, %r199, %r4;
+	add.s32 	%r201, %r189, %r200;
+	add.s32 	%r202, %r201, 32;
+	sub.s32 	%r327, %r202, %r144;
+	add.s32 	%r203, %r196, %r200;
+	add.s32 	%r204, %r203, %r194;
+	add.s32 	%r326, %r204, 128;
+	add.s32 	%r325, %r203, 32;
+	mov.u32 	%r328, 0;
+LBB4_15:                                // %"for vert_log.s1.r$x.us.1"
+                                        // =>This Inner Loop Header: Depth=1
+	add.s32 	%r205, %r3, %r325;
+	mul.wide.s32 	%rd21, %r205, 4;
+	add.s64 	%rd22, %rd1, %rd21;
+	ld.global.f32 	%f10, [%rd22];
+	add.s32 	%r206, %r3, %r326;
+	mul.wide.s32 	%rd23, %r206, 4;
+	add.s64 	%rd24, %rd1, %rd23;
+	ld.global.f32 	%f11, [%rd24];
+	max.ftz.f32 	%f12, %f10, %f11;
+	add.s32 	%r207, %r3, %r327;
+	mul.wide.s32 	%rd25, %r207, 4;
+	add.s64 	%rd26, %rd1, %rd25;
+	st.global.f32 	[%rd26], %f12;
+	add.s32 	%r208, %r3, %r329;
+	mul.wide.s32 	%rd27, %r208, 4;
+	add.s64 	%rd28, %rd1, %rd27;
+	ld.global.f32 	%f13, [%rd28];
+	add.s32 	%r209, %r3, %r330;
+	mul.wide.s32 	%rd29, %r209, 4;
+	add.s64 	%rd30, %rd1, %rd29;
+	ld.global.f32 	%f14, [%rd30];
+	max.ftz.f32 	%f15, %f13, %f14;
+	add.s32 	%r210, %r3, %r331;
+	mul.wide.s32 	%rd31, %r210, 4;
+	add.s64 	%rd32, %rd1, %rd31;
+	st.global.f32 	[%rd32], %f15;
+	add.s32 	%r331, %r331, %r39;
+	add.s32 	%r330, %r330, %r39;
+	add.s32 	%r329, %r329, %r39;
+	add.s32 	%r328, %r328, 2;
+	add.s32 	%r327, %r327, %r39;
+	add.s32 	%r326, %r326, %r39;
+	add.s32 	%r325, %r325, %r39;
+	setp.ne.s32 	%p6, %r37, %r328;
+	@%p6 bra 	LBB4_15;
+// %bb.16:                              // %"end for vert_log.s1.r$x.loopexit.us.1.unr-lcssa.loopexit"
+	add.s32 	%r332, %r37, -26;
+	add.s32 	%r35, %r8, %r5;
+	add.s32 	%r36, %r9, %r5;
+	@%p4 bra 	LBB4_19;
+LBB4_18:                                // %"for vert_log.s1.r$x.us.1.epil"
+	add.s32 	%r211, %r332, %r141;
+	mul.lo.s32 	%r212, %r211, %r4;
+	add.s32 	%r213, %r212, %r35;
+	mul.wide.s32 	%rd33, %r213, 4;
+	add.s64 	%rd34, %rd1, %rd33;
+	ld.global.f32 	%f16, [%rd34];
+	shl.b32 	%r214, %r4, 1;
+	add.s32 	%r215, %r213, %r214;
+	mul.wide.s32 	%rd35, %r215, 4;
+	add.s64 	%rd36, %rd1, %rd35;
+	ld.global.f32 	%f17, [%rd36];
+	max.ftz.f32 	%f18, %f16, %f17;
+	add.s32 	%r216, %r36, %r212;
+	mul.wide.s32 	%rd37, %r216, 4;
+	add.s64 	%rd38, %rd1, %rd37;
+	st.global.f32 	[%rd38], %f18;
+LBB4_19:                                // %"end for vert_log.s1.r$x.loopexit.us.1"
+	@%p2 bra 	LBB4_20;
+	bra.uni 	LBB4_21;
+LBB4_20:
+	mov.u32 	%r340, -26;
+	add.s32 	%r63, %r35, %r5;
+	add.s32 	%r64, %r36, %r5;
+	@%p4 bra 	LBB4_26;
+	bra.uni 	LBB4_25;
+LBB4_21:                                // %"end for vert_log.s1.r$x.loopexit.us.1.new"
+	sub.s32 	%r65, %r140, %r10;
+	add.s32 	%r219, %r1, 9;
+	mul.lo.s32 	%r220, %r143, %r219;
+	add.s32 	%r221, %r2, %r220;
+	add.s32 	%r222, %r141, -25;
+	mul.lo.s32 	%r223, %r222, %r4;
+	add.s32 	%r224, %r221, %r223;
+	add.s32 	%r225, %r224, 32;
+	sub.s32 	%r339, %r225, %r144;
+	shl.b32 	%r226, %r142, 1;
+	add.s32 	%r67, %r226, 96;
+	add.s32 	%r227, %r2, %r139;
+	add.s32 	%r228, %r227, %r220;
+	add.s32 	%r229, %r228, %r223;
+	shl.b32 	%r230, %r142, 2;
+	add.s32 	%r231, %r229, %r230;
+	add.s32 	%r338, %r231, 224;
+	add.s32 	%r337, %r229, 32;
+	add.s32 	%r232, %r141, -26;
+	mul.lo.s32 	%r233, %r232, %r4;
+	add.s32 	%r234, %r221, %r233;
+	add.s32 	%r235, %r234, 32;
+	sub.s32 	%r335, %r235, %r144;
+	add.s32 	%r236, %r228, %r233;
+	add.s32 	%r237, %r236, %r230;
+	add.s32 	%r334, %r237, 224;
+	add.s32 	%r333, %r236, 32;
+	mov.u32 	%r336, 0;
+LBB4_22:                                // %"for vert_log.s1.r$x.us.2"
+                                        // =>This Inner Loop Header: Depth=1
+	add.s32 	%r238, %r3, %r333;
+	mul.wide.s32 	%rd39, %r238, 4;
+	add.s64 	%rd40, %rd1, %rd39;
+	ld.global.f32 	%f19, [%rd40];
+	add.s32 	%r239, %r3, %r334;
+	mul.wide.s32 	%rd41, %r239, 4;
+	add.s64 	%rd42, %rd1, %rd41;
+	ld.global.f32 	%f20, [%rd42];
+	max.ftz.f32 	%f21, %f19, %f20;
+	add.s32 	%r240, %r3, %r335;
+	mul.wide.s32 	%rd43, %r240, 4;
+	add.s64 	%rd44, %rd1, %rd43;
+	st.global.f32 	[%rd44], %f21;
+	add.s32 	%r241, %r3, %r337;
+	mul.wide.s32 	%rd45, %r241, 4;
+	add.s64 	%rd46, %rd1, %rd45;
+	ld.global.f32 	%f22, [%rd46];
+	add.s32 	%r242, %r3, %r338;
+	mul.wide.s32 	%rd47, %r242, 4;
+	add.s64 	%rd48, %rd1, %rd47;
+	ld.global.f32 	%f23, [%rd48];
+	max.ftz.f32 	%f24, %f22, %f23;
+	add.s32 	%r243, %r3, %r339;
+	mul.wide.s32 	%rd49, %r243, 4;
+	add.s64 	%rd50, %rd1, %rd49;
+	st.global.f32 	[%rd50], %f24;
+	add.s32 	%r339, %r339, %r67;
+	add.s32 	%r338, %r338, %r67;
+	add.s32 	%r337, %r337, %r67;
+	add.s32 	%r336, %r336, 2;
+	add.s32 	%r335, %r335, %r67;
+	add.s32 	%r334, %r334, %r67;
+	add.s32 	%r333, %r333, %r67;
+	setp.ne.s32 	%p9, %r65, %r336;
+	@%p9 bra 	LBB4_22;
+// %bb.23:                              // %"end for vert_log.s1.r$x.loopexit.us.2.unr-lcssa.loopexit"
+	add.s32 	%r340, %r65, -26;
+	add.s32 	%r63, %r35, %r5;
+	add.s32 	%r64, %r36, %r5;
+	@%p4 bra 	LBB4_26;
+LBB4_25:                                // %"for vert_log.s1.r$x.us.2.epil"
+	add.s32 	%r244, %r340, %r141;
+	mul.lo.s32 	%r245, %r244, %r4;
+	add.s32 	%r246, %r245, %r63;
+	mul.wide.s32 	%rd51, %r246, 4;
+	add.s64 	%rd52, %rd1, %rd51;
+	ld.global.f32 	%f25, [%rd52];
+	shl.b32 	%r247, %r4, 2;
+	add.s32 	%r248, %r246, %r247;
+	mul.wide.s32 	%rd53, %r248, 4;
+	add.s64 	%rd54, %rd1, %rd53;
+	ld.global.f32 	%f26, [%rd54];
+	max.ftz.f32 	%f27, %f25, %f26;
+	add.s32 	%r249, %r64, %r245;
+	mul.wide.s32 	%rd55, %r249, 4;
+	add.s64 	%rd56, %rd1, %rd55;
+	st.global.f32 	[%rd56], %f27;
+LBB4_26:                                // %"end for vert_log.s1.r$x.loopexit.us.2"
+	@%p2 bra 	LBB4_27;
+	bra.uni 	LBB4_28;
+LBB4_27:
+	mov.u32 	%r348, -26;
+	add.s32 	%r89, %r63, %r5;
+	add.s32 	%r90, %r64, %r5;
+	@%p4 bra 	LBB4_33;
+	bra.uni 	LBB4_32;
+LBB4_28:                                // %"end for vert_log.s1.r$x.loopexit.us.2.new"
+	sub.s32 	%r91, %r140, %r10;
+	add.s32 	%r252, %r1, 12;
+	mul.lo.s32 	%r253, %r143, %r252;
+	add.s32 	%r254, %r2, %r253;
+	add.s32 	%r255, %r141, -25;
+	mul.lo.s32 	%r256, %r255, %r4;
+	add.s32 	%r257, %r254, %r256;
+	add.s32 	%r258, %r257, 32;
+	sub.s32 	%r347, %r258, %r144;
+	shl.b32 	%r259, %r142, 1;
+	add.s32 	%r93, %r259, 96;
+	add.s32 	%r260, %r2, %r139;
+	add.s32 	%r261, %r260, %r253;
+	add.s32 	%r262, %r261, %r256;
+	shl.b32 	%r263, %r142, 3;
+	add.s32 	%r264, %r262, %r263;
+	add.s32 	%r346, %r264, 416;
+	add.s32 	%r345, %r262, 32;
+	add.s32 	%r265, %r141, -26;
+	mul.lo.s32 	%r266, %r265, %r4;
+	add.s32 	%r267, %r254, %r266;
+	add.s32 	%r268, %r267, 32;
+	sub.s32 	%r343, %r268, %r144;
+	add.s32 	%r269, %r261, %r266;
+	add.s32 	%r270, %r269, %r263;
+	add.s32 	%r342, %r270, 416;
+	add.s32 	%r341, %r269, 32;
+	mov.u32 	%r344, 0;
+LBB4_29:                                // %"for vert_log.s1.r$x.us.3"
+                                        // =>This Inner Loop Header: Depth=1
+	add.s32 	%r271, %r3, %r341;
+	mul.wide.s32 	%rd57, %r271, 4;
+	add.s64 	%rd58, %rd1, %rd57;
+	ld.global.f32 	%f28, [%rd58];
+	add.s32 	%r272, %r3, %r342;
+	mul.wide.s32 	%rd59, %r272, 4;
+	add.s64 	%rd60, %rd1, %rd59;
+	ld.global.f32 	%f29, [%rd60];
+	max.ftz.f32 	%f30, %f28, %f29;
+	add.s32 	%r273, %r3, %r343;
+	mul.wide.s32 	%rd61, %r273, 4;
+	add.s64 	%rd62, %rd1, %rd61;
+	st.global.f32 	[%rd62], %f30;
+	add.s32 	%r274, %r3, %r345;
+	mul.wide.s32 	%rd63, %r274, 4;
+	add.s64 	%rd64, %rd1, %rd63;
+	ld.global.f32 	%f31, [%rd64];
+	add.s32 	%r275, %r3, %r346;
+	mul.wide.s32 	%rd65, %r275, 4;
+	add.s64 	%rd66, %rd1, %rd65;
+	ld.global.f32 	%f32, [%rd66];
+	max.ftz.f32 	%f33, %f31, %f32;
+	add.s32 	%r276, %r3, %r347;
+	mul.wide.s32 	%rd67, %r276, 4;
+	add.s64 	%rd68, %rd1, %rd67;
+	st.global.f32 	[%rd68], %f33;
+	add.s32 	%r347, %r347, %r93;
+	add.s32 	%r346, %r346, %r93;
+	add.s32 	%r345, %r345, %r93;
+	add.s32 	%r344, %r344, 2;
+	add.s32 	%r343, %r343, %r93;
+	add.s32 	%r342, %r342, %r93;
+	add.s32 	%r341, %r341, %r93;
+	setp.ne.s32 	%p12, %r91, %r344;
+	@%p12 bra 	LBB4_29;
+// %bb.30:                              // %"end for vert_log.s1.r$x.loopexit.us.3.unr-lcssa.loopexit"
+	add.s32 	%r348, %r91, -26;
+	add.s32 	%r89, %r63, %r5;
+	add.s32 	%r90, %r64, %r5;
+	@%p4 bra 	LBB4_33;
+LBB4_32:                                // %"for vert_log.s1.r$x.us.3.epil"
+	add.s32 	%r277, %r348, %r141;
+	mul.lo.s32 	%r278, %r277, %r4;
+	add.s32 	%r279, %r278, %r89;
+	mul.wide.s32 	%rd69, %r279, 4;
+	add.s64 	%rd70, %rd1, %rd69;
+	ld.global.f32 	%f34, [%rd70];
+	shl.b32 	%r280, %r4, 3;
+	add.s32 	%r281, %r279, %r280;
+	mul.wide.s32 	%rd71, %r281, 4;
+	add.s64 	%rd72, %rd1, %rd71;
+	ld.global.f32 	%f35, [%rd72];
+	max.ftz.f32 	%f36, %f34, %f35;
+	add.s32 	%r282, %r90, %r278;
+	mul.wide.s32 	%rd73, %r282, 4;
+	add.s64 	%rd74, %rd1, %rd73;
+	st.global.f32 	[%rd74], %f36;
+LBB4_33:                                // %"end for vert_log.s1.r$x.loopexit.us.3"
+	@%p2 bra 	LBB4_34;
+	bra.uni 	LBB4_35;
+LBB4_34:
+	mov.u32 	%r324, -26;
+	@%p4 bra 	LBB4_13;
+	bra.uni 	LBB4_12;
+LBB4_35:                                // %"end for vert_log.s1.r$x.loopexit.us.3.new"
+	sub.s32 	%r117, %r140, %r10;
+	add.s32 	%r285, %r1, 15;
+	mul.lo.s32 	%r286, %r143, %r285;
+	add.s32 	%r287, %r2, %r286;
+	add.s32 	%r288, %r141, -25;
+	mul.lo.s32 	%r289, %r288, %r4;
+	add.s32 	%r290, %r287, %r289;
+	add.s32 	%r291, %r290, 32;
+	sub.s32 	%r355, %r291, %r144;
+	shl.b32 	%r292, %r142, 1;
+	add.s32 	%r119, %r292, 96;
+	add.s32 	%r293, %r2, %r139;
+	add.s32 	%r294, %r293, %r286;
+	add.s32 	%r295, %r294, %r289;
+	shl.b32 	%r296, %r142, 4;
+	add.s32 	%r297, %r295, %r296;
+	add.s32 	%r354, %r297, 800;
+	add.s32 	%r353, %r295, 32;
+	add.s32 	%r298, %r141, -26;
+	mul.lo.s32 	%r299, %r298, %r4;
+	add.s32 	%r300, %r287, %r299;
+	add.s32 	%r301, %r300, 32;
+	sub.s32 	%r351, %r301, %r144;
+	add.s32 	%r302, %r294, %r299;
+	add.s32 	%r303, %r302, %r296;
+	add.s32 	%r350, %r303, 800;
+	add.s32 	%r349, %r302, 32;
+	mov.u32 	%r352, 0;
+LBB4_36:                                // %"for vert_log.s1.r$x.us.4"
+                                        // =>This Inner Loop Header: Depth=1
+	add.s32 	%r304, %r3, %r349;
+	mul.wide.s32 	%rd75, %r304, 4;
+	add.s64 	%rd76, %rd1, %rd75;
+	ld.global.f32 	%f37, [%rd76];
+	add.s32 	%r305, %r3, %r350;
+	mul.wide.s32 	%rd77, %r305, 4;
+	add.s64 	%rd78, %rd1, %rd77;
+	ld.global.f32 	%f38, [%rd78];
+	max.ftz.f32 	%f39, %f37, %f38;
+	add.s32 	%r306, %r3, %r351;
+	mul.wide.s32 	%rd79, %r306, 4;
+	add.s64 	%rd80, %rd1, %rd79;
+	st.global.f32 	[%rd80], %f39;
+	add.s32 	%r307, %r3, %r353;
+	mul.wide.s32 	%rd81, %r307, 4;
+	add.s64 	%rd82, %rd1, %rd81;
+	ld.global.f32 	%f40, [%rd82];
+	add.s32 	%r308, %r3, %r354;
+	mul.wide.s32 	%rd83, %r308, 4;
+	add.s64 	%rd84, %rd1, %rd83;
+	ld.global.f32 	%f41, [%rd84];
+	max.ftz.f32 	%f42, %f40, %f41;
+	add.s32 	%r309, %r3, %r355;
+	mul.wide.s32 	%rd85, %r309, 4;
+	add.s64 	%rd86, %rd1, %rd85;
+	st.global.f32 	[%rd86], %f42;
+	add.s32 	%r355, %r355, %r119;
+	add.s32 	%r354, %r354, %r119;
+	add.s32 	%r353, %r353, %r119;
+	add.s32 	%r352, %r352, 2;
+	add.s32 	%r351, %r351, %r119;
+	add.s32 	%r350, %r350, %r119;
+	add.s32 	%r349, %r349, %r119;
+	setp.eq.s32 	%p15, %r117, %r352;
+	@%p15 bra 	LBB4_10;
+	bra.uni 	LBB4_36;
+LBB4_10:                                // %"end for vert_log.s1.r$y.loopexit.unr-lcssa.loopexit"
+	add.s32 	%r324, %r117, -26;
+	@%p4 bra 	LBB4_13;
+LBB4_12:                                // %"for vert_log.s1.r$x.us.4.epil"
+	add.s32 	%r115, %r89, %r5;
+	add.s32 	%r116, %r90, %r5;
+	add.s32 	%r310, %r324, %r141;
+	mul.lo.s32 	%r311, %r310, %r4;
+	add.s32 	%r312, %r311, %r115;
+	mul.wide.s32 	%rd87, %r312, 4;
+	add.s64 	%rd88, %rd1, %rd87;
+	ld.global.f32 	%f43, [%rd88];
+	shl.b32 	%r313, %r4, 4;
+	add.s32 	%r314, %r312, %r313;
+	mul.wide.s32 	%rd89, %r314, 4;
+	add.s64 	%rd90, %rd1, %rd89;
+	ld.global.f32 	%f44, [%rd90];
+	max.ftz.f32 	%f45, %f43, %f44;
+	add.s32 	%r315, %r116, %r311;
+	mul.wide.s32 	%rd91, %r315, 4;
+	add.s64 	%rd92, %rd1, %rd91;
+	st.global.f32 	[%rd92], %f45;
+LBB4_13:                                // %"end for vert_log.s1.r$y"
+	ret;
+}
+                                        // -- End function
+	// .globl	kernel_output_s0_y_y_o___block_id_y // -- Begin function kernel_output_s0_y_y_o___block_id_y
+.visible .entry kernel_output_s0_y_y_o___block_id_y(
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_0,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_1,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_2,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_3,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_4,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_5,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_6,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_7,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_8,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_9,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_10,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_11,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_12,
+	.param .u32 kernel_output_s0_y_y_o___block_id_y_param_13,
+	.param .u64 kernel_output_s0_y_y_o___block_id_y_param_14,
+	.param .u64 kernel_output_s0_y_y_o___block_id_y_param_15,
+	.param .u64 kernel_output_s0_y_y_o___block_id_y_param_16,
+	.param .u64 kernel_output_s0_y_y_o___block_id_y_param_17
+)                                       // @kernel_output_s0_y_y_o___block_id_y
+{
+	.reg .pred 	%p<2>;
+	.reg .f32 	%f<22>;
+	.reg .b32 	%r<96>;
+	.reg .b64 	%rd<33>;
+
+// %bb.0:                               // %entry
+	ld.param.u32 	%r18, [kernel_output_s0_y_y_o___block_id_y_param_13];
+	ld.param.u32 	%r17, [kernel_output_s0_y_y_o___block_id_y_param_5];
+	ld.param.u32 	%r16, [kernel_output_s0_y_y_o___block_id_y_param_4];
+	ld.param.u32 	%r15, [kernel_output_s0_y_y_o___block_id_y_param_3];
+	ld.param.u32 	%r14, [kernel_output_s0_y_y_o___block_id_y_param_2];
+	ld.param.u32 	%r13, [kernel_output_s0_y_y_o___block_id_y_param_0];
+	ld.param.u64 	%rd8, [kernel_output_s0_y_y_o___block_id_y_param_17];
+	cvta.to.global.u64 	%rd1, %rd8;
+	ld.param.u32 	%r20, [kernel_output_s0_y_y_o___block_id_y_param_1];
+	ld.param.u64 	%rd9, [kernel_output_s0_y_y_o___block_id_y_param_16];
+	cvta.to.global.u64 	%rd32, %rd9;
+	ld.param.u64 	%rd10, [kernel_output_s0_y_y_o___block_id_y_param_15];
+	cvta.to.global.u64 	%rd3, %rd10;
+	ld.param.u64 	%rd11, [kernel_output_s0_y_y_o___block_id_y_param_14];
+	cvta.to.global.u64 	%rd4, %rd11;
+	mov.u32 	%r21, %ctaid.y;
+	ld.param.u32 	%r22, [kernel_output_s0_y_y_o___block_id_y_param_6];
+	mov.u32 	%r23, %ctaid.x;
+	ld.param.u32 	%r24, [kernel_output_s0_y_y_o___block_id_y_param_7];
+	mov.u32 	%r25, %tid.y;
+	ld.param.u32 	%r26, [kernel_output_s0_y_y_o___block_id_y_param_8];
+	mov.u32 	%r27, %tid.x;
+	shl.b32 	%r28, %r21, 5;
+	ld.param.u32 	%r29, [kernel_output_s0_y_y_o___block_id_y_param_9];
+	ld.param.u32 	%r30, [kernel_output_s0_y_y_o___block_id_y_param_10];
+	ld.param.u32 	%r31, [kernel_output_s0_y_y_o___block_id_y_param_12];
+	min.s32 	%r32, %r28, %r31;
+	ld.param.u32 	%r33, [kernel_output_s0_y_y_o___block_id_y_param_11];
+	shl.b32 	%r34, %r23, 5;
+	min.s32 	%r35, %r34, %r33;
+	shl.b32 	%r36, %r25, 5;
+	add.s32 	%r37, %r36, %r27;
+	mul.wide.u32 	%rd5, %r37, 4;
+	mov.u32 	%r38, -8388608;
+	st.shared.u32 	[%rd5], %r38;
+	st.shared.u32 	[%rd5+4096], %r38;
+	st.shared.u32 	[%rd5+8192], %r38;
+	bar.sync 	0;
+	add.s32 	%r1, %r32, %r25;
+	add.s32 	%r2, %r1, %r29;
+	add.s32 	%r3, %r26, 48;
+	mul.lo.s32 	%r4, %r14, 3;
+	add.s32 	%r5, %r35, %r27;
+	ld.shared.f32 	%f21, [%rd5];
+	ld.shared.f32 	%f20, [%rd5+4096];
+	ld.shared.f32 	%f19, [%rd5+8192];
+	add.s32 	%r39, %r27, %r30;
+	add.s32 	%r40, %r39, 79;
+	sub.s32 	%r41, %r40, %r20;
+	not.b32 	%r42, %r33;
+	not.b32 	%r43, %r34;
+	max.s32 	%r44, %r42, %r43;
+	sub.s32 	%r6, %r41, %r44;
+	add.s32 	%r45, %r27, %r22;
+	add.s32 	%r46, %r45, -27;
+	sub.s32 	%r7, %r46, %r44;
+	add.s32 	%r47, %r27, %r24;
+	add.s32 	%r48, %r47, -27;
+	sub.s32 	%r8, %r48, %r44;
+	add.s32 	%r49, %r27, %r26;
+	add.s32 	%r50, %r49, 79;
+	sub.s32 	%r51, %r50, %r20;
+	sub.s32 	%r9, %r51, %r44;
+	sub.s32 	%r52, %r27, %r20;
+	sub.s32 	%r10, %r52, %r44;
+	mov.u32 	%r95, 0;
+LBB5_1:                                 // %"for maximum.s1.dx$x"
+                                        // =>This Inner Loop Header: Depth=1
+	ld.global.nc.u32 	%r53, [%rd32];
+	min.s32 	%r54, %r53, 27;
+	max.s32 	%r55, %r54, 0;
+	mul.wide.u32 	%rd12, %r55, 4;
+	add.s64 	%rd13, %rd3, %rd12;
+	ld.global.nc.u32 	%r56, [%rd13];
+	min.s32 	%r57, %r56, 6;
+	max.s32 	%r58, %r57, 0;
+	mul.lo.s32 	%r59, %r4, %r58;
+	sub.s32 	%r60, %r2, %r55;
+	mad.lo.s32 	%r61, %r60, %r3, %r59;
+	add.s32 	%r62, %r10, %r95;
+	add.s32 	%r63, %r62, %r61;
+	add.s32 	%r64, %r63, 31;
+	mul.wide.s32 	%rd14, %r64, 4;
+	add.s64 	%rd15, %rd1, %rd14;
+	ld.global.nc.f32 	%f10, [%rd15];
+	add.s32 	%r65, %r55, %r2;
+	mov.u32 	%r66, 1;
+	shl.b32 	%r67, %r66, %r58;
+	min.s32 	%r68, %r67, 52;
+	max.s32 	%r69, %r68, 0;
+	sub.s32 	%r70, %r65, %r69;
+	mul.lo.s32 	%r71, %r70, %r3;
+	add.s32 	%r72, %r59, %r71;
+	add.s32 	%r73, %r9, %r95;
+	add.s32 	%r74, %r73, %r72;
+	mul.wide.s32 	%rd16, %r74, 4;
+	add.s64 	%rd17, %rd1, %rd16;
+	ld.global.nc.f32 	%f11, [%rd17];
+	max.ftz.f32 	%f12, %f10, %f11;
+	max.ftz.f32 	%f21, %f21, %f12;
+	add.s32 	%r75, %r8, %r95;
+	add.s32 	%r76, %r75, %r61;
+	mul.wide.s32 	%rd18, %r76, 4;
+	add.s64 	%rd19, %rd1, %rd18;
+	ld.global.nc.f32 	%f13, [%rd19];
+	mad.lo.s32 	%r77, %r58, 3, 1;
+	mad.lo.s32 	%r78, %r14, %r77, %r71;
+	add.s32 	%r79, %r73, %r78;
+	mul.wide.s32 	%rd20, %r79, 4;
+	add.s64 	%rd21, %rd1, %rd20;
+	ld.global.nc.f32 	%f14, [%rd21];
+	max.ftz.f32 	%f15, %f13, %f14;
+	max.ftz.f32 	%f20, %f20, %f15;
+	add.s32 	%r80, %r7, %r95;
+	add.s32 	%r81, %r80, %r61;
+	mul.wide.s32 	%rd22, %r81, 4;
+	add.s64 	%rd23, %rd1, %rd22;
+	ld.global.nc.f32 	%f16, [%rd23];
+	add.s32 	%r82, %r6, %r95;
+	add.s32 	%r83, %r82, %r72;
+	mul.wide.s32 	%rd24, %r83, 4;
+	add.s64 	%rd25, %rd1, %rd24;
+	ld.global.nc.f32 	%f17, [%rd25];
+	max.ftz.f32 	%f18, %f16, %f17;
+	max.ftz.f32 	%f19, %f19, %f18;
+	add.s64 	%rd32, %rd32, 4;
+	add.s32 	%r95, %r95, 1;
+	setp.ne.s32 	%p1, %r95, 53;
+	@%p1 bra 	LBB5_1;
+// %bb.2:                               // %"end for maximum.s1.dx$x"
+	st.shared.f32 	[%rd5], %f21;
+	st.shared.f32 	[%rd5+4096], %f20;
+	st.shared.f32 	[%rd5+8192], %f19;
+	bar.sync 	0;
+	ld.shared.u32 	%r84, [%rd5];
+	add.s32 	%r85, %r1, %r18;
+	mul.lo.s32 	%r86, %r85, %r13;
+	add.s32 	%r87, %r5, %r17;
+	add.s32 	%r88, %r87, %r86;
+	mul.wide.s32 	%rd26, %r88, 4;
+	add.s64 	%rd27, %rd4, %rd26;
+	st.global.u32 	[%rd27], %r84;
+	ld.shared.u32 	%r89, [%rd5+4096];
+	add.s32 	%r90, %r5, %r16;
+	add.s32 	%r91, %r90, %r86;
+	mul.wide.s32 	%rd28, %r91, 4;
+	add.s64 	%rd29, %rd4, %rd28;
+	st.global.u32 	[%rd29], %r89;
+	ld.shared.u32 	%r92, [%rd5+8192];
+	add.s32 	%r93, %r5, %r15;
+	add.s32 	%r94, %r93, %r86;
+	mul.wide.s32 	%rd30, %r94, 4;
+	add.s64 	%rd31, %rd4, %rd30;
+	st.global.u32 	[%rd31], %r92;
+	ret;
+}
+                                        // -- End function
+
+
+add_temp_object_file: /tmp/8C14jQ/max_filter_auto_schedule.a.o
+Module.compile(): temporary object_name /tmp/8C14jQ/max_filter_auto_schedule.a.o
+emit_file.Compiling to native code...
+Module.compile(): static_library_name ./bin/max_filter_auto_schedule.a
+file_unlink: /tmp/8C14jQ/max_filter_auto_schedule.a.o
+dir_rmdir: /tmp/8C14jQ
+Module.compile(): c_header_name ./bin/max_filter_auto_schedule.h
+Module.compile(): schedule_name ./bin/max_filter_auto_schedule.schedule

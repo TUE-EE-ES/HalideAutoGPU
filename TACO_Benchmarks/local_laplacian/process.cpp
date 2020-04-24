@@ -1,0 +1,52 @@
+#include <cstdio>
+#include <chrono>
+
+#include "local_laplacian.h"
+#ifndef NO_AUTO_SCHEDULE
+#include "local_laplacian_auto_schedule_store.h"
+#include "local_laplacian_auto_schedule.h"
+#include "local_laplacian_simple_auto_schedule.h"
+#include "local_laplacian_auto_schedule_no_fus.h"
+#endif
+
+#include "benchmark_util.h"
+#include "HalideBuffer.h"
+#include "halide_image_io.h"
+
+using namespace Halide::Runtime;
+using namespace Halide::Tools;
+
+int main(int argc, char **argv) {
+    if (argc < 7) {
+        printf("Usage: ./process input.png levels alpha beta timing_iterations output.png\n"
+               "e.g.: ./process input.png 8 1 1 10 output.png\n");
+        return 0;
+    }
+#ifdef cuda_alloc
+    halide_reuse_device_allocations(nullptr, true);
+#endif
+    // Input may be a PNG8
+    Buffer<uint16_t> input = load_and_convert_image(argv[1]);
+
+    int levels = atoi(argv[2]);
+    float alpha = atof(argv[3]), beta = atof(argv[4]);
+    Buffer<uint16_t> output(input.width(), input.height(), 3);
+    local_laplacian(input, levels, alpha/(levels-1), beta, output); 
+    output.device_sync(); 
+
+   multi_way_bench({
+        {"Manual", [&]() { local_laplacian(input, levels, alpha/(levels-1), beta, output); output.device_sync(); }},
+    #ifndef NO_AUTO_SCHEDULE
+        {"Nested auto-scheduled", [&]() { local_laplacian_auto_schedule_store(input, levels, alpha/(levels-1), beta, output); output.device_sync(); }},
+       {"Auto-scheduled", [&]() { local_laplacian_auto_schedule(input, levels, alpha/(levels-1), beta, output); output.device_sync(); }},
+          {"No-fusion auto-scheduled", [&]() { local_laplacian_auto_schedule_no_fus(input, levels, alpha/(levels-1), beta, output); output.device_sync(); }},
+        {"Simple auto-scheduled", [&]() { local_laplacian_simple_auto_schedule(input, levels, alpha/(levels-1), beta, output); output.device_sync(); }}
+    #endif
+        }
+    );
+
+
+    convert_and_save_image(output, argv[6]);
+
+    return 0;
+}

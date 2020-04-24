@@ -1,0 +1,113 @@
+is singleton1 output 0
+mem blur update 0
+is singleton1 output 1
+mem blur update 1
+is singleton1 output 2
+mem blur update 2
+is singleton1 output 3
+mem blur update 3
+is singleton1 output 0
+mem blur$1 update 0
+is singleton1 output 1
+mem blur$1 update 1
+is singleton1 output 2
+mem blur$1 update 2
+is singleton1 output 3
+mem blur$1 update 3
+is singleton1 output 0
+mem f0 update 0
+// Target: x86-64-linux-avx-avx2-cuda-cuda_capability_61-f16c-fma-sse41
+// MachineParams: 14,16777216,4
+
+// Delete this line if not using Generator
+Pipeline pipeline = get_pipeline();
+
+Var v0_i("v0_i");
+Var v0_o("v0_o");
+Var x_i("x_i");
+Var x_o("x_o");
+
+Func blur = pipeline.get_func(1);
+Func blur_1 = pipeline.get_func(3);
+Func f0 = pipeline.get_func(4);
+
+{
+    Var x = blur.args()[0];
+    Var v0 = blur.args()[1];
+    blur
+        .compute_root()
+        .split(x, x_o, x_i, 32)
+        .split(v0, v0_o, v0_i, 32)
+        .reorder(c, x_i, v0_i, x_o, v0_o)
+        .gpu_threads(x_i)
+        .gpu_threads(v0_i)
+        .gpu_blocks(v0_o)
+        .gpu_blocks(x_o)
+        .compute_root();
+    blur.update(0)
+        .split(x, x_o, x_i, 32, TailStrategy::GuardWithIf)
+        .reorder(x_i, x_o, c)
+        .gpu_threads(x_i)
+        .gpu_blocks(c)
+        .gpu_blocks(x_o);
+    blur.update(1)
+        .split(x, x_o, x_i, 32, TailStrategy::GuardWithIf)
+        .reorder(ry$x, x_i, x_o, c)
+        .gpu_threads(x_i)
+        .gpu_blocks(c)
+        .gpu_blocks(x_o);
+    blur.update(2)
+        .split(x, x_o, x_i, 32, TailStrategy::GuardWithIf)
+        .reorder(ry$x, x_i, x_o, c)
+        .gpu_threads(x_i)
+        .gpu_blocks(c)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = blur_1.args()[0];
+    Var v0 = blur_1.args()[1];
+    blur_1
+        .compute_root()
+        .split(x, x_o, x_i, 32)
+        .split(v0, v0_o, v0_i, 32)
+        .reorder(c, x_i, v0_i, x_o, v0_o)
+        .gpu_threads(x_i)
+        .gpu_threads(v0_i)
+        .gpu_blocks(v0_o)
+        .gpu_blocks(x_o)
+        .compute_root();
+    blur_1.update(0)
+        .split(x, x_o, x_i, 32, TailStrategy::GuardWithIf)
+        .reorder(x_i, x_o, c)
+        .gpu_threads(x_i)
+        .gpu_blocks(c)
+        .gpu_blocks(x_o);
+    blur_1.update(1)
+        .split(x, x_o, x_i, 32, TailStrategy::GuardWithIf)
+        .reorder(ry$1$x, x_i, x_o, c)
+        .gpu_threads(x_i)
+        .gpu_blocks(c)
+        .gpu_blocks(x_o);
+    blur_1.update(2)
+        .split(x, x_o, x_i, 32, TailStrategy::GuardWithIf)
+        .reorder(ry$1$x, x_i, x_o, c)
+        .gpu_threads(x_i)
+        .gpu_blocks(c)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = f0.args()[0];
+    Var v0 = f0.args()[1];
+    f0
+        .compute_root()
+        .split(x, x_o, x_i, 32)
+        .split(v0, v0_o, v0_i, 32)
+        .reorder(c, x_i, v0_i, x_o, v0_o)
+        .gpu_threads(x_i)
+        .gpu_threads(v0_i)
+        .gpu_blocks(v0_o)
+        .gpu_blocks(x_o);
+}
+
+
+TOTAL INLINES 0

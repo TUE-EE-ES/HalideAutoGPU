@@ -1,0 +1,423 @@
+inlined f0
+inlined repeat_edge
+inlined f12
+inlined f44
+inlined f13
+inlined f14
+inlined lambda_1
+inlined f15
+inlined f16
+inlined f17
+inlined f18
+inlined f19
+inlined f0
+inlined f20
+inlined repeat_edge
+is singleton4 output 0
+mem f1 update 0
+mem f11 update 0
+mem f0 update 0
+mem repeat_edge update 0
+is singleton2 output 0
+mem f2 update 0
+mem f12 update 0
+is singleton6 output 0
+mem f22 update 0
+mem f42 update 0
+mem f23 update 0
+mem f43 update 0
+mem f24 update 0
+mem f44 update 0
+is singleton5 output 0
+mem f25 update 0
+mem f45 update 0
+mem f26 update 0
+mem f46 update 0
+mem f27 update 0
+is singleton1 output 0
+mem f28 update 0
+is singleton2 output 0
+mem f3 update 0
+mem f13 update 0
+is singleton3 output 0
+mem f4 update 0
+mem f14 update 0
+mem lambda_1 update 0
+is singleton1 output 0
+mem f47 update 0
+is singleton1 output 0
+mem f48 update 0
+is singleton2 output 0
+mem f5 update 0
+mem f15 update 0
+is singleton2 output 0
+mem f6 update 0
+mem f16 update 0
+is singleton2 output 0
+mem f7 update 0
+mem f17 update 0
+is singleton2 output 0
+mem f8 update 0
+mem f18 update 0
+is singleton2 output 0
+mem f9 update 0
+mem f19 update 0
+is singleton7 output 0
+Will unroll c
+mem normalize update 0
+mem f20 update 0
+mem f0 update 0
+mem repeat_edge update 0
+mem f40 update 0
+Will unroll c
+mem f21 update 0
+Will unroll c
+mem f41 update 0
+Will unroll c
+// Target: x86-64-linux-avx-avx2-cuda-cuda_capability_61-f16c-fma-sse41
+// MachineParams: 14,16777216,4
+
+// Delete this line if not using Generator
+Pipeline pipeline = get_pipeline();
+
+Var x_i("x_i");
+Var x_o("x_o");
+Var y_i("y_i");
+Var y_o("y_o");
+
+Func f1 = pipeline.get_func(5);
+Func f11 = pipeline.get_func(4);
+Func f2 = pipeline.get_func(7);
+Func f21 = pipeline.get_func(47);
+Func f22 = pipeline.get_func(44);
+Func f23 = pipeline.get_func(41);
+Func f24 = pipeline.get_func(38);
+Func f25 = pipeline.get_func(35);
+Func f26 = pipeline.get_func(32);
+Func f27 = pipeline.get_func(29);
+Func f28 = pipeline.get_func(26);
+Func f3 = pipeline.get_func(9);
+Func f4 = pipeline.get_func(12);
+Func f40 = pipeline.get_func(48);
+Func f41 = pipeline.get_func(45);
+Func f42 = pipeline.get_func(42);
+Func f43 = pipeline.get_func(39);
+Func f45 = pipeline.get_func(33);
+Func f46 = pipeline.get_func(30);
+Func f47 = pipeline.get_func(27);
+Func f48 = pipeline.get_func(24);
+Func f5 = pipeline.get_func(14);
+Func f6 = pipeline.get_func(16);
+Func f7 = pipeline.get_func(18);
+Func f8 = pipeline.get_func(20);
+Func f9 = pipeline.get_func(22);
+Func normalize = pipeline.get_func(51);
+
+{
+    Var x = f1.args()[0];
+    Var y = f1.args()[1];
+    f1
+        .compute_root()
+        .split(x, x_o, x_i, 8)
+        .split(y, y_o, y_i, 8)
+        .reorder(c, x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = f11.args()[0];
+    Var y = f11.args()[1];
+    Var c = f11.args()[2];
+    f11
+        .compute_at(f1, x_o)
+        .reorder(c, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = f2.args()[0];
+    Var y = f2.args()[1];
+    f2
+        .compute_root()
+        .split(x, x_o, x_i, 8)
+        .split(y, y_o, y_i, 8)
+        .reorder(c, x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = f21.args()[0];
+    Var y = f21.args()[1];
+    Var c = f21.args()[2];
+    f21
+        .compute_at(normalize, x_o)
+        .reorder(c, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y)
+        .unroll(c);
+}
+{
+    Var x = f22.args()[0];
+    Var y = f22.args()[1];
+    f22
+        .compute_root()
+        .split(x, x_o, x_i, 10)
+        .split(y, y_o, y_i, 16)
+        .reorder(c, x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = f23.args()[0];
+    Var y = f23.args()[1];
+    Var c = f23.args()[2];
+    f23
+        .compute_at(f22, x_o)
+        .reorder(c, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = f24.args()[0];
+    Var y = f24.args()[1];
+    Var c = f24.args()[2];
+    f24
+        .compute_at(f22, x_o)
+        .reorder(c, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = f25.args()[0];
+    Var y = f25.args()[1];
+    f25
+        .compute_root()
+        .split(x, x_o, x_i, 16)
+        .split(y, y_o, y_i, 10)
+        .reorder(c, x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = f26.args()[0];
+    Var y = f26.args()[1];
+    Var c = f26.args()[2];
+    f26
+        .compute_at(f25, x_o)
+        .reorder(c, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = f27.args()[0];
+    Var y = f27.args()[1];
+    Var c = f27.args()[2];
+    f27
+        .compute_at(f25, x_o)
+        .reorder(c, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = f28.args()[0];
+    Var y = f28.args()[1];
+    Var c = f28.args()[2];
+    f28
+        .compute_root()
+        .gpu_single_thread()
+        .gpu_blocks(c)
+        .gpu_blocks(y)
+        .gpu_blocks(x);
+}
+{
+    Var x = f3.args()[0];
+    Var y = f3.args()[1];
+    f3
+        .compute_root()
+        .split(x, x_o, x_i, 8)
+        .split(y, y_o, y_i, 8)
+        .reorder(c, x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = f4.args()[0];
+    Var y = f4.args()[1];
+    f4
+        .compute_root()
+        .split(x, x_o, x_i, 32)
+        .split(y, y_o, y_i, 32)
+        .reorder(c, x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = f40.args()[0];
+    Var y = f40.args()[1];
+    Var c = f40.args()[2];
+    f40
+        .compute_at(normalize, x_o)
+        .reorder(c, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y)
+        .unroll(c);
+}
+{
+    Var x = f41.args()[0];
+    Var y = f41.args()[1];
+    Var c = f41.args()[2];
+    f41
+        .compute_at(normalize, x_o)
+        .reorder(c, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y)
+        .unroll(c);
+}
+{
+    Var x = f42.args()[0];
+    Var y = f42.args()[1];
+    Var c = f42.args()[2];
+    f42
+        .compute_at(f22, x_o)
+        .reorder(c, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = f43.args()[0];
+    Var y = f43.args()[1];
+    Var c = f43.args()[2];
+    f43
+        .compute_at(f22, x_o)
+        .reorder(c, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = f45.args()[0];
+    Var y = f45.args()[1];
+    Var c = f45.args()[2];
+    f45
+        .compute_at(f25, x_o)
+        .reorder(c, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = f46.args()[0];
+    Var y = f46.args()[1];
+    Var c = f46.args()[2];
+    f46
+        .compute_at(f25, x_o)
+        .reorder(c, x, y)
+        .gpu_threads(x)
+        .gpu_threads(y);
+}
+{
+    Var x = f47.args()[0];
+    Var y = f47.args()[1];
+    Var c = f47.args()[2];
+    f47
+        .compute_root()
+        .gpu_single_thread()
+        .gpu_blocks(c)
+        .gpu_blocks(y)
+        .gpu_blocks(x);
+}
+{
+    Var x = f48.args()[0];
+    Var y = f48.args()[1];
+    Var c = f48.args()[2];
+    f48
+        .compute_root()
+        .gpu_single_thread()
+        .gpu_blocks(c)
+        .gpu_blocks(y)
+        .gpu_blocks(x);
+}
+{
+    Var x = f5.args()[0];
+    Var y = f5.args()[1];
+    f5
+        .compute_root()
+        .split(x, x_o, x_i, 16)
+        .split(y, y_o, y_i, 16)
+        .reorder(c, x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = f6.args()[0];
+    Var y = f6.args()[1];
+    f6
+        .compute_root()
+        .split(x, x_o, x_i, 8)
+        .split(y, y_o, y_i, 8)
+        .reorder(c, x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+{
+    Var x = f7.args()[0];
+    Var y = f7.args()[1];
+    f7
+        .compute_root()
+        .reorder(c, x, y)
+        .gpu_single_thread();
+}
+{
+    Var x = f8.args()[0];
+    Var y = f8.args()[1];
+    Var c = f8.args()[2];
+    f8
+        .compute_root()
+        .gpu_single_thread()
+        .gpu_blocks(c)
+        .gpu_blocks(y)
+        .gpu_blocks(x);
+}
+{
+    Var x = f9.args()[0];
+    Var y = f9.args()[1];
+    Var c = f9.args()[2];
+    f9
+        .compute_root()
+        .gpu_single_thread()
+        .gpu_blocks(c)
+        .gpu_blocks(y)
+        .gpu_blocks(x);
+}
+{
+    Var x = normalize.args()[0];
+    Var y = normalize.args()[1];
+    Var c = normalize.args()[2];
+    normalize
+        .compute_root()
+        .split(x, x_o, x_i, 16)
+        .split(y, y_o, y_i, 10)
+        .reorder(c, x_i, y_i, x_o, y_o)
+        .gpu_threads(x_i)
+        .gpu_threads(y_i)
+        .unroll(c)
+        .gpu_blocks(y_o)
+        .gpu_blocks(x_o);
+}
+
+
+TOTAL INLINES 15

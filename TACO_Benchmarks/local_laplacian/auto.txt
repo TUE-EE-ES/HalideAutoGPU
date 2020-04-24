@@ -1,0 +1,1364 @@
+==PROF== Connected to process 58206 (/home/ssioutas/Halide_ti/TACO_Benchmarks/local_laplacian/bin/process)
+==PROF== Profiling "kernel_gray_s0_y_y_o___block_..." - 1: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f0_s0_y_y_o___block_id_y" - 2: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f1_s0_y_y_o___block_id_y" - 3: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f14_s0_y_y_o___block_i..." - 4: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f15_s0_y_y_o___block_i..." - 5: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f2_s0_y_y_o___block_id_y" - 6: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f16_s0_y_y_o___block_i..." - 7: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f3_s0_y_y_o___block_id_y" - 8: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f17_s0_y_y_o___block_i..." - 9: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f4_s0_y_y_o___block_id_y" - 10: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f18_s0_y_y_o___block_i..." - 11: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f5_s0_y_y_o___block_id_y" - 12: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f19_s0_y_y_o___block_i..." - 13: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_downx_13_s0_y_y_o___bl..." - 14: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_outGPyramid_4__s0_y_y_..." - 15: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_outGPyramid_2__s0_y_y_..." - 16: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_output_s0_y_y_o___bloc..." - 17: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_gray_s0_y_y_o___block_..." - 18: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f0_s0_y_y_o___block_id_y" - 19: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f1_s0_y_y_o___block_id_y" - 20: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f14_s0_y_y_o___block_i..." - 21: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f15_s0_y_y_o___block_i..." - 22: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f2_s0_y_y_o___block_id_y" - 23: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f16_s0_y_y_o___block_i..." - 24: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f3_s0_y_y_o___block_id_y" - 25: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f17_s0_y_y_o___block_i..." - 26: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f4_s0_y_y_o___block_id_y" - 27: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f18_s0_y_y_o___block_i..." - 28: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f5_s0_y_y_o___block_id_y" - 29: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_f19_s0_y_y_o___block_i..." - 30: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_downx_13_s0_y_y_o___bl..." - 31: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_outGPyramid_4__s0_y_y_..." - 32: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_outGPyramid_2__s0_y_y_..." - 33: 0%....50%....100% - 13 passes
+==PROF== Profiling "kernel_output_s0_y_y_o___bloc..." - 34: 0%....50%....100%Auto-scheduled time: 2382.07ms
+ - 13 passes
+==PROF== Disconnected from process 58206
+[58206] process@127.0.0.1
+  kernel_gray_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:18, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,69
+    SOL FB                                                                               %                          70,09
+    Elapsed Cycles                                                                   cycle                         248080
+    SM Frequency                                                             cycle/nsecond                           1,37
+    Memory [%]                                                                           %                          70,09
+    Duration                                                                       usecond                         180,99
+    SOL L2                                                                               %                          31,90
+    SM Active Cycles                                                                 cycle                      245453,97
+    SM [%]                                                                               %                          32,32
+    SOL TEX                                                                              %                          32,54
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        256
+    Grid Size                                                                                                       29952
+    Registers Per Thread                                                   register/thread                             16
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                             byte/block                              0
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                        7667712
+    Waves Per SM                                                                                                      208
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                             16
+    Block Limit Shared Mem                                                           block                             16
+    Block Limit Warps                                                                block                              4
+    Achieved Active Warps Per SM                                                      warp                          25,90
+    Achieved Occupancy                                                                   %                          80,93
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f0_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:18, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,71
+    SOL FB                                                                               %                          20,88
+    Elapsed Cycles                                                                   cycle                        1406839
+    SM Frequency                                                             cycle/nsecond                           1,39
+    Memory [%]                                                                           %                          20,88
+    Duration                                                                       msecond                           1,01
+    SOL L2                                                                               %                           9,60
+    SM Active Cycles                                                                 cycle                     1397585,11
+    SM [%]                                                                               %                          89,19
+    SOL TEX                                                                              %                          17,28
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                        7992
+    Registers Per Thread                                                   register/thread                             44
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                          16,38
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                        4091904
+    Waves Per SM                                                                                                      111
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              2
+    Block Limit Shared Mem                                                           block                              4
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          30,04
+    Achieved Occupancy                                                                   %                          93,89
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f1_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:18, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,70
+    SOL FB                                                                               %                          86,10
+    Elapsed Cycles                                                                   cycle                         287774
+    SM Frequency                                                             cycle/nsecond                           1,38
+    Memory [%]                                                                           %                          86,10
+    Duration                                                                       usecond                         207,97
+    SOL L2                                                                               %                          49,47
+    SM Active Cycles                                                                 cycle                      281999,25
+    SM [%]                                                                               %                          40,23
+    SOL TEX                                                                              %                          44,21
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        320
+    Grid Size                                                                                                        3348
+    Registers Per Thread                                                   register/thread                             46
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                          10,24
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                        1071360
+    Waves Per SM                                                                                                       31
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              4
+    Block Limit Shared Mem                                                           block                              6
+    Block Limit Warps                                                                block                              3
+    Achieved Active Warps Per SM                                                      warp                          26,22
+    Achieved Occupancy                                                                   %                          81,95
+    Theoretical Active Warps per SM                                             warp/cycle                             30
+    Theoretical Occupancy                                                                %                          93,75
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f14_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:18, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,70
+    SOL FB                                                                               %                          67,86
+    Elapsed Cycles                                                                   cycle                         183768
+    SM Frequency                                                             cycle/nsecond                           1,36
+    Memory [%]                                                                           %                          67,86
+    Duration                                                                       usecond                         134,14
+    SOL L2                                                                               %                          28,40
+    SM Active Cycles                                                                 cycle                      181571,72
+    SM [%]                                                                               %                          36,89
+    SOL TEX                                                                              %                          37,17
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                        7992
+    Registers Per Thread                                                   register/thread                             18
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           2,05
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                        4091904
+    Waves Per SM                                                                                                      111
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              5
+    Block Limit Shared Mem                                                           block                             32
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          26,04
+    Achieved Occupancy                                                                   %                          81,38
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f15_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:18, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,67
+    SOL FB                                                                               %                          68,18
+    Elapsed Cycles                                                                   cycle                          51778
+    SM Frequency                                                             cycle/nsecond                           1,35
+    Memory [%]                                                                           %                          68,18
+    Duration                                                                       usecond                          38,14
+    SOL L2                                                                               %                          25,51
+    SM Active Cycles                                                                 cycle                       49873,53
+    SM [%]                                                                               %                          33,02
+    SOL TEX                                                                              %                          34,13
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                        2016
+    Registers Per Thread                                                   register/thread                             18
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           2,05
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                        1032192
+    Waves Per SM                                                                                                       28
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              5
+    Block Limit Shared Mem                                                           block                             32
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          26,41
+    Achieved Occupancy                                                                   %                          82,52
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f2_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:18, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,70
+    SOL FB                                                                               %                          76,49
+    Elapsed Cycles                                                                   cycle                          84821
+    SM Frequency                                                             cycle/nsecond                           1,38
+    Memory [%]                                                                           %                          76,49
+    Duration                                                                       usecond                          61,38
+    SOL L2                                                                               %                          49,85
+    SM Active Cycles                                                                 cycle                       81941,39
+    SM [%]                                                                               %                          33,74
+    SOL TEX                                                                              %                          40,16
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        320
+    Grid Size                                                                                                         828
+    Registers Per Thread                                                   register/thread                             46
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                          10,24
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                         264960
+    Waves Per SM                                                                                                     7,67
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              4
+    Block Limit Shared Mem                                                           block                              6
+    Block Limit Warps                                                                block                              3
+    Achieved Active Warps Per SM                                                      warp                          26,59
+    Achieved Occupancy                                                                   %                          83,11
+    Theoretical Active Warps per SM                                             warp/cycle                             30
+    Theoretical Occupancy                                                                %                          93,75
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f16_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:18, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,61
+    SOL FB                                                                               %                          48,40
+    Elapsed Cycles                                                                   cycle                          15612
+    SM Frequency                                                             cycle/nsecond                           1,28
+    Memory [%]                                                                           %                          48,40
+    Duration                                                                       usecond                          12,19
+    SOL L2                                                                               %                          21,13
+    SM Active Cycles                                                                 cycle                       14050,25
+    SM [%]                                                                               %                          27,37
+    SOL TEX                                                                              %                          30,29
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                         504
+    Registers Per Thread                                                   register/thread                             18
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           2,05
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                         258048
+    Waves Per SM                                                                                                        7
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              5
+    Block Limit Shared Mem                                                           block                             32
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          26,58
+    Achieved Occupancy                                                                   %                          83,07
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f3_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:19, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,86
+    SOL FB                                                                               %                          60,31
+    Elapsed Cycles                                                                   cycle                          26727
+    SM Frequency                                                             cycle/nsecond                           1,35
+    Memory [%]                                                                           %                          60,31
+    Duration                                                                       usecond                          19,71
+    SOL L2                                                                               %                          29,89
+    SM Active Cycles                                                                 cycle                       25915,17
+    SM [%]                                                                               %                          26,76
+    SOL TEX                                                                              %                          32,79
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        320
+    Grid Size                                                                                                         207
+    Registers Per Thread                                                   register/thread                             42
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                          10,24
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                          66240
+    Waves Per SM                                                                                                     1,92
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              4
+    Block Limit Shared Mem                                                           block                              6
+    Block Limit Warps                                                                block                              3
+    Achieved Active Warps Per SM                                                      warp                          25,61
+    Achieved Occupancy                                                                   %                          80,04
+    Theoretical Active Warps per SM                                             warp/cycle                             30
+    Theoretical Occupancy                                                                %                          93,75
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f17_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:19, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,67
+    SOL FB                                                                               %                          49,75
+    Elapsed Cycles                                                                   cycle                           7516
+    SM Frequency                                                             cycle/nsecond                           1,40
+    Memory [%]                                                                           %                          49,75
+    Duration                                                                       usecond                           5,34
+    SOL L2                                                                               %                          11,06
+    SM Active Cycles                                                                 cycle                        5604,19
+    SM [%]                                                                               %                          14,22
+    SOL TEX                                                                              %                          19,58
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                         126
+    Registers Per Thread                                                   register/thread                             18
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           2,05
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                          64512
+    Waves Per SM                                                                                                     1,75
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              5
+    Block Limit Shared Mem                                                           block                             32
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          27,55
+    Achieved Occupancy                                                                   %                          86,11
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f4_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:19, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,85
+    SOL FB                                                                               %                          49,07
+    Elapsed Cycles                                                                   cycle                          12683
+    SM Frequency                                                             cycle/nsecond                           1,53
+    Memory [%]                                                                           %                          49,07
+    Duration                                                                       usecond                           8,29
+    SOL L2                                                                               %                          22,51
+    SM Active Cycles                                                                 cycle                       10127,69
+    SM [%]                                                                               %                          15,26
+    SOL TEX                                                                              %                          21,29
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                          35
+    Registers Per Thread                                                   register/thread                             42
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                          16,38
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                          17920
+    Waves Per SM                                                                                                     0,49
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              2
+    Block Limit Shared Mem                                                           block                              4
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          14,68
+    Achieved Occupancy                                                                   %                          45,87
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f18_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:19, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,43
+    SOL FB                                                                               %                          27,50
+    Elapsed Cycles                                                                   cycle                           4151
+    SM Frequency                                                             cycle/nsecond                           1,23
+    Memory [%]                                                                           %                          27,50
+    Duration                                                                       usecond                           3,36
+    SOL L2                                                                               %                           6,24
+    SM Active Cycles                                                                 cycle                        2246,42
+    SM [%]                                                                               %                           7,14
+    SOL TEX                                                                              %                          13,16
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                          35
+    Registers Per Thread                                                   register/thread                             18
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           2,05
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                          17920
+    Waves Per SM                                                                                                     0,49
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              5
+    Block Limit Shared Mem                                                           block                             32
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          15,25
+    Achieved Occupancy                                                                   %                          47,65
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f5_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:19, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,73
+    SOL FB                                                                               %                          41,23
+    Elapsed Cycles                                                                   cycle                           6415
+    SM Frequency                                                             cycle/nsecond                           1,40
+    Memory [%]                                                                           %                          41,23
+    Duration                                                                       usecond                           4,58
+    SOL L2                                                                               %                           9,65
+    SM Active Cycles                                                                 cycle                        4010,61
+    SM [%]                                                                               %                           9,18
+    SOL TEX                                                                              %                          22,21
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        160
+    Grid Size                                                                                                          32
+    Registers Per Thread                                                   register/thread                             42
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           5,12
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                           5120
+    Waves Per SM                                                                                                     0,15
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              8
+    Block Limit Shared Mem                                                           block                             12
+    Block Limit Warps                                                                block                              6
+    Achieved Active Warps Per SM                                                      warp                           4,78
+    Achieved Occupancy                                                                   %                          14,95
+    Theoretical Active Warps per SM                                             warp/cycle                             30
+    Theoretical Occupancy                                                                %                          93,75
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f19_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:19, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,47
+    SOL FB                                                                               %                           9,12
+    Elapsed Cycles                                                                   cycle                           3363
+    SM Frequency                                                             cycle/nsecond                           1,20
+    Memory [%]                                                                           %                           9,12
+    Duration                                                                       usecond                           2,78
+    SOL L2                                                                               %                           2,81
+    SM Active Cycles                                                                 cycle                        1664,67
+    SM [%]                                                                               %                           2,65
+    SOL TEX                                                                              %                           7,49
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        160
+    Grid Size                                                                                                          32
+    Registers Per Thread                                                   register/thread                             18
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                             byte/block                            640
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                           5120
+    Waves Per SM                                                                                                     0,15
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                             16
+    Block Limit Shared Mem                                                           block                             85
+    Block Limit Warps                                                                block                              6
+    Achieved Active Warps Per SM                                                      warp                           4,87
+    Achieved Occupancy                                                                   %                          15,23
+    Theoretical Active Warps per SM                                             warp/cycle                             30
+    Theoretical Occupancy                                                                %                          93,75
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_downx_13_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:19, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,49
+    SOL FB                                                                               %                           3,05
+    Elapsed Cycles                                                                   cycle                           3176
+    SM Frequency                                                             cycle/nsecond                           1,15
+    Memory [%]                                                                           %                           3,05
+    Duration                                                                       usecond                           2,75
+    SOL L2                                                                               %                           1,45
+    SM Active Cycles                                                                 cycle                        1412,42
+    SM [%]                                                                               %                           2,46
+    SOL TEX                                                                              %                           5,51
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                          4
+    Grid Size                                                                                                         200
+    Registers Per Thread                                                   register/thread                             16
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                             byte/block                              0
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                            800
+    Waves Per SM                                                                                                     0,35
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                            128
+    Block Limit Shared Mem                                                           block                             16
+    Block Limit Warps                                                                block                             32
+    Achieved Active Warps Per SM                                                      warp                           5,20
+    Achieved Occupancy                                                                   %                          16,25
+    Theoretical Active Warps per SM                                             warp/cycle                             16
+    Theoretical Occupancy                                                                %                             50
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_outGPyramid_4__s0_y_y_o___block_id_y, 2020-Jan-10 11:58:20, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,67
+    SOL FB                                                                               %                          28,58
+    Elapsed Cycles                                                                   cycle                          13280
+    SM Frequency                                                             cycle/nsecond                           1,37
+    Memory [%]                                                                           %                          28,58
+    Duration                                                                       usecond                           9,63
+    SOL L2                                                                               %                          11,30
+    SM Active Cycles                                                                 cycle                       10755,06
+    SM [%]                                                                               %                          16,83
+    SOL TEX                                                                              %                          21,54
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        480
+    Grid Size                                                                                                          35
+    Registers Per Thread                                                   register/thread                             43
+    Shared Memory Configuration Size                                                 Kbyte                          65,54
+    Dynamic Shared Memory Per Block                                            Kbyte/block                          29,54
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                          16800
+    Waves Per SM                                                                                                     0,49
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              2
+    Block Limit Shared Mem                                                           block                              2
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          14,54
+    Achieved Occupancy                                                                   %                          45,42
+    Theoretical Active Warps per SM                                             warp/cycle                             30
+    Theoretical Occupancy                                                                %                          93,75
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_outGPyramid_2__s0_y_y_o___block_id_y, 2020-Jan-10 11:58:20, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,73
+    SOL FB                                                                               %                          52,92
+    Elapsed Cycles                                                                   cycle                          48804
+    SM Frequency                                                             cycle/nsecond                           1,37
+    Memory [%]                                                                           %                          52,92
+    Duration                                                                       usecond                          35,58
+    SOL L2                                                                               %                          18,82
+    SM Active Cycles                                                                 cycle                       46328,17
+    SM [%]                                                                               %                          27,21
+    SOL TEX                                                                              %                          28,57
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                         533
+    Registers Per Thread                                                   register/thread                             35
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           2,24
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                         272896
+    Waves Per SM                                                                                                     7,40
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              3
+    Block Limit Shared Mem                                                           block                             28
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          29,13
+    Achieved Occupancy                                                                   %                          91,04
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_output_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:20, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,70
+    SOL FB                                                                               %                          44,40
+    Elapsed Cycles                                                                   cycle                         601350
+    SM Frequency                                                             cycle/nsecond                           1,37
+    Memory [%]                                                                           %                          44,40
+    Duration                                                                       usecond                         436,93
+    SOL L2                                                                               %                          17,76
+    SM Active Cycles                                                                 cycle                      597973,58
+    SM [%]                                                                               %                          42,00
+    SOL TEX                                                                              %                          37,82
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                        7680
+    Registers Per Thread                                                   register/thread                             60
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           3,33
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                        3932160
+    Waves Per SM                                                                                                   106,67
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              2
+    Block Limit Shared Mem                                                           block                             19
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          30,48
+    Achieved Occupancy                                                                   %                          95,24
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_gray_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:20, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,69
+    SOL FB                                                                               %                          69,89
+    Elapsed Cycles                                                                   cycle                         249731
+    SM Frequency                                                             cycle/nsecond                           1,37
+    Memory [%]                                                                           %                          69,89
+    Duration                                                                       usecond                         181,54
+    SOL L2                                                                               %                          31,71
+    SM Active Cycles                                                                 cycle                      246088,86
+    SM [%]                                                                               %                          32,10
+    SOL TEX                                                                              %                          32,46
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        256
+    Grid Size                                                                                                       29952
+    Registers Per Thread                                                   register/thread                             16
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                             byte/block                              0
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                        7667712
+    Waves Per SM                                                                                                      208
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                             16
+    Block Limit Shared Mem                                                           block                             16
+    Block Limit Warps                                                                block                              4
+    Achieved Active Warps Per SM                                                      warp                          25,91
+    Achieved Occupancy                                                                   %                          80,96
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f0_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:20, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,70
+    SOL FB                                                                               %                          20,89
+    Elapsed Cycles                                                                   cycle                        1407110
+    SM Frequency                                                             cycle/nsecond                           1,38
+    Memory [%]                                                                           %                          20,89
+    Duration                                                                       msecond                           1,02
+    SOL L2                                                                               %                           9,60
+    SM Active Cycles                                                                 cycle                     1397442,11
+    SM [%]                                                                               %                          89,11
+    SOL TEX                                                                              %                          17,28
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                        7992
+    Registers Per Thread                                                   register/thread                             44
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                          16,38
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                        4091904
+    Waves Per SM                                                                                                      111
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              2
+    Block Limit Shared Mem                                                           block                              4
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          30,04
+    Achieved Occupancy                                                                   %                          93,88
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f1_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:20, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,71
+    SOL FB                                                                               %                          85,38
+    Elapsed Cycles                                                                   cycle                         285968
+    SM Frequency                                                             cycle/nsecond                           1,37
+    Memory [%]                                                                           %                          85,38
+    Duration                                                                       usecond                         208,48
+    SOL L2                                                                               %                          50,03
+    SM Active Cycles                                                                 cycle                      278499,69
+    SM [%]                                                                               %                          40,44
+    SOL TEX                                                                              %                          44,77
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        320
+    Grid Size                                                                                                        3348
+    Registers Per Thread                                                   register/thread                             46
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                          10,24
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                        1071360
+    Waves Per SM                                                                                                       31
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              4
+    Block Limit Shared Mem                                                           block                              6
+    Block Limit Warps                                                                block                              3
+    Achieved Active Warps Per SM                                                      warp                          26,18
+    Achieved Occupancy                                                                   %                          81,81
+    Theoretical Active Warps per SM                                             warp/cycle                             30
+    Theoretical Occupancy                                                                %                          93,75
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f14_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:20, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,68
+    SOL FB                                                                               %                          68,99
+    Elapsed Cycles                                                                   cycle                         183468
+    SM Frequency                                                             cycle/nsecond                           1,36
+    Memory [%]                                                                           %                          68,99
+    Duration                                                                       usecond                         134,46
+    SOL L2                                                                               %                          28,41
+    SM Active Cycles                                                                 cycle                      181142,86
+    SM [%]                                                                               %                          36,89
+    SOL TEX                                                                              %                          37,26
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                        7992
+    Registers Per Thread                                                   register/thread                             18
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           2,05
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                        4091904
+    Waves Per SM                                                                                                      111
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              5
+    Block Limit Shared Mem                                                           block                             32
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          26,03
+    Achieved Occupancy                                                                   %                          81,35
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f15_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:21, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,68
+    SOL FB                                                                               %                          67,99
+    Elapsed Cycles                                                                   cycle                          51849
+    SM Frequency                                                             cycle/nsecond                           1,34
+    Memory [%]                                                                           %                          67,99
+    Duration                                                                       usecond                          38,69
+    SOL L2                                                                               %                          25,43
+    SM Active Cycles                                                                 cycle                       50159,78
+    SM [%]                                                                               %                          32,93
+    SOL TEX                                                                              %                          33,94
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                        2016
+    Registers Per Thread                                                   register/thread                             18
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           2,05
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                        1032192
+    Waves Per SM                                                                                                       28
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              5
+    Block Limit Shared Mem                                                           block                             32
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          26,37
+    Achieved Occupancy                                                                   %                          82,40
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f2_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:21, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,73
+    SOL FB                                                                               %                          73,39
+    Elapsed Cycles                                                                   cycle                          85616
+    SM Frequency                                                             cycle/nsecond                           1,36
+    Memory [%]                                                                           %                          73,39
+    Duration                                                                       usecond                          62,72
+    SOL L2                                                                               %                          49,40
+    SM Active Cycles                                                                 cycle                       82250,06
+    SM [%]                                                                               %                          33,42
+    SOL TEX                                                                              %                          40,01
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        320
+    Grid Size                                                                                                         828
+    Registers Per Thread                                                   register/thread                             46
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                          10,24
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                         264960
+    Waves Per SM                                                                                                     7,67
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              4
+    Block Limit Shared Mem                                                           block                              6
+    Block Limit Warps                                                                block                              3
+    Achieved Active Warps Per SM                                                      warp                          26,62
+    Achieved Occupancy                                                                   %                          83,18
+    Theoretical Active Warps per SM                                             warp/cycle                             30
+    Theoretical Occupancy                                                                %                          93,75
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f16_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:21, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,66
+    SOL FB                                                                               %                          53,41
+    Elapsed Cycles                                                                   cycle                          15502
+    SM Frequency                                                             cycle/nsecond                           1,30
+    Memory [%]                                                                           %                          53,41
+    Duration                                                                       usecond                          11,90
+    SOL L2                                                                               %                          21,16
+    SM Active Cycles                                                                 cycle                       14417,94
+    SM [%]                                                                               %                          27,54
+    SOL TEX                                                                              %                          29,52
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                         504
+    Registers Per Thread                                                   register/thread                             18
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           2,05
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                         258048
+    Waves Per SM                                                                                                        7
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              5
+    Block Limit Shared Mem                                                           block                             32
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          26,96
+    Achieved Occupancy                                                                   %                          84,26
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f3_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:21, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,64
+    SOL FB                                                                               %                          68,19
+    Elapsed Cycles                                                                   cycle                          27887
+    SM Frequency                                                             cycle/nsecond                           1,33
+    Memory [%]                                                                           %                          68,19
+    Duration                                                                       usecond                          20,86
+    SOL L2                                                                               %                          28,66
+    SM Active Cycles                                                                 cycle                       24980,17
+    SM [%]                                                                               %                          25,63
+    SOL TEX                                                                              %                          33,92
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        320
+    Grid Size                                                                                                         207
+    Registers Per Thread                                                   register/thread                             42
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                          10,24
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                          66240
+    Waves Per SM                                                                                                     1,92
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              4
+    Block Limit Shared Mem                                                           block                              6
+    Block Limit Warps                                                                block                              3
+    Achieved Active Warps Per SM                                                      warp                          25,34
+    Achieved Occupancy                                                                   %                          79,20
+    Theoretical Active Warps per SM                                             warp/cycle                             30
+    Theoretical Occupancy                                                                %                          93,75
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f17_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:21, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,64
+    SOL FB                                                                               %                          48,76
+    Elapsed Cycles                                                                   cycle                           7449
+    SM Frequency                                                             cycle/nsecond                           1,34
+    Memory [%]                                                                           %                          48,76
+    Duration                                                                       usecond                           5,54
+    SOL L2                                                                               %                          11,18
+    SM Active Cycles                                                                 cycle                        5694,58
+    SM [%]                                                                               %                          14,34
+    SOL TEX                                                                              %                          19,26
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                         126
+    Registers Per Thread                                                   register/thread                             18
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           2,05
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                          64512
+    Waves Per SM                                                                                                     1,75
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              5
+    Block Limit Shared Mem                                                           block                             32
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          26,71
+    Achieved Occupancy                                                                   %                          83,47
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f4_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:21, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,64
+    SOL FB                                                                               %                          55,43
+    Elapsed Cycles                                                                   cycle                          11843
+    SM Frequency                                                             cycle/nsecond                           1,55
+    Memory [%]                                                                           %                          55,43
+    Duration                                                                       usecond                           7,62
+    SOL L2                                                                               %                          24,11
+    SM Active Cycles                                                                 cycle                       10249,06
+    SM [%]                                                                               %                          16,33
+    SOL TEX                                                                              %                          21,08
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                          35
+    Registers Per Thread                                                   register/thread                             42
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                          16,38
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                          17920
+    Waves Per SM                                                                                                     0,49
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              2
+    Block Limit Shared Mem                                                           block                              4
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          14,75
+    Achieved Occupancy                                                                   %                          46,11
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f18_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:21, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,45
+    SOL FB                                                                               %                          24,38
+    Elapsed Cycles                                                                   cycle                           3959
+    SM Frequency                                                             cycle/nsecond                           1,19
+    Memory [%]                                                                           %                          24,38
+    Duration                                                                       usecond                           3,33
+    SOL L2                                                                               %                           6,56
+    SM Active Cycles                                                                 cycle                        2379,47
+    SM [%]                                                                               %                           7,49
+    SOL TEX                                                                              %                          12,42
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                          35
+    Registers Per Thread                                                   register/thread                             18
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           2,05
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                          17920
+    Waves Per SM                                                                                                     0,49
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              5
+    Block Limit Shared Mem                                                           block                             32
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          15,33
+    Achieved Occupancy                                                                   %                          47,91
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f5_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:22, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,69
+    SOL FB                                                                               %                          42,87
+    Elapsed Cycles                                                                   cycle                           6514
+    SM Frequency                                                             cycle/nsecond                           1,42
+    Memory [%]                                                                           %                          42,87
+    Duration                                                                       usecond                           4,58
+    SOL L2                                                                               %                           9,48
+    SM Active Cycles                                                                 cycle                        4152,97
+    SM [%]                                                                               %                           9,03
+    SOL TEX                                                                              %                          21,46
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        160
+    Grid Size                                                                                                          32
+    Registers Per Thread                                                   register/thread                             42
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           5,12
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                           5120
+    Waves Per SM                                                                                                     0,15
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              8
+    Block Limit Shared Mem                                                           block                             12
+    Block Limit Warps                                                                block                              6
+    Achieved Active Warps Per SM                                                      warp                           4,78
+    Achieved Occupancy                                                                   %                          14,95
+    Theoretical Active Warps per SM                                             warp/cycle                             30
+    Theoretical Occupancy                                                                %                          93,75
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_f19_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:22, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,47
+    SOL FB                                                                               %                           8,60
+    Elapsed Cycles                                                                   cycle                           3397
+    SM Frequency                                                             cycle/nsecond                           1,23
+    Memory [%]                                                                           %                           8,60
+    Duration                                                                       usecond                           2,75
+    SOL L2                                                                               %                           2,78
+    SM Active Cycles                                                                 cycle                        1643,22
+    SM [%]                                                                               %                           2,63
+    SOL TEX                                                                              %                           7,59
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        160
+    Grid Size                                                                                                          32
+    Registers Per Thread                                                   register/thread                             18
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                             byte/block                            640
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                           5120
+    Waves Per SM                                                                                                     0,15
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                             16
+    Block Limit Shared Mem                                                           block                             85
+    Block Limit Warps                                                                block                              6
+    Achieved Active Warps Per SM                                                      warp                           4,87
+    Achieved Occupancy                                                                   %                          15,23
+    Theoretical Active Warps per SM                                             warp/cycle                             30
+    Theoretical Occupancy                                                                %                          93,75
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_downx_13_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:22, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,37
+    SOL FB                                                                               %                           2,92
+    Elapsed Cycles                                                                   cycle                           3153
+    SM Frequency                                                             cycle/nsecond                           1,17
+    Memory [%]                                                                           %                           2,92
+    Duration                                                                       usecond                           2,69
+    SOL L2                                                                               %                           1,47
+    SM Active Cycles                                                                 cycle                        1411,22
+    SM [%]                                                                               %                           2,47
+    SOL TEX                                                                              %                           5,51
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                          4
+    Grid Size                                                                                                         200
+    Registers Per Thread                                                   register/thread                             16
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                             byte/block                              0
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                            800
+    Waves Per SM                                                                                                     0,35
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                            128
+    Block Limit Shared Mem                                                           block                             16
+    Block Limit Warps                                                                block                             32
+    Achieved Active Warps Per SM                                                      warp                           5,20
+    Achieved Occupancy                                                                   %                          16,25
+    Theoretical Active Warps per SM                                             warp/cycle                             16
+    Theoretical Occupancy                                                                %                             50
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_outGPyramid_4__s0_y_y_o___block_id_y, 2020-Jan-10 11:58:22, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,60
+    SOL FB                                                                               %                          27,59
+    Elapsed Cycles                                                                   cycle                          13137
+    SM Frequency                                                             cycle/nsecond                           1,41
+    Memory [%]                                                                           %                          27,59
+    Duration                                                                       usecond                           9,28
+    SOL L2                                                                               %                          11,44
+    SM Active Cycles                                                                 cycle                        9373,81
+    SM [%]                                                                               %                          17,01
+    SOL TEX                                                                              %                          24,71
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        480
+    Grid Size                                                                                                          35
+    Registers Per Thread                                                   register/thread                             43
+    Shared Memory Configuration Size                                                 Kbyte                          65,54
+    Dynamic Shared Memory Per Block                                            Kbyte/block                          29,54
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                          16800
+    Waves Per SM                                                                                                     0,49
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              2
+    Block Limit Shared Mem                                                           block                              2
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          14,56
+    Achieved Occupancy                                                                   %                          45,50
+    Theoretical Active Warps per SM                                             warp/cycle                             30
+    Theoretical Occupancy                                                                %                          93,75
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_outGPyramid_2__s0_y_y_o___block_id_y, 2020-Jan-10 11:58:22, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,68
+    SOL FB                                                                               %                          53,80
+    Elapsed Cycles                                                                   cycle                          49295
+    SM Frequency                                                             cycle/nsecond                           1,35
+    Memory [%]                                                                           %                          53,80
+    Duration                                                                       usecond                          36,35
+    SOL L2                                                                               %                          18,62
+    SM Active Cycles                                                                 cycle                       46035,25
+    SM [%]                                                                               %                          26,95
+    SOL TEX                                                                              %                          28,75
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                         533
+    Registers Per Thread                                                   register/thread                             35
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           2,24
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                         272896
+    Waves Per SM                                                                                                     7,40
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              3
+    Block Limit Shared Mem                                                           block                             28
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          29,23
+    Achieved Occupancy                                                                   %                          91,36
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  kernel_output_s0_y_y_o___block_id_y, 2020-Jan-10 11:58:22, Context 1, Stream 7
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Frequency                                                         cycle/nsecond                           1,69
+    SOL FB                                                                               %                          44,45
+    Elapsed Cycles                                                                   cycle                         601266
+    SM Frequency                                                             cycle/nsecond                           1,37
+    Memory [%]                                                                           %                          44,45
+    Duration                                                                       usecond                         437,47
+    SOL L2                                                                               %                          17,74
+    SM Active Cycles                                                                 cycle                      597751,14
+    SM [%]                                                                               %                          42,01
+    SOL TEX                                                                              %                          37,83
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                        7680
+    Registers Per Thread                                                   register/thread                             60
+    Shared Memory Configuration Size                                                 Kbyte                          32,77
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           3,33
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                        3932160
+    Waves Per SM                                                                                                   106,67
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             16
+    Block Limit Registers                                                            block                              2
+    Block Limit Shared Mem                                                           block                             19
+    Block Limit Warps                                                                block                              2
+    Achieved Active Warps Per SM                                                      warp                          30,47
+    Achieved Occupancy                                                                   %                          95,23
+    Theoretical Active Warps per SM                                             warp/cycle                             32
+    Theoretical Occupancy                                                                %                            100
+    ---------------------------------------------------------------------- --------------- ------------------------------
+

@@ -1,0 +1,3 @@
+g++ -Dcuda_alloc -std=c++11 -I ../../distrib/include/ -I ../../distrib/tools/ -I ../support/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -frtti -rdynamic -g bilateral_grid_generator.cpp ../autoscheduler/SimpleAutoSchedule.cpp ../autoscheduler/AutoSchedule.cpp ../autoscheduler/DerivativeUtils.cpp ../../distrib/lib/libHalide.a ../../distrib/tools/GenGen.cpp -o bin/bilateral_grid.generator  -ldl -lpthread -lz -ltinfo -lz -lrt -ldl -ltinfo -lpthread -lm
+Makefile:9: recipe for target 'bin/bilateral_grid.generator' failed
+make: *** [bin/bilateral_grid.generator] Interrupt
