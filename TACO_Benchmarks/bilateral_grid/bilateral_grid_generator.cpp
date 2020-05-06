@@ -69,8 +69,8 @@ public:
   	histogram.bound_extent(z,18);
         if (auto_schedule) {
             // Provide estimates on the input image
-                        const int kWidth = 4032;
-            const int kHeight = 3024;
+                        const int kWidth = 1536;
+            const int kHeight = 2560;
             input.dim(0).set_bounds_estimate(0, kWidth);
             input.dim(1).set_bounds_estimate(0, kHeight);
             // Provide estimates on the parameters
@@ -80,7 +80,7 @@ public:
             blurz.estimate(z, 0, 12);
             blurx.estimate(z, 0, 12);
             blury.estimate(z, 0, 12);
-            bilateral_grid.estimate(x, 0, 4032).estimate(y, 0, 3024);
+            bilateral_grid.estimate(x, 0, 1536).estimate(y, 0, 2560);
         } else if (get_target().has_gpu_feature()) {
             std::string use_simple_autoscheduler =
                 Halide::Internal::get_env_variable("HL_USE_SIMPLE_AUTOSCHEDULER");
@@ -92,11 +92,11 @@ public:
                 Halide::simple_autoschedule(output_func,
                                     {{"r_sigma", 0.1f},
                                      {"input.min.0", 0},
-                                     {"input.extent.0", 4032},
+                                     {"input.extent.0", 1536},
                                      {"input.min.1", 0},
-                                     {"input.extent.1", 3024}},
-                                    {{0, 4032},
-                                     {0, 3024}},
+                                     {"input.extent.1", 2560}},
+                                    {{0, 1536},
+                                     {0, 2560}},
                                     options);
             } else {
                 Var xi("xi"), yi("yi"), zi("zi");

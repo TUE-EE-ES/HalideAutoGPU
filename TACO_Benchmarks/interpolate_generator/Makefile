@@ -46,14 +46,3 @@ clean:
 test: $(BIN)/filter
 	$(BIN)/filter ../images/rgba.png $(BIN)/out.png
 
-autotune: $(BIN)/interpolate.generator $(AUTOSCHED_BIN)/augment_sample $(AUTOSCHED_BIN)/train_cost_model $(AUTOSCHED_BIN)/libauto_schedule.so $(AUTOSCHED_SRC)/autotune_loop.sh
-	HL_PERMIT_FAILED_UNROLL=1 \
-	HL_WEIGHTS_DIR=$(AUTOSCHED_SRC)/weights \
-	HL_DEBUG_CODEGEN=1 \
-	HL_SHARED_MEMORY_LIMIT=48 \
-	bash $(AUTOSCHED_SRC)/autotune_loop.sh \
-		$(BIN)/interpolate.generator \
-		interpolate \
-		$(HL_TARGET) \
-		$(AUTOSCHED_SRC)/gpu_weights \
-		$(AUTOSCHED_BIN)

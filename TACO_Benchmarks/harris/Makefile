@@ -29,9 +29,6 @@ $(BIN)/harris_auto_schedule_no_fus.a: $(BIN)/harris.generator $(AUTOSCHED_BIN)/l
 	$<  -g harris -o $(BIN) -f harris_auto_schedule_no_fus target=$(HL_TARGET) auto_schedule=true  -p $(AUTOSCHED_BIN)/libauto_schedule.so -e static_library,h,schedule 
 
 
-
-
-
 $(BIN)/harris_simple_auto_schedule.a: $(BIN)/harris.generator
 	@mkdir -p $(@D)
 	HL_USE_SIMPLE_AUTOSCHEDULER=1 \
@@ -47,18 +44,3 @@ clean:
 test: $(BIN)/filter
 	@$(BIN)/filter ../images/rgb.png $(BIN)/out.tiff
 
-autotune:  $(BIN)/harris.generator  $(BIN)/harris_auto_schedule.a  $(AUTOSCHED_BIN)/libauto_schedule.so 
-	@$(BIN)/harris.generator -g harris -f harris_auto_schedule -o $(BIN) target=$(HL_TARGET) auto_schedule=true -p $(AUTOSCHED_BIN)/libauto_schedule.so -e static_library,h,schedule
-
-
-#autotune: $(BIN)/harris.generator $(AUTOSCHED_BIN)/augment_sample $(AUTOSCHED_BIN)/train_cost_model $(AUTOSCHED_BIN)/libauto_schedule.so $(AUTOSCHED_SRC)/autotune_loop.sh
-#	HL_PERMIT_FAILED_UNROLL=1 \
-	#HL_WEIGHTS_DIR=$(AUTOSCHED_SRC)/gpu_weights \
-	#HL_DEBUG_CODEGEN=1 \
-	#HL_SHARED_MEMORY_LIMIT=48 \
-	#bash $(AUTOSCHED_SRC)/autotune_loop.sh \
-	#	$(BIN)/harris.generator \
-		#harris \
-		#$(HL_TARGET) \
-		#$(AUTOSCHED_SRC)/gpu_weights \
-		#$(AUTOSCHED_BIN)
