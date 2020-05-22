@@ -21,7 +21,7 @@ CXX ?= g++
 GXX ?= g++
 
 CFLAGS += -I $(HALIDE_DISTRIB_PATH)/include/ -I $(HALIDE_DISTRIB_PATH)/tools/ -I ../support/
-CXXFLAGS += -std=c++11 -I $(HALIDE_DISTRIB_PATH)/include/ -I $(HALIDE_DISTRIB_PATH)/tools/ -I ../support/ $(SANITIZER_FLAGS) -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -D_GLIBCXX_USE_CXX11_ABI=0
+CXXFLAGS += -std=c++11 -I $(HALIDE_DISTRIB_PATH)/include/ -I $(HALIDE_DISTRIB_PATH)/tools/ -I ../support/ $(SANITIZER_FLAGS) -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi 
 
 ifeq (0, $(HALIDE_RTTI))
 CXXFLAGS += -fno-rtti
