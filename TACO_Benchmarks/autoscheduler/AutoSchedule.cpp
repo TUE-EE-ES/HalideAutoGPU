@@ -2508,7 +2508,7 @@ vector<Expr> Partitioner::estimate_occupancy(Expr threads, Expr shared_mem,
     std::cout << "Estimating occupancy limit warps per SM..."
               << block_group_warps_per_SM << std::endl;
   //=IF(MyRegCount>limitRegsPerThread,0,IF(MyRegCount>0,FLOOR(C42/MyRegsPerBlock,
-  //1)*FLOOR(limitTotalRegisters/limitRegsPerBlock,1),limitBlocksPerMultiprocessor))
+  // 1)*FLOOR(limitTotalRegisters/limitRegsPerBlock,1),limitBlocksPerMultiprocessor))
   // FLOOR(C42/MyRegsPerBlock, 1)*FLOOR(limitTotalRegisters/limitRegsPerBlock,1)
   Expr block_group_regs_per_SM = simplify(
       roundDown(group_limit_regs_per_SM / regs_per_block, 1) *
@@ -3273,7 +3273,7 @@ Partitioner::analyze_group(const Group &g, bool show_analysis, bool to_inline) {
     const auto &alloc_reg = get_element(alloc_regions, f_load.first);
 
     if (!is_output && is_group_member) {
-
+      Expr stage_factor = make_zero(Float(64));
       footprint = costs.region_size(f_load.first, alloc_reg);
       partial_footprint += footprint;
       shared_mem = simplify(shared_mem + footprint);
@@ -3281,9 +3281,9 @@ Partitioner::analyze_group(const Group &g, bool show_analysis, bool to_inline) {
       float cost_factor;
       cost_factor = cost_factor_shared;
       load_slope = (cost_factor) / (48 * 1024);
-      partial_factor +=
-          load_cost * min(1 + footprint * load_slope, cost_factor);
+      stage_factor += load_cost * min(1 + footprint * load_slope, cost_factor);
       ;
+      partial_factor += stage_factor;
       ;
 
     } else {
@@ -3303,12 +3303,12 @@ Partitioner::analyze_group(const Group &g, bool show_analysis, bool to_inline) {
         load_slope = (cost_factor) / (64 * 1024);
 
         if ((!to_inline)) {
-          partial_factor +=
-              footprint * min(1 + initial_footprint * load_slope, cost_factor) /
-              min(col_tile, max_tile);
-          partial_factor += f_load.second *
-                            min(1 + footprint * load_slope, cost_factor) /
-                            min(col_tile, max_tile);
+          Expr stage_factor = make_zero(Float(64));
+          stage_factor +=
+              footprint * min(1 + initial_footprint * load_slope, cost_factor);
+          stage_factor +=
+              f_load.second * min(1 + footprint * load_slope, cost_factor);
+          partial_factor += stage_factor / min(col_tile, max_tile);
         } else {
           partial_factor +=
               f_load.second *
@@ -3327,27 +3327,30 @@ Partitioner::analyze_group(const Group &g, bool show_analysis, bool to_inline) {
         float cost_factor = cost_factor_merge;
         load_slope = (cost_factor) / (64 * 1024);
         if (!to_inline && (g.output.stage_num > 0)) {
-          partial_factor +=
+          Expr stage_factor = make_zero(Float(64));
+          stage_factor +=
               footprint * min(1 + initial_footprint * load_slope, cost_factor);
           ;
-          partial_factor +=
+          stage_factor +=
               f_load.second * min(1 + footprint * load_slope, cost_factor);
+          partial_factor += stage_factor; /// min(col_tile,max_tile);
           ;
         } else if (!to_inline) {
-          partial_factor +=
-              footprint * min(1 + initial_footprint * load_slope, cost_factor) /
-              min(col_tile, max_tile);
-          ;
-          partial_factor += f_load.second *
-                            min(1 + footprint * load_slope, cost_factor) /
-                            min(col_tile, max_tile);
+          Expr stage_factor = make_zero(Float(64));
+          stage_factor +=
+              footprint * min(1 + initial_footprint * load_slope, cost_factor);
+          //                        min(col_tile, max_tile);
+          ///                  ;
+          stage_factor +=
+              f_load.second * min(1 + footprint * load_slope, cost_factor);
+          partial_factor += stage_factor / min(col_tile, max_tile);
           ;
         } else {
           partial_factor +=
               f_load.second *
               min(1 + initial_footprint * load_slope, cost_factor);
         }
-        partial_footprint += initial_footprint;
+        //               partial_footprint += initial_footprint;
       } else { // Load to some non-member function (i.e. function from other
                // groups)
         footprint = costs.region_size(f_load.first, alloc_reg);
@@ -3358,19 +3361,21 @@ Partitioner::analyze_group(const Group &g, bool show_analysis, bool to_inline) {
         load_slope = (cost_factor) / (64 * 1024);
 
         if ((!to_inline)) {
+          Expr stage_factor = make_zero(Float(64));
           Expr col_dim;
           if (col_dims.find(f_load.first) == col_dims.end())
             col_dim = col_tile;
           else
             col_dim = col_dims[f_load.first];
           col_dim = min(min(col_dim, col_tile), max_tile);
-          partial_factor +=
-              footprint * min(1 + initial_footprint * load_slope, cost_factor) /
-              col_dim;
+          //	    std::cout<<"cdim "<<simplify(col_dim)<<"
+          //fload"<<f_load.first<<std::endl;
+          stage_factor +=
+              footprint * min(1 + initial_footprint * load_slope, cost_factor);
           ;
-          partial_factor += f_load.second *
-                            min(1 + footprint * load_slope, cost_factor) /
-                            col_dim;
+          stage_factor +=
+              f_load.second * min(1 + footprint * load_slope, cost_factor);
+          partial_factor += stage_factor / col_dim;
           ;
         } else {
           partial_factor +=
@@ -3388,6 +3393,7 @@ Partitioner::analyze_group(const Group &g, bool show_analysis, bool to_inline) {
   GroupAnalysis g_analysis(Cost(per_tile_cost.arith * estimate_tiles,
                                 partial_factor * estimate_tiles),
                            parallelism);
+  const int non_inlined = g.members.size() - g.inlined.size();
   if (!to_inline) {
     pair<map<string, Expr>, vector<pair<FStage, Expr>>> threads_estimates =
         eval_max_threads(g, show_analysis);
@@ -3401,6 +3407,8 @@ Partitioner::analyze_group(const Group &g, bool show_analysis, bool to_inline) {
     Expr par = Int(32).max();
     Expr min_threads = Int(32).max();
     const Expr &base_occupancy = make_const(Float(32), 0.1);
+    const Expr &base_occupancy_2 = make_const(Float(32), 0.2);
+
     Expr partial_factor = make_zero(Float(64));
     for (auto &mem : g.members) {
       string f_name = mem.func.name();
@@ -3430,6 +3438,11 @@ Partitioner::analyze_group(const Group &g, bool show_analysis, bool to_inline) {
       vector<Expr> gpu_specs =
           estimate_occupancy(est_mem_threads, shared_mem, estimate_blocks);
       Expr mem_occupancy = gpu_specs[0];
+      if (non_inlined < 3 && (can_prove(mem_occupancy < base_occupancy_2)))
+        return GroupAnalysis();
+      else if (can_prove(mem_occupancy < base_occupancy))
+        return GroupAnalysis();
+
       if ((can_prove(mem_occupancy < base_occupancy)))
         return GroupAnalysis();
       Expr mem_active_threads = gpu_specs[1];

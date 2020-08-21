@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
-print(mpl.__version__) 
+#print(mpl.__version__) 
 mpl.rcParams['hatch.linewidth'] = 0.8
 
 auto=[]
@@ -22,7 +22,7 @@ for line in f:
   words = line.split(" ")
   if len(words)==1:
     continue
-  print(words);
+  #print(words);
   if words[0]=="Manual":
     #manman=words[2][:-3];
     manual.append(float(words[2][:-3]))
@@ -36,16 +36,6 @@ for line in f:
     auto.append(float(words[2][:-3]))
 
 f.close()
-print("auto")
-for a in auto:
-  print(a)
-  
-print("manual")
-print(len(auto))
-print(len(manual)) 
-for a in manual:
-  print(a)
-
 ratio_m=np.array
 np.array(auto)
 np.array(manual)
@@ -53,9 +43,9 @@ np.array(simple)
 np.array(nested)
 nested = np.minimum(auto,nested)
 ratio_m=np.minimum(auto,nested)/manual
-print(np.mean(ratio_m))
+print("Auto/manual :",np.mean(ratio_m))
 ratio_s=np.minimum(auto[:11],nested[:11])/simple[:11]
-print(np.mean(ratio_s))
+print("Auto/Li :",np.mean(ratio_s))
 
 
 """
