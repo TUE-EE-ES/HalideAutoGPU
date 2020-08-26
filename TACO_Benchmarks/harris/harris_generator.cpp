@@ -97,11 +97,11 @@ public:
                              {0, 2048 - 6}},
                             options);
                 } else {
-             /*       output.gpu_tile(x, y, xi, yi, 14, 14);
+                    output.gpu_tile(x, y, xi, yi, 14, 14);
                     Ix.compute_at(output, x).gpu_threads(x, y);
                     Iy.compute_at(output, x).gpu_threads(x, y);
-		    */
-		  gray.compute_root().gpu_tile(x,y,xi,yi,16,16);
+		    
+	/*	  gray.compute_root().gpu_tile(x,y,xi,yi,16,16);
 		  Ix.compute_root().gpu_tile(x,y,xi,yi,16,16);
 		  Iy.compute_root().gpu_tile(x,y,xi,yi,16,16);
 		  Ixy.compute_root().gpu_tile(x,y,xi,yi,16,16);
@@ -111,7 +111,7 @@ public:
 		  det.compute_root().gpu_tile(x,y,xi,yi,16,16);
 		  trace.compute_root().gpu_tile(x,y,xi,yi,16,16);
 		  harris.compute_root().gpu_tile(x,y,xi,yi,16,16);
-		  output.compute_root().gpu_tile(x,y,xi,yi,16,16);
+		  output.compute_root().gpu_tile(x,y,xi,yi,16,16);*/
 
                 }
             } else {
