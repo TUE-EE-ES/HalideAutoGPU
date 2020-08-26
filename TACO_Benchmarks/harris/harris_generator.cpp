@@ -65,8 +65,8 @@ public:
 
         // Estimates (for autoscheduler; ignored otherwise)
         {
-            const int kWidth = 2048;
-            const int kHeight =2048;
+            const int kWidth = 1536;
+            const int kHeight =2560;
             input.dim(0).set_bounds_estimate(0, kWidth)
                  .dim(1).set_bounds_estimate(0, kHeight)
                  .dim(2).set_bounds_estimate(0, 3);
@@ -88,13 +88,13 @@ public:
                     Halide::simple_autoschedule(output_func,
                             {
                             {"input.min.0", 0},
-                            {"input.extent.0", 2048},
+                            {"input.extent.0", 1536},
                             {"input.min.1", 0},
-                            {"input.extent.1", 2048},
+                            {"input.extent.1", 2560},
                             {"input.min.2", 0},
                             {"input.extent.2", 3}},
-                            {{0, 2048 - 6},
-                             {0, 2048 - 6}},
+                            {{0, 1536 - 6},
+                             {0, 2560 - 6}},
                             options);
                 } else {
                     output.gpu_tile(x, y, xi, yi, 14, 14);
